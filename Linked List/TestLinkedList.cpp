@@ -16,7 +16,7 @@ template <class U>
 TestLinkedList<U>::TestLinkedList()
 {
 	testLogger.setTest("Linked List Test");
-	testLogger.setVersion("0.01.02");
+	testLogger.setVersion("1.00.00.01");
 	testLogger.setTitlebar();
 }
 
