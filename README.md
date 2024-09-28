@@ -1,1 +1,2 @@
 # C-Data-Structures
+This repo will consist of several data structures that I have made and templated in C++.  Some of these have came from reading through an old algorithms text book that I have, and there will be others that I've just heard about at work or through other people that I know.  I hope to expand these to have a test driver that tests the bounds of the structures and another driver that will provide some semi real world scenario that these strcutures solve.  
