@@ -80,7 +80,7 @@ void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 	if (GetHeight(subtree->left) - GetHeight(subtree->right) > 1)
 	{
 		if (GetHeight(subtree->left->left) >= 
-										GetHeight(subtree->left->right))
+		    GetHeight(subtree->left->right))
 		{
 			RotateLeft(subtree);
 		}
@@ -92,7 +92,7 @@ void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 	else if (GetHeight(subtree->right) - GetHeight(subtree->left) > 1)
 	{
 		if (GetHeight(subtree->right->right) >= 
-										GetHeight(subtree->right->left))
+		    GetHeight(subtree->right->left))
 		{
 			RotateRight(subtree);
 		}
@@ -129,7 +129,7 @@ void AvlTree<T>::RotateLeft(AvlNode<T>*& subtree)
 	temp->right = subtree;
 	
 	subtree->height = max(GetHeight(subtree->left), 
-											GetHeight(subtree->right)) + 1;
+			      GetHeight(subtree->right)) + 1;
 	temp->height = max(GetHeight(temp->left), subtree->height) + 1;
 	subtree = temp;
 }
@@ -167,7 +167,7 @@ void AvlTree<T>::RotateRight(AvlNode<T>*& subtree)
 	temp->left = subtree;
 	
 	subtree->height = max(GetHeight(subtree->right), 
-											GetHeight(subtree->left)) + 1;
+			      GetHeight(subtree->left)) + 1;
 	temp->height = max(GetHeight(temp->right), subtree->height) + 1;
 	subtree = temp;	
 }
@@ -210,9 +210,13 @@ bool AvlTree<T>::Search(const T key)
 		if (key < temp->data)
 		{
 			if (temp->left == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->left;
+			}
 		}
 		
 		else if (key == temp->data)
@@ -224,9 +228,13 @@ bool AvlTree<T>::Search(const T key)
 		else
 		{
 			if (temp->right == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->right;
+			}
 		}
 	}	
 }
@@ -359,7 +367,7 @@ void AvlTree<T>::PruneHelper(AvlNode<T>* subtree)
         if (isLeaf(subtree) && subtree != root)
         {
         	Delete(subtree->data);
-		}
+	}
         PruneHelper(subtree->right);
     }	
 }
@@ -376,9 +384,10 @@ void AvlTree<T>::PruneHelper(AvlNode<T>* subtree)
 template <class T>
 void AvlTree<T>::PrintTree() const
 {
-	if (!root)
+   if (!root)
+   {
         return;
-
+   }
     else
     {
         int ctr = 0;
@@ -404,7 +413,9 @@ template <class T>
 int AvlTree<T>::GetHeight(AvlNode<T>* subtree) const
 {
 	if (subtree == NULL)
+	{
 		return 0;
+	}
 	else
 	{
 		int leftHeight = GetHeight(subtree->left);
@@ -472,9 +483,13 @@ void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 		{
 			int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
 			if (subtree == cursor)
+			{
 				cout << "[" << subtree->data << "]";
+			}
 			else
+			{
 				cout << subtree->data;
+			}
 
 			cout << setw(disp - result) << "";
 		}
@@ -559,8 +574,8 @@ void AvlTree<T>::InOrderHelper(const AvlNode<T>* subtree) const
         }
         else
         {
-			cout << subtree->data << " ";
-		}
+		cout << subtree->data << " ";
+	}
 			
         InOrderHelper(subtree->right);
     }
@@ -605,8 +620,8 @@ void AvlTree<T>::PreOrderHelper(const AvlNode<T>* subtree) const
         }
         else
         {
-			cout << subtree->data << " ";
-		}
+		cout << subtree->data << " ";
+	}
 			
         PreOrderHelper(subtree->left);
         PreOrderHelper(subtree->right);
@@ -655,8 +670,8 @@ void AvlTree<T>::PostOrderHelper(const AvlNode<T>* subtree) const
         }
         else
         {
-			cout << subtree->data << " ";
-		}
+		cout << subtree->data << " ";
+	}
     }
 }
 
@@ -744,16 +759,16 @@ AvlTree<T>& AvlTree<T>::operator=(const AvlTree<T>& rightTree)
     {
         if(root != NULL)
         {
-			DestroyHelper(root);
-		}
-		if(rightTree.root == NULL)
-		{
-			root = NULL;
-		}
-		else
-		{
-			CopyHelper(root, rightTree.root);
-		}
+		DestroyHelper(root);
+	}
+	if(rightTree.root == NULL)
+	{
+		root = NULL;
+	}
+	else
+	{
+		CopyHelper(root, rightTree.root);
+	}
     }
     return *this;
 }
