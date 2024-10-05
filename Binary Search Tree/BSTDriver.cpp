@@ -75,8 +75,8 @@ void printMenu()
 	cout << "| @     | Print Cursor Value     |" << endl;
 	cout << "| D     | Delete the Tree        |" << endl;
 	cout << "|_______|________________________|" << endl << endl;
-    cout << "Please choose an operation to perform on the tree." << endl;
-    cout << "Enter Q to quit." << endl;	
+        cout << "Please choose an operation to perform on the tree." << endl;
+        cout << "Enter Q to quit." << endl;	
 }
 
 
@@ -132,9 +132,13 @@ void choose(BST<T>& myTree)
 				{
 					validateInput(key);
 					if (myTree.Search(key))
+					{
 						cout << endl << key << " is in the tree!" << endl;
+					}
 					else
+					{
 						cerr << endl << key << " is not in the tree." << endl;
+					}
 					system("pause");
 				}
 				else
@@ -233,7 +237,9 @@ void choose(BST<T>& myTree)
 		cout << endl;
 		
 		if (hasInserted)
+		{
 			myTree.PrintTree();
+		}
 			
 		cout << "BST>> ";
 		cin >> choice;
@@ -268,7 +274,7 @@ T validateInput(T &value)
 			system("cls");
 			printMenu();
 			cerr << endl << "Please enter a valid item for the tree." << endl;
-        	cout << endl << ">> value: ";
+        	        cout << endl << ">> value: ";
 		}
 	}
 	return value;
