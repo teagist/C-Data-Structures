@@ -24,30 +24,35 @@
 template <class T>
 void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 {
-	if (subtree)
+    if (subtree)
     {
         if (key < subtree->data)
-		    return InsertHelper(key, subtree->left);
+	{
+	    return InsertHelper(key, subtree->left);
+	}
 		    
         else if (key > subtree->data)
-		    return InsertHelper(key, subtree->right);
+	{
+	    return InsertHelper(key, subtree->right);
+	}
         else
-		    cerr << "No duplicates allowed, please try again." << endl;
+	{
+            cerr << "No duplicates allowed, please try again." << endl;
+	}
     }
     
     else
     {
     	try
     	{
-    		subtree = new BNode<T>(key);
+    	    subtree = new BNode<T>(key);
     	}
     	catch (bad_alloc & ex)
     	{
-    		cerr << "Failed to insert " << key << " into the tree due to";
-    		cerr << " bad memory allocation." << endl;
-		}
+    	    cerr << "Failed to insert " << key << " into the tree due to";
+    	    cerr << " bad memory allocation." << endl;
 	}
-    
+    }
 	cursor = subtree;
 }
 
@@ -73,9 +78,13 @@ bool BST<T>::Search(const T key)
 		if (key < temp->data)
 		{
 			if (temp->left == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->left;
+			}
 		}
 		
 		else if (key == temp->data)
@@ -87,9 +96,13 @@ bool BST<T>::Search(const T key)
 		else
 		{
 			if (temp->right == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->right;
+			}
 		}
 	}
 }
@@ -110,17 +123,25 @@ template <class T>
 void BST<T>::Delete(const T key)
 {
 	if (root == NULL)
+	{
 		return;
+	}
 	
 	bool isFound = Search(key);
 	
 	if (isFound == false)
+        {
 		cerr << "There is not a node with value: " << key << endl;
-	else 
+        }
+	else
+	{
 		DeleteHelper(key, root);
+	}
 	
 	if (root == NULL)
+	{
 		cursor = NULL;
+	}
 }
 
 
@@ -143,13 +164,19 @@ template <class T>
 BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 {
 	if (subtree == NULL)
+	{
 		return subtree;
+	}
 	
 	if (key < subtree->data)
+	{
 		subtree->left = DeleteHelper(key, subtree->left);
+	}
 	
 	else if (key > subtree->data)
+	{
 		subtree->right = DeleteHelper(key, subtree->right);
+	}
 	
 	else
 	{
@@ -157,7 +184,9 @@ BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 		{
 			BNode<T>* parent = NULL;
 			if (parent = GetParent(subtree))
+			{
 				cursor = parent;
+			}
 
 			delete subtree;
 			subtree = NULL;
@@ -183,9 +212,13 @@ BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 			subtree->data = temp->data;
 			
 			if (subtree->left)
+			{
 				cursor = subtree->left;
+			}
 			else if (subtree->right)
+			{
 				cursor = subtree->right;
+			}
 				
 			subtree->right = DeleteHelper(temp->data, subtree->right);
 		}
@@ -215,7 +248,7 @@ void BST<T>::PruneHelper(BNode<T>* subtree)
         if (isLeaf(subtree) && subtree != root)
         {
         	Delete(subtree->data);
-		}
+	}
 			
         PruneHelper(subtree->right);
     }	
@@ -224,7 +257,7 @@ void BST<T>::PruneHelper(BNode<T>* subtree)
 
 
 //****************************************************************************
-//		Method to return a pointer to the left most value in the tree.
+//	Method to return a pointer to the left most value in the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
@@ -233,7 +266,8 @@ void BST<T>::PruneHelper(BNode<T>* subtree)
 template <class T>
 BNode<T>* BST<T>::GetMin(BNode<T>* subtree) const
 {
-	while(subtree->left != NULL) {
+	while(subtree->left != NULL) 
+	{
 		subtree = subtree->left;
 	}
 	return subtree;
@@ -258,11 +292,17 @@ BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 	while (top != NULL && top != subtree)
 	{
 		if (top != subtree)
+		{
 			parent = top;
+		}
 		if (top->data > subtree->data)
+		{
 			top = top->left;
+		}
 		else
+		{
 			top = top->right;
+		}
 	}
 	return parent;
 }
@@ -279,8 +319,10 @@ BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 template <class T>
 void BST<T>::PrintTree() const
 {
-	if (!root)
+    if (!root)
+    {
         return;
+    }
 
     else
     {
@@ -314,9 +356,13 @@ int BST<T>::TreeHeight(BNode<T>* subtree) const
 		int rightHeight = TreeHeight(subtree->right);
 		
 		if (leftHeight >= rightHeight)
+		{
 			return leftHeight + 1;
+		}
 		else
+		{
 			return rightHeight + 1;
+		}
 	}
 }
 
@@ -369,9 +415,13 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 		{
 			int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
 			if (subtree == cursor)
+			{
 				cout << "[" << subtree->data << "]";
+			}
 			else
+			{
 				cout << subtree->data;
+			}
 
 			cout << setw(disp - result) << "";
 		}
@@ -406,9 +456,13 @@ template <class T>
 void BST<T>::PrintCursor() const
 {
 	if (cursor != NULL)
+	{
 		cout << "[" << cursor->data << "]" << endl;
+	}
 	else
+	{
 		cout << "[]" << endl;
+	}
 }
 
 
@@ -445,9 +499,13 @@ void BST<T>::InOrderHelper(const BNode<T>* subtree) const
         InOrderHelper(subtree->left);
         
         if (subtree == cursor)
+	{
         	cout << "[" << subtree->data << "] ";
+	}
         else
-			cout << subtree->data << " ";
+	{
+		cout << subtree->data << " ";
+	}
 			
         InOrderHelper(subtree->right);
     }
@@ -485,9 +543,13 @@ void BST<T>::PreOrderHelper(const BNode<T>* subtree) const
     if (subtree != NULL)
     {
     	if (subtree == cursor)
+	{
         	cout << "[" << subtree->data << "] ";
+	}
         else
-			cout << subtree->data << " ";
+	{
+		cout << subtree->data << " ";
+	}
 			
         PreOrderHelper(subtree->left);
         PreOrderHelper(subtree->right);
@@ -529,9 +591,13 @@ void BST<T>::PostOrderHelper(const BNode<T>* subtree) const
         PostOrderHelper(subtree->right);
         
         if (subtree == cursor)
+	{
         	cout << "[" << subtree->data << "] ";
+	}
         else
-			cout << subtree->data << " ";
+	{
+		cout << subtree->data << " ";
+	}
     }
 }
 
@@ -616,11 +682,17 @@ BST<T>& BST<T>::operator=(const BST<T>& rightTree)
     if(this != &rightTree)
     {
         if(root != NULL)
-			DestroyHelper(root);
-		if(rightTree.root == NULL)
-			root = NULL;
-		else
-			CopyHelper(root, rightTree.root);
+	{
+		DestroyHelper(root);
+	}
+	if(rightTree.root == NULL)
+	{
+		root = NULL;
+	}
+	else
+	{
+		CopyHelper(root, rightTree.root);
+	}
     }
     return *this;
 }
