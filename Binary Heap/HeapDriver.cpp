@@ -66,10 +66,10 @@ void printMenu()
 {
     cout << " _____________________________" << endl;
     cout << "| +Item  | Insert Item        | " << endl;
-	cout << "|   -    | Delete Item        | " << endl;
+    cout << "|   -    | Delete Item        | " << endl;
     cout << "| ?Item  | Search Item        | " << endl;
     cout << "|   @    | Extract Min Value  | " << endl;
-	cout << "|   D    | Destory the Heap   | " << endl;
+    cout << "|   D    | Destory the Heap   | " << endl;
     cout << "|________|____________________| " << endl << endl;
     cout << "Please choose an operation to perform on the heap." << endl;
     cout << "Enter Q to quit." << endl;	
@@ -92,14 +92,14 @@ void printMenu()
 template <class T>
 void choose(BinaryHeap<T> &myHeap)
 {
-	T    data;
-	char choice;
-	bool hasInserted = false;
+    T    data;
+    char choice;
+    bool hasInserted = false;
 	
-	cout << "\nBinary Heap>> ";
-	cin >> choice;
+    cout << "\nBinary Heap>> ";
+    cin >> choice;
 	
-	while(choice != 'q' || choice != 'Q')
+    while(choice != 'q' || choice != 'Q')
     {
         switch (choice)
         {
@@ -122,13 +122,17 @@ void choose(BinaryHeap<T> &myHeap)
 			case '?':
 				if (hasInserted)
 				{
-	                validateInput(data);
-	                if (myHeap.Search(data))
-						cout << endl << data << " is in the heap!" << endl;
-					else
-						cerr << endl << data << " is not in the heap.";
-						cout << endl;
-					system("pause");
+	                             validateInput(data);
+	                             if (myHeap.Search(data))
+				     {
+				          cout << endl << data << " is in the heap!" << endl;
+				     }
+				     else
+				     {
+				          cerr << endl << data << " is not in the heap.";
+				     }
+				     cout << endl;
+				     system("pause");
 				}
 				else
 				{
@@ -165,20 +169,22 @@ void choose(BinaryHeap<T> &myHeap)
 				}
 				break;
 				
-            case 'q': case 'Q':
-                exit(1);
+                        case 'q': case 'Q':
+                                exit(1);
                 
 			default:
 				cout << "\nInvalid choice. Please try again." << endl;
 				cout << endl;
-                system("pause");
-		}
+        system("pause");
+	}
         system("cls");
         printMenu();
         cout << endl;
         
         if (hasInserted)
+	{
         	myHeap.Print();
+	}
         cout << "Binary Heap>> ";
         cin >> choice;
     }
@@ -204,7 +210,9 @@ T validateInput(T &value)
 	while (true)
 	{
 		if (cin >> value)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();
@@ -212,7 +220,7 @@ T validateInput(T &value)
 			system("cls");
 			printMenu();
 			cerr << endl << "Please enter a valid item for the heap." << endl;
-        	cout << endl << ">> value: ";
+        	        cout << endl << ">> value: ";
 		}
 	}
 	return value;
