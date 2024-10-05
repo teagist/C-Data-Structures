@@ -34,7 +34,7 @@ private:
 	T  *heap;
 	int size;
 	
-	int left(int par) {	return (2 * par + 1); }
+	int left(int par) { return (2 * par + 1); }
 	int right(int par) { return (2 * par + 2); }
 	int parent(int child) {	return (child - 1) / 2; }
 
