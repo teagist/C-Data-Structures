@@ -33,7 +33,6 @@ class QNode
 template<class T>
 class Queue
 {
-	QNode<T>* head;
 public:
 	Queue():head(NULL){}
 	
@@ -46,6 +45,9 @@ public:
 	QNode<T>* Search(T item) const;	
 	void Print() const;
 	
-	~Queue();                                     
+	~Queue();
+
+private:
+        QNode<T>* head;
 };
 #endif
