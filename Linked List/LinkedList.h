@@ -42,32 +42,32 @@ public:
     LinkedList(): head(NULL), cursor(NULL){}
 	
     void Insert(const T key);
-	void InsertAtHead(const T key);
+    void InsertAtHead(const T key);
     void InsertAtTail(const T key);
     
     void Remove(const T key);
-	void RemoveAtHead();	
+    void RemoveAtHead();	
     void RemoveAtTail();
 
-	bool Search(const T key);	
-	void Sort();
+    bool Search(const T key);	
+    void Sort();
 	
-	void Clear();
+    void Clear();
 	
-	void Print() const;
-	void PrintCursor() const;
+    void Print() const;
+    void PrintCursor() const;
 	
-	T getHeadValue() const;// { return head->data; }
-	T getTailValue() const;
-	bool isEmpty() const { return (head == NULL); }
+    T getHeadValue() const;// { return head->data; }
+    T getTailValue() const;
+    bool isEmpty() const { return (head == NULL); }
 
     LinkedList(const LinkedList& myList);                   
     LinkedList& operator=(const LinkedList& myList);        
     ~LinkedList();  
 
 private:
-	Node<T>* head;
-	Node<T>* cursor;
+    Node<T>* head;
+    Node<T>* cursor;
 };
 
 #endif
