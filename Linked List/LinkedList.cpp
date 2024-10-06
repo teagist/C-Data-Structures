@@ -106,7 +106,9 @@ void LinkedList<T>::InsertAtTail(const T key)
 		{
 			Node<T>* temp = head;
 			while (temp->next != NULL)
+			{
 				temp = temp->next;
+			}
 
 			temp->next = tail;
 		}
@@ -141,26 +143,26 @@ void LinkedList<T>::Remove(const T key)
     Node<T> *curr = head;
     Node<T> *prev = NULL;
 
-	if (head == NULL)
-	{
-		cerr << "The list is empty.  Please try again." << endl;
-		return;
-	}
+    if (head == NULL)
+    {
+        cerr << "The list is empty.  Please try again." << endl;
+	return;
+    }
 
     while(curr != NULL && curr->data != key)
-	{
-		prev = curr;
-		cursor = prev;
-		curr = curr->next;
-	}
+    {
+	prev = curr;
+	cursor = prev;
+	curr = curr->next;
+    }
     
     if(curr == NULL)
-	{
-		cerr << key << " is not in the List.  Please try again." << endl;
-		return;
-	}
+    {
+	cerr << key << " is not in the List.  Please try again." << endl;
+	return;
+    }
 
-	if (prev == NULL)
+    if (prev == NULL)
     {
     	head = curr->next;
     }
@@ -187,25 +189,25 @@ void LinkedList<T>::Remove(const T key)
 template<class T>		
 void LinkedList<T>::RemoveAtHead()
 {
-	Node<T> *curr = head;  
+    Node<T> *curr = head;  
 	
-	if (head == NULL)
+    if (head == NULL)
     {
-		//cerr << "The list is empty.  Please try again." << endl;
+	//cerr << "The list is empty.  Please try again." << endl;
         return;	
-	}
+    }
 	
-	head = head->next;
-	delete curr;
+    head = head->next;
+    delete curr;
 	
-	if (head != NULL)
-	{
-		cursor = head;
-	}
-	else
-	{
-		cursor = NULL;
-	}
+    if (head != NULL)
+    {
+	cursor = head;
+    }
+    else
+    {
+	cursor = NULL;
+    }
 }
 
 
@@ -227,9 +229,9 @@ void LinkedList<T>::RemoveAtTail()
     
     if (head == NULL)
     {
-		cerr << "The list is empty.  Please try again." << endl;
-		return;    	
-	}
+	cerr << "The list is empty.  Please try again." << endl;
+	return;    	
+    }
 
     while(curr->next != NULL)
     {
@@ -237,7 +239,7 @@ void LinkedList<T>::RemoveAtTail()
         curr = curr->next;
     }
     
-	if (prev == NULL)
+    if (prev == NULL)
     {
     	delete curr;
     	head = NULL;
@@ -247,8 +249,8 @@ void LinkedList<T>::RemoveAtTail()
     {    
     	delete curr;
     	prev->next = NULL;
-		cursor = prev;    
-	}
+	cursor = prev;    
+    }
 }
 
 
@@ -289,11 +291,11 @@ bool LinkedList<T>::Search(const T key)
 
 	if(success == false)
 	{
-		//cout << key << " is not in the list" << endl;
+	//cout << key << " is not in the list" << endl;
 		
 		if (head)
 		{
-			cursor = head;
+		    cursor = head;
 		}
 			
         return false;
