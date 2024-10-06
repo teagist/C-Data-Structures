@@ -19,16 +19,16 @@ Logger::Logger(std::string newTest, std::string newVersion)
     
     
 	/*std::time_t t = std::time(NULL);
-    std::tm* now = std::localtime(&t);
+        std::tm* now = std::localtime(&t);
 
-    // Format the date as YYYYMMDD
-    std::stringstream date_stream;
-    date_stream << (now->tm_year + 1900); // Year since 1900
-    date_stream << std::setw(2) << std::setfill('0') << (now->tm_mon + 1);
-    date_stream << std::setw(2) << std::setfill('0') << now->tm_mday; 
-    std::string date_str = date_stream.str();	
+        // Format the date as YYYYMMDD
+        std::stringstream date_stream;
+        date_stream << (now->tm_year + 1900); // Year since 1900
+        date_stream << std::setw(2) << std::setfill('0') << (now->tm_mon + 1);
+        date_stream << std::setw(2) << std::setfill('0') << now->tm_mday; 
+        std::string date_str = date_stream.str();	
     
-    std::string fileName = "log_file" + date_str + ".txt";
+        std::string fileName = "log_file" + date_str + ".txt";
 	logFile.open(fileName);*/
 }
 
@@ -107,7 +107,7 @@ void Logger::readVersionInfo()
 //****************************************************************************
 
 void Logger::printStatusMessage(const std::string& message, 
-													const int& status) const
+			        const int& status) const
 {
 	if (status == OK)
 	{
@@ -209,7 +209,7 @@ void Logger::printTime() const
     // Increase size to accommodate the formatted date/time
     char formattedTime[25]; 
     std::strftime(formattedTime, sizeof(formattedTime), 
-								"%m/%d/%Y %H:%M:%S", localTime);
+				"%m/%d/%Y %H:%M:%S", localTime);
 
     // Output the formatted date and time
     std::cout << formattedTime;	
