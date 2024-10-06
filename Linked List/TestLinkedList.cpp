@@ -34,23 +34,23 @@ int TestLinkedList<U>::getMaxPossibleListNodes()
 {
 	try
 	{
-		MEMORYSTATUSEX status;
+	    MEMORYSTATUSEX status;
 	    status.dwLength = sizeof(status);
 	    GlobalMemoryStatusEx(&status);
 	
 	    //std::cout << "Total physical memory: " << status.ullTotalPhys;
-		//std::cout << " bytes" << std::endl;	
+	    //std::cout << " bytes" << std::endl;	
 	    //std::cout << "The size of a Linked List Node is: ";
-		//std::cout << sizeof(Node<U>) << std::endl;
-		size_t maxObjs = status.ullTotalPhys / sizeof(Node<U>);
-		//std::cout << "The total number of Linked List Nodes is: " << maxObjs << std::endl;
+	    //std::cout << sizeof(Node<U>) << std::endl;
+	    size_t maxObjs = status.ullTotalPhys / sizeof(Node<U>);
+	    //std::cout << "The total number of Linked List Nodes is: " << maxObjs << std::endl;
 		
-		return maxObjs;		
+	    return maxObjs;		
 	}
 	catch(...)
 	{
-		std::cerr << "Unexpected error when retreiving max number of ";
-		std::cerr << "objects." << std::endl;
+	    std::cerr << "Unexpected error when retreiving max number of ";
+	    std::cerr << "objects." << std::endl;
 	}
 	return 0;
 }
