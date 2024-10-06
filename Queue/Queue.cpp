@@ -34,7 +34,9 @@ void Queue<T>::Enqueue(T item)
 			temp->next = tail;
 		}
 		else
+		{
 			head = tail;
+		}
 	}
 	catch (bad_alloc & ex)
 	{
@@ -77,9 +79,13 @@ template<class T>
 T Queue<T>::Peek() const
 {
 	if (head != NULL)
+	{
 		return head->data;
+	}
 	else
+	{
 		return T(NULL);
+	}
 }
 
 
@@ -97,7 +103,9 @@ int Queue<T>::Size() const
 	int size = 0;
 	
 	if (head == NULL)
+	{
 		return 0;
+	}
 		
 	else
 	{
@@ -129,7 +137,9 @@ QNode<T>* Queue<T>::Search(T item) const
 	QNode<T>* temp = head;
 	
 	if (temp == NULL)
+	{
 		return NULL;
+	}
 		
 	while(temp != NULL)
 	{
@@ -166,7 +176,9 @@ template<class T>
 void Queue<T>::Print() const
 {
 	if (head == NULL)
+	{
 		return;
+	}
 		
 	else
 	{
@@ -178,7 +190,7 @@ void Queue<T>::Print() const
 		while (temp != NULL)
 		{
 			cout << ", " << temp->data;	
-        	temp= temp->next;
+        	        temp= temp->next;
 		}
 		cout << endl << "-------------" << endl;
 	}
@@ -195,7 +207,7 @@ template<class T>
 Queue<T>::~Queue()
 {
     while(head != NULL)
-	{
+    {
         QNode<T>* temp = head->next;
         delete head;
         head = temp;
