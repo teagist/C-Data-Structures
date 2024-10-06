@@ -29,7 +29,7 @@ int main()
     Queue<int> myQueue;
     printMenu();
     choose(myQueue);
-	return 0;
+    return 0;
 }
 
 
@@ -46,10 +46,10 @@ void printMenu()
 {
     cout << " _____________________________" << endl;
     cout << "| +Item  | Enqueue Item       | " << endl;
-	cout << "|   -    | Dequeue Item       | " << endl;
+    cout << "|   -    | Dequeue Item       | " << endl;
     cout << "| ?Item  | Search Item        | " << endl;
     cout << "|   @    | Peek               | " << endl;
-	cout << "|   D    | Destory the Queue  | " << endl;
+    cout << "|   D    | Destory the Queue  | " << endl;
     cout << "|________|____________________| " << endl << endl;
     cout << "Please choose an operation to perform on a queue." << endl;
     cout << "Enter Q to quit." << endl;
@@ -82,37 +82,37 @@ void choose(Queue<T>& myQueue)
     {
         switch (choice)
         {
-			case '+':
-				cin >> value;
-				myQueue.Enqueue(value);
-				break;
-			case '-':
-			    myQueue.Dequeue();
-				break;
-			case '?':
-                cin >> value;
-                myQueue.Search(value);
-                system("pause");
-				break;
-			case '@' :
+		case '+':
+			cin >> value;
+			myQueue.Enqueue(value);
+			break;
+		case '-':
+			myQueue.Dequeue();
+			break;
+		case '?':
+                	cin >> value;
+                	myQueue.Search(value);
+                	system("pause");
+			break;
+		case '@' :
+			cout << endl;
+			if (myQueue.Peek())
+			{
+				cout << "The top of the stack is: " << myQueue.Peek();
 				cout << endl;
-				if (myQueue.Peek())
-				{
-					cout << "The top of the stack is: " << myQueue.Peek();
-					cout << endl;
-				}
-				system("pause");
-				break;
-			case 'd': case 'D':
-				myQueue.~Queue();
-				break;
+			}
+			system("pause");
+			break;
+		case 'd': case 'D':
+			myQueue.~Queue();
+			break;
             case 'q': case 'Q':
                 exit(1);
-			default:
-				cout << "\nInvalid choice. Please try again." << endl;
-				cout << endl;
+	    default:
+		cout << "\nInvalid choice. Please try again." << endl;
+		cout << endl;
                 system("pause");
-		}
+	}
         system("cls");
         printMenu();
         cout << endl;
@@ -141,15 +141,17 @@ T validateInput(T &val)
 	while (true)
 	{
 		if (cin >> val)
+		{
 			break;
+		}
 		else
 		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the queue." << endl;
-        	cout << endl << ">> value: ";
+		    cin.clear();
+		    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		    system("cls");
+		    printMenu();
+		    cerr << endl << "Please enter a valid item for the queue." << endl;
+        	    cout << endl << ">> value: ";
 		}
 	}
 	return val;
