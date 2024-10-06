@@ -23,11 +23,11 @@ void Stack<T>::Push(T item)
 {
 	try
 	{
-		head = new StackNode<T>(item, head);
+	    head = new StackNode<T>(item, head);
 	}
 	catch (bad_alloc & ex)
 	{
-		cerr << "Failed to push " << item << " onto the stack." << endl;
+	    cerr << "Failed to push " << item << " onto the stack." << endl;
 	}
 }
 
@@ -46,15 +46,17 @@ void Stack<T>::Push(T item)
 template<class T>		
 void Stack<T>::Pop()
 {
-	if (head == NULL)
-		cerr << "The stack is empty." << endl;	
-
-	else
+    if (head == NULL)
     {
-		StackNode<T>* ptr = head;
-		head = head->next;
-		delete[] ptr;
-	}  
+	cerr << "The stack is empty." << endl;	
+    }
+
+    else
+    {
+	StackNode<T>* ptr = head;
+	head = head->next;
+	delete[] ptr;
+    }  
 }
 
 
@@ -76,11 +78,13 @@ T Stack<T>::Peek()const
     if(head == NULL)
     {
         cerr << "The stack is empty." <<endl;
-		return T(NULL);
-	}
+	return T(NULL);
+    }
 	
     else
+    {
         return temp->data;
+    }
 }
 
 
@@ -96,21 +100,23 @@ T Stack<T>::Peek()const
 template<class T>
 int Stack<T>::Size() const
 {
-	int size = 0;
+    int size = 0;
 	
-	if (head == NULL)
-		return 0;
+    if (head == NULL)
+    {
+	return 0;
+    }
 		
-	else
+    else
+    {
+	StackNode<T>* temp = head;
+	while (temp != NULL)
 	{
-		StackNode<T>* temp = head;
-		while (temp != NULL)
-		{
-			temp = temp->next;
-			size = size + 1;
-		}
-		return size;
+		temp = temp->next;
+		size = size + 1;
 	}
+	return size;
+    }
 }
 
 
@@ -129,27 +135,29 @@ int Stack<T>::Size() const
 template<class T>
 StackNode<T>* Stack<T>::Search(T item)const
 {
-	bool success = false;
-	StackNode<T>* temp = head;
+    bool success = false;
+    StackNode<T>* temp = head;
 	
-	if (temp == NULL)
-		return NULL;
+    if (temp == NULL)
+    {
+	return NULL;
+    }
 		
-	while(temp != NULL)
+    while(temp != NULL)
+    {
+	if(temp->data == item)
 	{
-		if(temp->data == item)
-		{
-			success = true;
-			cout << item << " was found." << endl;
-		}
-		temp = temp -> next;
+		success = true;
+		cout << item << " was found." << endl;
 	}
+	temp = temp -> next;
+    }
 
-	if(success == false)
-	{
-		cerr << item << " was not found." << endl;
+    if(success == false)
+    {
+	cerr << item << " was not found." << endl;
         return NULL;
-	}
+    }
 
     return temp;
 }
@@ -168,23 +176,25 @@ StackNode<T>* Stack<T>::Search(T item)const
 template<class T>
 void Stack<T>::Print()const
 {
-	if (head == NULL)
+    if (head == NULL)
+    {
 		return;
+    }
 		
-	else
+    else
+    {
+	StackNode<T>* temp = head;
+	cout << "-------------" << endl;
+	cout << "[" << temp->data << "]" << endl;
+	temp = temp->next;
+		
+	while (temp != NULL)
 	{
-		StackNode<T>* temp = head;
-		cout << "-------------" << endl;
-		cout << "[" << temp->data << "]" << endl;
-		temp = temp->next;
-		
-		while (temp != NULL)
-		{
-			cout << temp->data << endl;	
+		cout << temp->data << endl;	
         	temp= temp->next;
-		}
-		cout << "-------------" << endl;
 	}
+	cout << "-------------" << endl;
+    }
 }
 
 
@@ -197,19 +207,21 @@ void Stack<T>::Print()const
 template<class T>
 Stack<T>::Stack(const Stack<T>& myStack)
 {
-	if (!myStack.head)
-		head = NULL; return;
+    if (!myStack.head)
+    {
+	head = NULL; return;
+    }
 
-	head = new StackNode<T>(myStack.head->data);
+    head = new StackNode<T>(myStack.head->data);
 
-	StackNode<T> *oldtemp = myStack.head->next;
-	StackNode<T> *newtemp = head;
-	while (oldtemp)
-	{
-		newtemp->next = new StackNode<T>(oldtemp->data);
-		newtemp=newtemp->next;
-		oldtemp=oldtemp->next;		
-	}
+    StackNode<T> *oldtemp = myStack.head->next;
+    StackNode<T> *newtemp = head;
+    while (oldtemp)
+    {
+	newtemp->next = new StackNode<T>(oldtemp->data);
+	newtemp=newtemp->next;
+	oldtemp=oldtemp->next;		
+    }
 }
 
 
@@ -222,27 +234,29 @@ Stack<T>::Stack(const Stack<T>& myStack)
 template<class T>
 Stack<T>& Stack<T>::operator=(const Stack<T>& myStack)
 {
-	if (myStack.head == head)
-		return *this;
-	this->~Stack();
-
-	if (!myStack.head)
-	{ 
-		head = NULL; 
-		return *this;
-	}
-	head = new StackNode<T>(myStack.head->data);
-
-	StackNode<T> *oldtemp = myStack.head->next;
-	StackNode<T> *newtemp = head;
-	
-	while (oldtemp)
-	{
-		newtemp->next = new StackNode<T>(oldtemp->data);
-		newtemp=newtemp->next;
-		oldtemp=oldtemp->next;		
-	}
+    if (myStack.head == head)
+    {
 	return *this;
+    }
+    this->~Stack();
+
+    if (!myStack.head)
+    { 
+	head = NULL; 
+	return *this;
+    }
+    head = new StackNode<T>(myStack.head->data);
+
+    StackNode<T> *oldtemp = myStack.head->next;
+    StackNode<T> *newtemp = head;
+	
+    while (oldtemp)
+    {
+	newtemp->next = new StackNode<T>(oldtemp->data);
+	newtemp=newtemp->next;
+	oldtemp=oldtemp->next;		
+    }
+    return *this;
 }
 
 
@@ -256,7 +270,7 @@ template<class T>
 Stack<T>::~Stack()
 {
     while(head != NULL)
-	{
+    {
         StackNode<T>* temp = head->next;
         delete head;
         head = temp;
