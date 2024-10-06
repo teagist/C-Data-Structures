@@ -64,10 +64,10 @@ int main()
 
 void getManualOrAuto()
 {
-	char userEntry;
+    char userEntry;
 	
-	std::cout << "Automatic testing? (Y/N)" << std::endl;
-	std::cout << ">> ";
+    std::cout << "Automatic testing? (Y/N)" << std::endl;
+    std::cout << ">> ";
 	
     while (true)
     {
@@ -120,18 +120,18 @@ void getManualOrAuto()
 
 void printMenu()
 {
-	cout << " ___________________________________" << endl;
-	cout << "| +Key  | Insert Item In Order      |" << endl;
-	cout << "| *Key  | Insert Item at the Front  |" << endl;
-	cout << "| #Key  | Insert Item at the End    |" << endl;
-	cout << "| -Key  | Remove Item               |" << endl;
-	cout << "| ~     | Remove Item at the Front  |" << endl;
-	cout << "| `     | Remove Item at the End    |" << endl;
-	cout << "| ?Key  | Search Item               |" << endl;
-	cout << "| S     | Sort the List             |" << endl;
-	cout << "| @     | Print Cursor Value        |" << endl;
-	cout << "| D     | Delete the List           |" << endl;
-	cout << "|_______|___________________________|" << endl << endl;
+    cout << " ___________________________________" << endl;
+    cout << "| +Key  | Insert Item In Order      |" << endl;
+    cout << "| *Key  | Insert Item at the Front  |" << endl;
+    cout << "| #Key  | Insert Item at the End    |" << endl;
+    cout << "| -Key  | Remove Item               |" << endl;
+    cout << "| ~     | Remove Item at the Front  |" << endl;
+    cout << "| `     | Remove Item at the End    |" << endl;
+    cout << "| ?Key  | Search Item               |" << endl;
+    cout << "| S     | Sort the List             |" << endl;
+    cout << "| @     | Print Cursor Value        |" << endl;
+    cout << "| D     | Delete the List           |" << endl;
+    cout << "|_______|___________________________|" << endl << endl;
     cout << "Please choose an operation to perform on the list." << endl;
     cout << "Enter Q to quit." << endl;	
 }
@@ -308,13 +308,13 @@ T validateInput(T &value)
 			break;
 		else
 		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		    cin.clear();
+		    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 			
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the list." << endl;
-        	cout << endl << ">> value: ";
+		    system("cls");
+		    printMenu();
+		    cerr << endl << "Please enter a valid item for the list." << endl;
+        	    cout << endl << ">> value: ";
 		}
 	}
 	return value;
