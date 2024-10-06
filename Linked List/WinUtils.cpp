@@ -17,9 +17,9 @@
 void WinUtils::delayBoot(int bootSeconds)
 {
 	std::string clk[4] = {"booting...|",
-					 	  "booting.../",
-					 	  "booting...-",
-					 	  "booting...\\" };
+			      "booting.../",
+			      "booting...-",
+			      "booting...\\" };
 
 	time_t seconds1 = time(NULL);
 	time_t seconds2 = time(NULL);
@@ -119,7 +119,7 @@ void WinUtils::printHardwareDetails()
    std::cout << "\t\t\tProcessor type: " << siSysInfo.dwProcessorType;
 	
 #else
-	std::cout << "Unix/Linux Distro";	
+   std::cout << "Unix/Linux Distro";	
 #endif
 }
 
