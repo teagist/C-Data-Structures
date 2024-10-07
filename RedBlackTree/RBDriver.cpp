@@ -64,17 +64,17 @@ int main()
 
 void printMenu()
 {
-	cout << " ________________________________ " << endl;
-	cout << "| +Key  | Insert Item            |" << endl;
-	cout << "| -Key  | Remove Item            |" << endl;
-	cout << "| ?Key  | Search Item            |" << endl;
-	cout << "| R     | Prune Tree             |" << endl;	
-	cout << "| I     | Print Items In Order   |" << endl;
-	cout << "| P     | Print Items Pre Order  |" << endl;
-	cout << "| T     | Print Items Post Order |" << endl;
-	cout << "| @     | Print Cursor Value     |" << endl;
-	cout << "| D     | Delete the Tree        |" << endl;
-	cout << "|_______|________________________|" << endl << endl;
+    cout << " ________________________________ " << endl;
+    cout << "| +Key  | Insert Item            |" << endl;
+    cout << "| -Key  | Remove Item            |" << endl;
+    cout << "| ?Key  | Search Item            |" << endl;
+    cout << "| R     | Prune Tree             |" << endl;	
+    cout << "| I     | Print Items In Order   |" << endl;
+    cout << "| P     | Print Items Pre Order  |" << endl;
+    cout << "| T     | Print Items Post Order |" << endl;
+    cout << "| @     | Print Cursor Value     |" << endl;
+    cout << "| D     | Delete the Tree        |" << endl;
+    cout << "|_______|________________________|" << endl << endl;
     cout << "Please choose an operation to perform on the tree." << endl;
     cout << "Enter Q to quit." << endl;	
 }
@@ -96,10 +96,10 @@ void printMenu()
 template <class K, class V> 
 void choose(RBTree<K, V>& myTree)
 {
-	char   choice = 'A';
-	bool   hasInserted = false;
-	K      key;
-	V      value;
+	char choice      = 'A';
+	bool hasInserted = false;
+	K    key;
+	V    value;
 	
 	cout << "\nRB Tree>> ";
 	cin >> choice;
@@ -260,15 +260,17 @@ T validateInput(T &value)
 	while (true)
 	{
 		if (cin >> value)
-			break;
+		{
+		    break;
+		}
 		else
 		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the tree." << endl;
-        	cout << endl << ">> value: ";
+		    cin.clear();
+		    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		    system("cls");
+		    printMenu();
+		    cerr << endl << "Please enter a valid item for the tree." << endl;
+        	    cout << endl << ">> value: ";
 		}
 	}
 	return value;
