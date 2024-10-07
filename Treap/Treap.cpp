@@ -106,19 +106,19 @@ void Treap<T>::RotateRight(TreapNode<T>* &subtree)
 template <class T>
 bool Treap<T>::SearchHelper(T key, TreapNode<T> *subtree) const
 {
-	if (subtree == NULL)
-	{
-		return false;
-	}
-	if (subtree->data == key)
-	{
-		return true;
-	}
-	if (key < subtree->data)
-	{
-		return SearchHelper(key, subtree->left);
-	}
-	return SearchHelper(key, subtree->right);
+    if (subtree == NULL)
+    {
+    	return false;
+    }
+    if (subtree->data == key)
+    {
+	return true;
+    }
+    if (key < subtree->data)
+    {
+	return SearchHelper(key, subtree->left);
+    }
+    return SearchHelper(key, subtree->right);
 }
 
 
@@ -136,56 +136,56 @@ bool Treap<T>::SearchHelper(T key, TreapNode<T> *subtree) const
 template <class T>
 void Treap<T>::DeleteHelper(T key, TreapNode<T> *&subtree)
 {
-	if (subtree == NULL)
+    if (subtree == NULL)
+    {
+	return;
+    }
+    if (key < subtree->data)
+    {
+	DeleteHelper(key, subtree->left);
+    }
+    else if (key > subtree->data)
+    {
+	DeleteHelper(key, subtree->right);
+    }
+	
+    else
+    {
+	if (subtree->left == NULL && subtree->right == NULL)
 	{
-		return;
+		delete subtree;
+		subtree = NULL;
 	}
-	if (key < subtree->data)
+	else if (subtree->left && subtree->right)
 	{
-		DeleteHelper(key, subtree->left);
-	}
-	else if (key > subtree->data)
-	{
-		DeleteHelper(key, subtree->right);
-	}
-		
-	else
-	{
-		if (subtree->left == NULL && subtree->right == NULL)
+		if (subtree->left->priority < subtree->right->priority)
 		{
-			delete subtree;
-			subtree = NULL;
-		}
-		else if (subtree->left && subtree->right)
-		{
-			if (subtree->left->priority < subtree->right->priority)
-			{
-				RotateLeft(subtree);
-				DeleteHelper(key, subtree->left);
-			}
-			else
-			{
-				RotateRight(subtree);
-				DeleteHelper(key, subtree->right);
-			}
+			RotateLeft(subtree);
+			DeleteHelper(key, subtree->left);
 		}
 		else
 		{
-			TreapNode<T> *child;
-			if (subtree->left)
-			{
-				child = subtree->left;
-			}
-			else
-			{
-				child = subtree->right;
-			}
-				
-			TreapNode<T>* curr = subtree;
-			subtree = child;
-			delete curr;
+			RotateRight(subtree);
+			DeleteHelper(key, subtree->right);
 		}
 	}
+	else
+	{
+		TreapNode<T> *child;
+		if (subtree->left)
+		{
+			child = subtree->left;
+		}
+		else
+		{
+			child = subtree->right;
+		}
+			
+		TreapNode<T>* curr = subtree;
+		subtree = child;
+		delete curr;
+	}
+    }
 }
 
 
@@ -210,8 +210,7 @@ void Treap<T>::PruneHelper(TreapNode<T>* subtree)
         if (isLeaf(subtree) && subtree != root)
         {
         	Delete(subtree->data);
-		}
-			
+	}	
         PruneHelper(subtree->right);
     }	
 }
@@ -246,13 +245,13 @@ void Treap<T>::Clear()
 template <class T>
 void Treap<T>::ClearHelper(TreapNode<T> *&subtree)
 {
-	if (subtree != NULL)
-   {
-      ClearHelper(subtree->left);
-      ClearHelper(subtree->right);
-      delete subtree;
-   }
-   subtree = NULL;
+    if (subtree != NULL)
+    {
+        ClearHelper(subtree->left);
+        ClearHelper(subtree->right);
+        delete subtree;
+    }
+    subtree = NULL;
 }
 
 
@@ -268,19 +267,19 @@ void Treap<T>::ClearHelper(TreapNode<T> *&subtree)
 template <class T>
 void Treap<T>::TreePrint() const
 {
-	if (!root)
-	{
-		cerr << endl << "The treap is empty." << endl;
-		return;
-	}
+    if (!root)
+    {
+	cerr << endl << "The treap is empty." << endl;
+	return;
+    }
 
     else
     {
     	for (int i = 0; i <= GetHeight(root); i++)
     	{
-    		PrintLevel(i);
-    		cout << endl << endl;
-		}
+    	    PrintLevel(i);
+    	    cout << endl << endl;
+	}
     }
 }
 
@@ -298,11 +297,11 @@ void Treap<T>::TreePrint() const
 template <class T>
 void Treap<T>::PrintLevel(int level) const
 {
-	TreapNode<T>* temp = root;
-	
-	int value = pow(2, GetHeight(root) - level + 2);
-	cout << setw(value) << "";
-	DispLevel(temp, level, value);
+    TreapNode<T>* temp = root;
+
+    int value = pow(2, GetHeight(root) - level + 2);
+    cout << setw(value) << "";
+    DispLevel(temp, level, value);
 }
 
 
@@ -334,9 +333,13 @@ void Treap<T>::DispLevel(TreapNode<T>* subtree, int level, int dist) const
 		{
 			int result = 0;
 			if (subtree->priority <= 1)
+			{
 				result = 1;
+			}
 			else
+			{
 				result = (log10(subtree->priority) + 1);
+			}
 				
 			cout << " " << subtree->data << " (" << subtree->priority << ") ";
 			cout << setw(disp - result - 5) << "";
@@ -403,11 +406,11 @@ int Treap<T>::GetHeight(TreapNode<T>* subtree) const
 template <class T>
 void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 {
-	if (subtree)
+    if (subtree)
     {
-		InOrderHelper(subtree->left);
+	InOrderHelper(subtree->left);
         cout << subtree->data << " (" << subtree->priority << ")" << endl;
-		InOrderHelper(subtree->right);	
+	InOrderHelper(subtree->right);	
     }
 }
 
@@ -425,11 +428,11 @@ void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 template <class T>
 void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 {
-	if (subtree)
+    if (subtree)
     {
     	cout << subtree->data << " (" << subtree->priority << ")" << endl;
-		PreOrderHelper(subtree->left);
-		PreOrderHelper(subtree->right);	
+	PreOrderHelper(subtree->left);
+	PreOrderHelper(subtree->right);	
     }
 }
 
@@ -447,11 +450,11 @@ void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 template <class T>
 void Treap<T>::PostOrderHelper(TreapNode<T>* subtree) const
 {
-	if (subtree)
+    if (subtree)
     {
-		PostOrderHelper(subtree->left);
-		PostOrderHelper(subtree->right);
-		cout << subtree->data << " (" << subtree->priority << ")" << endl;	
+	PostOrderHelper(subtree->left);
+	PostOrderHelper(subtree->right);
+	cout << subtree->data << " (" << subtree->priority << ")" << endl;	
     }
 }
 
