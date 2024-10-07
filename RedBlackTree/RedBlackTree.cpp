@@ -460,37 +460,43 @@ void RBTree<K, V>::Delete(const K key)
 template <class K, class V>
 void RBTree<K, V>::Delete(RBNode<K, V>*& delNode)
 {	
-	RBNode<K, V>* replNode = Replace(delNode);
+    RBNode<K, V>* replNode = Replace(delNode);
     RBNode<K, V>* parent = delNode->parent;
     bool bothBlack = ((replNode == NULL || replNode->color == BLACK) && 
 					  (delNode->color == BLACK));
 
     if (replNode == NULL) 
-	{
+    {
         // node to be deleted is a leaf
         if (delNode == root)    // node to be deleted is root
         {
-        	cursor = NULL;
+            cursor = NULL;
             root = NULL;
         }
         else 
-		{
+	{
             if (bothBlack) 
-			{
+	    {
                 // node to be deleted is leaf, fix double black at delNode
                 FixDoubleBlack(delNode); 
             }
             else 
-			{
+	    {
                 if (delNode->GetSibling() != NULL)
+		{
                     delNode->GetSibling()->color = RED;
+		}
             }
 
             // delete delNode from the tree
             if (delNode->IsOnLeft())
+	    {
                 parent->left = NULL;
+	    }
             else
+	    {
                 parent->right = NULL;
+	    }
         }
         
         cursor = delNode->parent;	
@@ -499,37 +505,48 @@ void RBTree<K, V>::Delete(RBNode<K, V>*& delNode)
     }
 
     if (delNode->left == NULL || delNode->right == NULL)
-	{
+    {
         // node to be deleted has 1 child
         if (delNode == root) 
-		{
+	{
             // node to be deleted is root, swap data replacement
             delNode->data = replNode->data;
             delNode->left = delNode->right = NULL;
             
             if (delNode->left)
-        		cursor = delNode->left;
-        	else if (delNode->right)
-        		cursor = delNode->right;
-        		
+	    {
+        	cursor = delNode->left;
+	    }
+            else if (delNode->right)
+	    {
+        	cursor = delNode->right;
+	    }	
             delete replNode;
         }
         else 
-		{
+	{
             // Detach node to be deleted from tree and move replacement up
             if (delNode->IsOnLeft())
+	    {
                 parent->left = replNode;
+	    }
             else 
+	    {
                 parent->right = replNode;
+	    }
     
             delete delNode;
             cursor = replNode->parent;
             replNode->parent = parent;
             
             if (bothBlack)
+	    {
                 FixDoubleBlack(replNode);
+	    }
             else
+	    {
                 replNode->color = BLACK;
+	    }
         }
         return;
     }
@@ -554,60 +571,68 @@ void RBTree<K, V>::Delete(RBNode<K, V>*& delNode)
 template <class K, class V>
 void RBTree<K, V>::FixDoubleBlack(RBNode<K, V>* subtree)
 {
-	if (subtree == root)
+    if (subtree == root)
+    {
         return;
+    }
 
     RBNode<K, V>* sibling = subtree->GetSibling();
-	RBNode<K, V>* parent = subtree->parent;
+    RBNode<K, V>* parent = subtree->parent;
 	
     if (sibling == NULL)   			// No sibiling, double black pushed up
+    {
         FixDoubleBlack(parent);
+    }
         
     else 
-	{
+    {
         if (sibling->color == RED)
-		{
+	{
             parent->color = RED;
             sibling->color = BLACK;
             
             if (sibling->IsOnLeft())   // left case
+	    {
                 RotateRight(parent);
-            else  
-                RotateLeft(parent);   // right case
+	    }
+            else                      // right case
+	    {
+                RotateLeft(parent);   
+	    }
                 
             FixDoubleBlack(subtree);
         }
         else 
-		{
+	{
             // Sibling black
             if (sibling->HasRedChild()) 
-			{
+	{
                 // at least 1 red children
                 if (sibling->left != NULL && sibling->left->color == RED) 
-				{
+		{
                     if (sibling->IsOnLeft()) 	// left left
-					{
+		    {
                         sibling->left->color = sibling->color;
                         sibling->color = parent->color;
                         RotateRight(parent);
                     }
                     else  	// right left
-					{
+		    {
                         sibling->left->color = parent->color;
                         RotateRight(sibling);
                         RotateLeft(parent);
                     }
                 }
                 else 
-				{
+		{
                     if (sibling->IsOnLeft()) 	// left right
-					{
+		    {
                         sibling->right->color = parent->color;
                         RotateLeft(sibling);
                         RotateRight(parent);
                     }
                     else  	// right right
-					{
+		    {
                         sibling->right->color = sibling->color;
                         sibling->color = parent->color;
                         RotateLeft(parent);
@@ -616,12 +641,16 @@ void RBTree<K, V>::FixDoubleBlack(RBNode<K, V>* subtree)
                 parent->color = BLACK;
             }
             else   // 2 black children
-			{
+	    {
                 sibling->color = RED;
                 if (parent->color == BLACK)
+		{
                     FixDoubleBlack(parent);
+		}
                 else
+		{
                     parent->color = BLACK;
+		}
             }
         }
     }
@@ -642,10 +671,12 @@ void RBTree<K, V>::FixDoubleBlack(RBNode<K, V>* subtree)
 template <class K, class V>
 RBNode<K, V>* RBTree<K, V>::Successor(RBNode<K, V>* subtree)
 {
-	RBNode<K, V>* temp = subtree;
+    RBNode<K, V>* temp = subtree;
 
     while (temp->left != NULL)
+    {
         temp = temp->left;
+    }
 
     return temp;
 }
@@ -665,16 +696,24 @@ template <class K, class V>
 RBNode<K, V>* RBTree<K, V>::Replace(RBNode<K, V>* subtree)
 {
     if (subtree->left != NULL && subtree->right != NULL)
+    {
         return Successor(subtree->right);
+    }
 
     if (subtree->left == NULL && subtree->right == NULL)
+    {
         return NULL;
+    }
 
     // when single child
     if (subtree->left != NULL)
+    {
         return subtree->left;
+    }
     else
+    {
         return subtree->right;
+    }
 }
 
 
@@ -691,8 +730,8 @@ RBNode<K, V>* RBTree<K, V>::Replace(RBNode<K, V>* subtree)
 template <class K, class V>
 void RBTree<K, V>::SwapValues(RBNode<K, V>* firstNode, RBNode<K, V>* secNode)
 {
-	K key;
-	V value;
+    K key;
+    V value;
 	
     key = firstNode->data;
     value = firstNode->name;
@@ -718,9 +757,9 @@ void RBTree<K, V>::SwapValues(RBNode<K, V>* firstNode, RBNode<K, V>* secNode)
 template <class K, class V>
 void RBTree<K, V>::ClearTree()
 {
-	ClearHelper(root);
-	root   = NULL;
-	cursor = NULL;
+    ClearHelper(root);
+    root   = NULL;
+    cursor = NULL;
 }
 
 
@@ -737,13 +776,13 @@ void RBTree<K, V>::ClearTree()
 template <class K, class V>
 void RBTree<K, V>::ClearHelper(RBNode<K, V>* tree)
 {
-	if (tree != NULL)
-   {
-      ClearHelper(tree->left);
-      ClearHelper(tree->right);
-      delete tree;
-   }
-   tree = NULL;
+    if (tree != NULL)
+    {
+        ClearHelper(tree->left);
+        ClearHelper(tree->right);
+        delete tree;
+    }
+    tree = NULL;
 }
 
 
@@ -768,8 +807,8 @@ void RBTree<K, V>::PruneHelper(RBNode<K, V>* subtree)
         
         if (isLeaf(subtree) && subtree != root)
         {
-        	Delete(subtree->data);
-		}
+            Delete(subtree->data);
+	}
 			
         PruneHelper(subtree->right);
     }	
@@ -789,8 +828,10 @@ void RBTree<K, V>::PruneHelper(RBNode<K, V>* subtree)
 template <class K, class V>
 void RBTree<K, V>::PrintTree()
 {
-	if (!root)
+    if (!root)
+    {
         return;
+    }
 
     else
     {
@@ -818,16 +859,22 @@ template <class K, class V>
 int RBTree<K, V>::TreeHeight(RBNode<K, V>* subtree)
 {
 	if (subtree == NULL)
-		return 0;
+	{
+	    return 0;
+	}
 	else
 	{
-		int leftHeight = TreeHeight(subtree->left);
-		int rightHeight = TreeHeight(subtree->right);
+	    int leftHeight = TreeHeight(subtree->left);
+	    int rightHeight = TreeHeight(subtree->right);
 		
-		if (leftHeight >= rightHeight)
-			return leftHeight + 1;
-		else
-			return rightHeight + 1;
+	    if (leftHeight >= rightHeight)
+	    {
+	        return leftHeight + 1;
+	    }
+	    else
+	    {
+		return rightHeight + 1;
+	    }
 	}
 }
 
@@ -882,6 +929,7 @@ void RBTree<K, V>::DispLevel(RBNode<K, V>* subtree, int level, int displace)
 		{
 			int result = ((subtree->data <= 1) ? 1: log10(subtree->data) - 5);
 			if (subtree->color == 0)
+			{
 				if (subtree == cursor)
 				{
 					cout << " [<" << subtree->data << ", " << subtree->name;
@@ -892,7 +940,9 @@ void RBTree<K, V>::DispLevel(RBNode<K, V>* subtree, int level, int displace)
 					cout << " <" << subtree->data << ", " << subtree->name;
 					cout << ">(R)";
 				}
+			}
 			else
+			{
 				if (subtree == cursor)
 				{
 					cout << " [<" << subtree->data << ", " << subtree->name;
@@ -903,6 +953,7 @@ void RBTree<K, V>::DispLevel(RBNode<K, V>* subtree, int level, int displace)
 					cout << " <" << subtree->data << ", " << subtree->name;
 					cout << ">(B)";
 				}
+			}
 			cout << setw(disp - result) << "";
 		}
 	}
@@ -957,9 +1008,13 @@ void RBTree<K, V>::InOrder(RBNode<K, V>* subtree)
     {
         InOrder(subtree->left);
         if (subtree == cursor)
+	{
         	cout << "[" << subtree->data << "] ";
+	}
         else
+	{
 			cout << subtree->data << " ";
+	}
         InOrder(subtree->right);
     }
 }
@@ -998,9 +1053,13 @@ void RBTree<K, V>::PreOrder(RBNode<K, V>* subtree)
     if (subtree != NULL)
     {
     	if (subtree == cursor)
+	{
         	cout << "[" << subtree->data << "] ";
+	}
         else
-			cout << subtree->data << " ";
+	{
+		cout << subtree->data << " ";
+	}
         PreOrder(subtree->left);
         PreOrder(subtree->right);
     }
@@ -1042,9 +1101,13 @@ void RBTree<K, V>::PostOrder(RBNode<K, V>* subtree)
         PostOrder(subtree->left);
         PostOrder(subtree->right);
         if (subtree == cursor)
+	{
         	cout << "[" << subtree->data << "] ";
+	}
         else
-			cout << subtree->data << " ";
+	{
+		cout << subtree->data << " ";
+	}
     }
 }
 
@@ -1065,12 +1128,18 @@ void RBTree<K, V>::PrintCursor()
 	if (cursor != NULL)
 	{
 		if (cursor->color == 0)
+		{
 			cout << " [<" << cursor->data << ", " << cursor->name << ">(R)]\n";
+		}
 		else
+		{
 			cout << " [<" << cursor->data << ", " << cursor->name << ">(B)]\n";
+		}
 	}
 	else
+	{
 		cout << "[]" << endl;
+	}
 }
 
 
