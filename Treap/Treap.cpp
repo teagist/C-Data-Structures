@@ -62,12 +62,12 @@ void Treap<T>::InsertHelper(T key, TreapNode<T> *&subtree)
 template <class T>
 void Treap<T>::RotateLeft(TreapNode<T>* &subtree)
 {
-	TreapNode<T>* rightPtr = subtree->right;
-	TreapNode<T>* temp = subtree->right->left;
-	
-	rightPtr->left = subtree;
-	subtree->right = temp;
-	subtree = rightPtr;
+    TreapNode<T>* rightPtr = subtree->right;
+    TreapNode<T>* temp = subtree->right->left;
+
+    rightPtr->left = subtree;
+    subtree->right = temp;
+    subtree = rightPtr;
 }
 
 
@@ -83,12 +83,12 @@ void Treap<T>::RotateLeft(TreapNode<T>* &subtree)
 template <class T>
 void Treap<T>::RotateRight(TreapNode<T>* &subtree)
 {
-	TreapNode<T>* leftPtr = subtree->left;
-	TreapNode<T>* temp = subtree->left->right;
-	
-	leftPtr->right = subtree;
-	subtree->left = temp;
-	subtree = leftPtr;
+    TreapNode<T>* leftPtr = subtree->left;
+    TreapNode<T>* temp = subtree->left->right;
+
+    leftPtr->right = subtree;
+    subtree->left = temp;
+    subtree = leftPtr;
 }
 
 
