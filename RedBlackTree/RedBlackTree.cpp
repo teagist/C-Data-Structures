@@ -21,10 +21,13 @@ template <class K, class V>
 RBNode<K, V>* RBNode<K, V>::GetSibling()
 {
 	if (parent == NULL)
+	{
 		return NULL;
+	}
 	if (IsOnLeft())
+	{
 		return parent->right;
-		
+	}
 	return parent->left;
 }
 
@@ -50,48 +53,58 @@ void RBTree<K, V>::Insert(K key, V value)
 {
 	if (Search(key))
 	{
-		cerr << "No duplicates allowed." << endl;
-		return;
+	    cerr << "No duplicates allowed." << endl;
+	    return;
 	}
 	
 	else
 	{
-		RBNode<K, V>* newNode = new RBNode<K,V>(key, value);
-		cursor = newNode;
+	    RBNode<K, V>* newNode = new RBNode<K,V>(key, value);
+	    cursor = newNode;
 	
 	    RBNode<K, V>* temp = NULL;
 	    RBNode<K, V>* rootPtr = root;
 	
 	    while (rootPtr != NULL) 
-		{
+	    {
 	    	temp = rootPtr;
-	    	if (newNode->data < rootPtr->data) 
-	    		rootPtr = rootPtr->left;
-			else 
-	    		rootPtr = rootPtr->right;
+	    	if (newNode->data < rootPtr->data)
+		{
+	    	    rootPtr = rootPtr->left;
+		}
+		else 
+		{
+	    	    rootPtr = rootPtr->right;
+		}
 	    }
 	
 	    newNode->parent = temp;
 	    if (temp == NULL) 
-		{
+	    {
 	    	root = newNode;
 	    	root->color = BLACK;
 	    } 
 	    
-		else if (newNode->data < temp->data) 
+	    else if (newNode->data < temp->data)
+	    {
 	    	temp->left = newNode;
+	    }
 	    	
-		else 
+	    else
+	    {
 	    	temp->right = newNode;
+	    }
 	
 	    if (newNode->parent == NULL) 
-		{
+	    {
 	    	newNode->color = BLACK;
 	    	return;
 	    }
 	
-	    if (newNode->parent->parent == NULL) 
+	    if (newNode->parent->parent == NULL)
+	    {
 	    	return;
+	    }
 	    	
 	    FixViolation(newNode);
 	}
@@ -111,23 +124,31 @@ void RBTree<K, V>::Insert(K key, V value)
 template <class K, class V>
 void RBTree<K, V>::RotateLeft(RBNode<K, V>*& subtree)
 {
-	RBNode<K, V>* rightPtr = subtree->right;
+    RBNode<K, V>* rightPtr = subtree->right;
 
     subtree->right = rightPtr->left;
 
     if (subtree->right != NULL)
+    {
         subtree->right->parent = subtree;
+    }
 
     rightPtr->parent = subtree->parent;
 
     if (subtree->parent == NULL)
+    {
         root = rightPtr;
+    }
 
     else if (subtree == subtree->parent->left)
+    {
         subtree->parent->left = rightPtr;
+    }
 
     else
+    {
         subtree->parent->right = rightPtr;
+    }
 
     rightPtr->left = subtree;
     subtree->parent = rightPtr;
