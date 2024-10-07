@@ -44,13 +44,13 @@ T validateInput(T &value);
 
 int main()
 {
-	srand(time(0));
-	
-	Treap<int> myTreap;
-	printMenu();
-	choose(myTreap);
-	
-	return 0;
+    srand(time(0));
+
+    Treap<int> myTreap;
+    printMenu();
+    choose(myTreap);
+
+    return 0;
 }
 
 
@@ -65,15 +65,15 @@ int main()
 
 void printMenu()
 {
-	cout << " ________________________________ " << endl;
+    cout << " ________________________________ " << endl;
     cout << "| +Item | Insert Item            |" << endl;
-	cout << "| -Item | Delete Item            |" << endl;
+    cout << "| -Item | Delete Item            |" << endl;
     cout << "| ?Item | Search Item            |" << endl;
     cout << "|   R   | Prune Treap            |" << endl;
-	cout << "|   I   | Print Items In Order   |" << endl;
-	cout << "|   P   | Print Items Pre Order  |" << endl;
-	cout << "|   T   | Print Items Post Order |" << endl;
-	cout << "|   D   | Destory the Treap      |" << endl;
+    cout << "|   I   | Print Items In Order   |" << endl;
+    cout << "|   P   | Print Items Pre Order  |" << endl;
+    cout << "|   T   | Print Items Post Order |" << endl;
+    cout << "|   D   | Destory the Treap      |" << endl;
     cout << "|_______|________________________|" << endl << endl;
     cout << "Please choose an operation to perform on the treap." << endl;
     cout << "Enter Q to quit." << endl;
@@ -233,16 +233,16 @@ T validateInput(T &value)
 	{
 		if (cin >> value)
 		{
-			break;
+		    break;
 		}
 		else
 		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the treap." << endl;
-        	cout << endl << ">> value: ";
+		    cin.clear();
+		    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		    system("cls");
+		    printMenu();
+		    cerr << endl << "Please enter a valid item for the treap." << endl;
+        	    cout << endl << ">> value: ";
 		}
 	}
 	return value;
