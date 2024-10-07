@@ -168,23 +168,31 @@ void RBTree<K, V>::RotateLeft(RBNode<K, V>*& subtree)
 template <class K, class V>
 void RBTree<K, V>::RotateRight(RBNode<K, V>*& subtree)
 {
-	RBNode<K, V>* leftPtr = subtree->left;
+    RBNode<K, V>* leftPtr = subtree->left;
 
     subtree->left = leftPtr->right;
 
     if (subtree->left != NULL)
+    {
         subtree->left->parent = subtree;
+    }
 
     leftPtr->parent = subtree->parent;
 
     if (subtree->parent == NULL)
+    {
         root = leftPtr;
+    }
 
     else if (subtree == subtree->parent->left)
+    {
         subtree->parent->left = leftPtr;
+    }
 
     else
+    {
         subtree->parent->right = leftPtr;
+    }
 
     leftPtr->right = subtree;
     subtree->parent = leftPtr;
@@ -206,7 +214,7 @@ void RBTree<K, V>::RotateRight(RBNode<K, V>*& subtree)
 template <class K, class V>
 void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
 {
-	RBNode<K, V>* parentPtr = NULL;
+    RBNode<K, V>* parentPtr = NULL;
     RBNode<K, V>* grandParentPtr = NULL;
 
     while ((subtree != root) && (subtree->color != BLACK) &&
@@ -252,7 +260,7 @@ void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
                 //   Right-rotation required 
                 RotateRight(grandParentPtr);
                 swap(parentPtr->color,
-                    grandParentPtr->color);
+                     grandParentPtr->color);
                 subtree = parentPtr;
             }
         }
@@ -292,7 +300,7 @@ void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
                 //   Left-rotation required 
                 RotateLeft(grandParentPtr);
                 swap(parentPtr->color,
-                    grandParentPtr->color);
+                     grandParentPtr->color);
                 subtree = parentPtr;
             }
         }
@@ -316,29 +324,37 @@ void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
 template <class K, class V>
 bool RBTree<K, V>::Search(const K key)
 {
-	RBNode<K, V>* temp = root;
+    RBNode<K, V>* temp = root;
     while (temp != NULL)
     {
         if (key < temp->data)
         {
             if (temp->left == NULL)
+	    {
                 return false;
+	    }
             else
+	    {
                 temp = temp->left;
+	    }
         }
 
         else if (key == temp->data)
         {
-        	cursor = temp;
+            cursor = temp;
             return true;
         }
 
         else
         {
             if (temp->right == NULL)
+	    {
                 return false;
+	    }
             else
+	    {
                 temp = temp->right;
+	    }
         }
     }
 }
@@ -357,28 +373,37 @@ bool RBTree<K, V>::Search(const K key)
 template <class K, class V>
 RBNode<K, V>* RBTree<K, V>::GetNode(const K key)
 {
-	RBNode<K, V>* temp = root;
+    RBNode<K, V>* temp = root;
 	
     while (temp != NULL) 
-	{
+    {
         if (key < temp->data) 
-		{
+	{
             if (temp->left == NULL)
+	    {
                 break;
+	    }
             else
+	    {
                 temp = temp->left;
+	    }
         }
         else if (key == temp->data) 
+	{
             break;
+	}
         else 
-		{
+	{
             if (temp->right == NULL)
+	    {
                 break;
+	    }
             else
+	    {
                 temp = temp->right;
+	    }
         }
     }
-
     return temp;
 }
 
@@ -398,22 +423,27 @@ RBNode<K, V>* RBTree<K, V>::GetNode(const K key)
 template <class K, class V>
 void RBTree<K, V>::Delete(const K key)
 {
-	if (root == NULL)
-	{
-		cerr << "The tree is empty." << endl;
-		return;
-	}
+    if (root == NULL)
+    {
+	cerr << "The tree is empty." << endl;
+	return;
+    }
 	
-	RBNode<K, V>* nodePtr = GetNode(key);
+    RBNode<K, V>* nodePtr = GetNode(key);
 
     if (nodePtr->data != key)
+    {
         cerr << "There is not a node with value: " << key << endl;
+    }
     else
-		Delete(nodePtr);
+    {
+	Delete(nodePtr);
+    }
 		
-	if (root == NULL)
-		cursor = NULL;
-
+    if (root == NULL)
+    {
+	cursor = NULL;
+    }
 }
 
 
