@@ -21,7 +21,7 @@
 template <class T>
 void Treap<T>::InsertHelper(T key, TreapNode<T> *&subtree)
 {
-	if (!subtree)
+    if (!subtree)
     {
         subtree = new TreapNode<T>(key);
         return;
@@ -32,18 +32,18 @@ void Treap<T>::InsertHelper(T key, TreapNode<T> *&subtree)
         InsertHelper(key, subtree->left);
  
         if (subtree->left != NULL && subtree->left->priority >
-											subtree->priority)
-		{
+				     subtree->priority)
+	{
             RotateRight(subtree);
         }
     }
     else 
-	{
+    {
         InsertHelper(key, subtree->right);
  
         if (subtree->right != NULL && subtree->right->priority >
-												subtree->priority) 
-		{
+				      subtree->priority) 
+	{
             RotateLeft(subtree);
         }
     }
