@@ -203,40 +203,38 @@ void AvlTree<T>::DoubleRotateRight(AvlNode<T>*& subtree)
 template <class T>
 bool AvlTree<T>::Search(const T key)
 {
-	AvlNode<T>* temp = root;
+    AvlNode<T>* temp = root;
 	
-	while (temp != NULL)
+    while (temp != NULL)
+    {
+	if (key < temp->data)
 	{
-		if (key < temp->data)
-		{
-			if (temp->left == NULL)
-			{
-				return false;
-			}
-			else
-			{
-				temp = temp->left;
-			}
-		}
-		
-		else if (key == temp->data)
-		{
-			cursor = temp;
-			return true;
-		}
-		
-		else
-		{
-			if (temp->right == NULL)
-			{
-				return false;
-			}
-			else
-			{
-				temp = temp->right;
-			}
-		}
-	}	
+	    if (temp->left == NULL)
+	    {
+	        return false;
+	    }
+	    else
+	    {
+		temp = temp->left;
+	    }
+	}
+	else if (key == temp->data)
+	{
+	    cursor = temp;
+	    return true;
+	}
+	else
+	{
+	    if (temp->right == NULL)
+	    {
+	        return false;
+	    }
+	    else
+	    {
+	        temp = temp->right;
+	    }
+	}
+    }	
 }
 
 
@@ -254,26 +252,26 @@ bool AvlTree<T>::Search(const T key)
 template <class T>
 void AvlTree<T>::Delete(const T key)
 {
-	if (root == NULL)
-	{
-		return;
-	}
+    if (root == NULL)
+    {
+	return;
+    }
 	
-	bool isFound = Search(key);
+    bool isFound = Search(key);
 	
-	if (isFound == false)
-	{
-		cerr << "There is not a node with value: " << key << endl;
-	}
-	else 
-	{
-		DeleteHelper(key, root);
-	}
+    if (isFound == false)
+    {
+	cerr << "Error: There is not a node with value: " << key << endl;
+    }
+    else 
+    {
+	DeleteHelper(key, root);
+    }
 	
-	if (root == NULL)
-	{
-		cursor = NULL;	
-	}
+    if (root == NULL)
+    {
+	cursor = NULL;	
+    }
 }
 
 
