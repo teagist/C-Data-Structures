@@ -363,7 +363,7 @@ void AvlTree<T>::PruneHelper(AvlNode<T>* subtree)
         PruneHelper(subtree->left);
         if (isLeaf(subtree) && subtree != root)
         {
-        	Delete(subtree->data);
+            Delete(subtree->data);
 	}
         PruneHelper(subtree->right);
     }	
@@ -481,11 +481,11 @@ void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 	    int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
 	    if (subtree == cursor)
 	    {
-				cout << "[" << subtree->data << "]";
+	        cout << "[" << subtree->data << "]";
 	    }
 	    else
 	    {
-				cout << subtree->data;
+	        cout << subtree->data;
 	    }
             cout << setw(disp - result) << "";
 	}
@@ -518,14 +518,14 @@ void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 template <class T>
 void AvlTree<T>::PrintCursor() const
 {
-	if (cursor != NULL)
-	{
-		cout << "[" << cursor->data << "]" << endl;
-	}
-	else
-	{
-		cout << "[]" << endl;
-	}
+    if (cursor != NULL)
+    {
+        cout << "[" << cursor->data << "]" << endl;
+    }
+    else
+    {
+        cout << "[]" << endl;
+    }
 }
 
 
@@ -541,9 +541,9 @@ void AvlTree<T>::PrintCursor() const
 template <class T>
 void AvlTree<T>::InOrder() const
 {
-	cout << "[ "; 
-	InOrderHelper(root); 
-	cout << "]";
+    cout << "[ "; 
+    InOrderHelper(root); 
+    cout << "]";
 }
 
 
@@ -565,13 +565,12 @@ void AvlTree<T>::InOrderHelper(const AvlNode<T>* subtree) const
         
         if (subtree == cursor)
         {
-        	cout << "[" << subtree->data << "] ";
+            cout << "[" << subtree->data << "] ";
         }
         else
         {
-		cout << subtree->data << " ";
-	}
-			
+	    cout << subtree->data << " ";
+	}	
         InOrderHelper(subtree->right);
     }
 }
@@ -589,9 +588,9 @@ void AvlTree<T>::InOrderHelper(const AvlNode<T>* subtree) const
 template <class T>
 void AvlTree<T>::PreOrder() const
 {
-	cout << "[ "; 
-	PreOrderHelper(root); 
-	cout << "]";
+    cout << "[ "; 
+    PreOrderHelper(root); 
+    cout << "]";
 }
 
 
@@ -611,13 +610,12 @@ void AvlTree<T>::PreOrderHelper(const AvlNode<T>* subtree) const
     {
     	if (subtree == cursor)
     	{
-        	cout << "[" << subtree->data << "] ";
+            cout << "[" << subtree->data << "] ";
         }
         else
         {
-		cout << subtree->data << " ";
-	}
-			
+	    cout << subtree->data << " ";
+	}	
         PreOrderHelper(subtree->left);
         PreOrderHelper(subtree->right);
     }
@@ -636,9 +634,9 @@ void AvlTree<T>::PreOrderHelper(const AvlNode<T>* subtree) const
 template <class T>
 void AvlTree<T>::PostOrder() const
 {
-	cout << "[ "; 
-	PostOrderHelper(root); 
-	cout << "]";
+    cout << "[ "; 
+    PostOrderHelper(root); 
+    cout << "]";
 }
 
 
@@ -661,11 +659,11 @@ void AvlTree<T>::PostOrderHelper(const AvlNode<T>* subtree) const
         
         if (subtree == cursor)
         {
-        	cout << "[" << subtree->data << "] ";
+            cout << "[" << subtree->data << "] ";
         }
         else
         {
-		cout << subtree->data << " ";
+	    cout << subtree->data << " ";
 	}
     }
 }
