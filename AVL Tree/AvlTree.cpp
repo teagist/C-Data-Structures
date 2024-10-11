@@ -409,24 +409,24 @@ void AvlTree<T>::PrintTree() const
 template <class T>
 int AvlTree<T>::GetHeight(AvlNode<T>* subtree) const
 {
-	if (subtree == NULL)
+    if (subtree == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        int leftHeight = GetHeight(subtree->left);
+	int rightHeight = GetHeight(subtree->right);
+		
+	if (leftHeight >= rightHeight)
 	{
-		return 0;
+	    return leftHeight + 1;
 	}
 	else
 	{
-		int leftHeight = GetHeight(subtree->left);
-		int rightHeight = GetHeight(subtree->right);
-		
-		if (leftHeight >= rightHeight)
-		{
-			return leftHeight + 1;
-		}
-		else
-		{
-			return rightHeight + 1;
-		}
+	    return rightHeight + 1;
 	}
+    }
 }
 
 
@@ -443,12 +443,12 @@ int AvlTree<T>::GetHeight(AvlNode<T>* subtree) const
 template <class T>
 void AvlTree<T>::PrintLevel(int height) const
 {
-	AvlNode<T>* temp = root;
+    AvlNode<T>* temp = root;
 	
-	// leftmost point
-	int value = pow(2, GetHeight(root) - height + 2);
-	cout << setw(value) << "";
-	DispLevel(temp, height, value);
+    // leftmost point
+    int value = pow(2, GetHeight(root) - height + 2);
+    cout << setw(value) << "";
+    DispLevel(temp, height, value);
 }
 
 
@@ -467,44 +467,42 @@ void AvlTree<T>::PrintLevel(int height) const
 template <class T>
 void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 {
-	int disp = 2 * displace;
-	if (level == 0)
+    int disp = 2 * displace;
+    if (level == 0)
+    {
+	if (subtree == NULL)
 	{
-		if (subtree == NULL)
-		{
-			cout << " x ";
-			cout << setw(disp - 3) << "";
-			return;
-		}
-		else
-		{
-			int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
-			if (subtree == cursor)
-			{
-				cout << "[" << subtree->data << "]";
-			}
-			else
-			{
-				cout << subtree->data;
-			}
-
-			cout << setw(disp - result) << "";
-		}
+	    cout << " x ";
+	    cout << setw(disp - 3) << "";
+	    return;
 	}
-	
 	else
 	{
-		if (subtree == NULL && level >= 1)
-		{
-			DispLevel(NULL, level - 1, displace);
-			DispLevel(NULL, level - 1, displace);
-		}
-		else
-		{
-			DispLevel(subtree->left, level - 1, displace);
-			DispLevel(subtree->right, level - 1, displace);
-		}
+	    int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
+	    if (subtree == cursor)
+	    {
+				cout << "[" << subtree->data << "]";
+	    }
+	    else
+	    {
+				cout << subtree->data;
+	    }
+            cout << setw(disp - result) << "";
 	}
+    }
+    else
+    {
+	if (subtree == NULL && level >= 1)
+	{
+	    DispLevel(NULL, level - 1, displace);
+	    DispLevel(NULL, level - 1, displace);
+	}
+	else
+	{
+	    DispLevel(subtree->left, level - 1, displace);
+	    DispLevel(subtree->right, level - 1, displace);
+	}
+    }
 }
 
 
