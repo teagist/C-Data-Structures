@@ -24,37 +24,37 @@
 template <class T>
 void AvlTree<T>::InsertHelper(const T key, AvlNode<T>*& subtree)
 {
-	if (subtree == NULL)
+    if (subtree == NULL)
+    {
+        try
 	{
-		try
-		{
-			subtree = new AvlNode<T>(key);
-			cursor = subtree;
-		}
-		catch (bad_alloc & ex)
-		{
-			cerr << "Failed to insert " << key << " into the tree due to";
-    		cerr << " bad memory allocation exception." << endl;
-		}
-		catch (...)
-		{
-			cerr << "Unregisterd exception." << endl;
-		}
+	    subtree = new AvlNode<T>(key);
+	    cursor = subtree;
 	}
-	else if (key < subtree->data)
+	catch (bad_alloc & ex)
 	{
-		InsertHelper(key, subtree->left);
+	    cerr << "Failed to insert " << key << " into the tree due to";
+    	    cerr << " bad memory allocation exception." << endl;
 	}
-	else if (key > subtree->data)
+	catch (...)
 	{
-		InsertHelper(key, subtree->right);
+	    cerr << "Unregisterd exception." << endl;
 	}
-	else
-	{
-		cerr << "No duplicates allowed, please try again." << endl;
-	}
+    }
+    else if (key < subtree->data)
+    {
+	InsertHelper(key, subtree->left);
+    }
+    else if (key > subtree->data)
+    {
+	InsertHelper(key, subtree->right);
+    }
+    else
+    {
+	cerr << "No duplicates allowed, please try again." << endl;
+    }
      
-	BalanceTree(subtree);   
+    BalanceTree(subtree);   
 }
 
 
