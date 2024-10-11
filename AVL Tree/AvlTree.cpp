@@ -288,41 +288,40 @@ void AvlTree<T>::Delete(const T key)
 template <class T>
 void AvlTree<T>::DeleteHelper(const T key, AvlNode<T>*& subtree)
 {
-	if (subtree == NULL)
+    if (subtree == NULL)
+    {
+        return;
+    }
+    if (key < subtree->data)
+    {
+        DeleteHelper(key, subtree->left);
+    }
+    else if (key > subtree->data)
+    {
+	DeleteHelper(key, subtree->right);
+    }
+    else if (subtree->left != NULL && subtree->right != NULL)
+    {
+	subtree->data = GetMin(subtree->right)->data;
+	DeleteHelper(subtree->data, subtree->right);
+    }
+    else
+    {
+	AvlNode<T>* oldNode = subtree;
+		
+	if (subtree->left != NULL)
 	{
-		return;
-	}
-	if (key < subtree->data)
-	{
-		DeleteHelper(key, subtree->left);
-	}
-	else if (key > subtree->data)
-	{
-		DeleteHelper(key, subtree->right);
-	}
-	else if (subtree->left != NULL && subtree->right != NULL)
-	{
-		subtree->data = GetMin(subtree->right)->data;
-		DeleteHelper(subtree->data, subtree->right);
-	}
+	    subtree = subtree->left;
+	    cursor = subtree;
+	} 
 	else
 	{
-		AvlNode<T>* oldNode = subtree;
-		
-		if (subtree->left != NULL)
-		{
-			subtree = subtree->left;
-			cursor = subtree;
-		} 
-		else
-		{
-			subtree = subtree->right;
-			cursor = subtree;	
-		}
-		
-		delete oldNode;
+	    subtree = subtree->right;
+	    cursor = subtree;	
 	}
-	BalanceTree(subtree);
+	delete oldNode;
+    }
+    BalanceTree(subtree);
 }
 
 
@@ -337,11 +336,11 @@ void AvlTree<T>::DeleteHelper(const T key, AvlNode<T>*& subtree)
 template <class T>
 AvlNode<T>* AvlTree<T>::GetMin(AvlNode<T>* subtree) const
 {
-	while(subtree->left != NULL) 
-	{
-		subtree = subtree->left;
-	}
-	return subtree;
+    while(subtree->left != NULL) 
+    {
+        subtree = subtree->left;
+    }
+    return subtree;
 }
 
 
