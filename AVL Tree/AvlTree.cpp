@@ -72,44 +72,44 @@ void AvlTree<T>::InsertHelper(const T key, AvlNode<T>*& subtree)
 template <class T>
 void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 {
-	if (subtree == NULL)
-	{
-		return;
-	}
+    if (subtree == NULL)
+    {
+	return;
+    }
 	
-	if (GetHeight(subtree->left) - GetHeight(subtree->right) > 1)
+    if (GetHeight(subtree->left) - GetHeight(subtree->right) > 1)
+    {
+        if (GetHeight(subtree->left->left) >= 
+	    GetHeight(subtree->left->right))
 	{
-		if (GetHeight(subtree->left->left) >= 
-		    GetHeight(subtree->left->right))
-		{
-			RotateLeft(subtree);
-		}
-		else
-		{
-			DoubleRotateLeft(subtree);
-		}
-	}
-	else if (GetHeight(subtree->right) - GetHeight(subtree->left) > 1)
-	{
-		if (GetHeight(subtree->right->right) >= 
-		    GetHeight(subtree->right->left))
-		{
-			RotateRight(subtree);
-		}
-		else
-		{
-			DoubleRotateRight(subtree);
-		}
-	}
-	
-	if (GetHeight(subtree->left) > GetHeight(subtree->right))
-	{
-		subtree->height = GetHeight(subtree->left) + 1;
+	    RotateLeft(subtree);
 	}
 	else
 	{
-		subtree->height = GetHeight(subtree->right) + 1;
+	    DoubleRotateLeft(subtree);
 	}
+    }
+    else if (GetHeight(subtree->right) - GetHeight(subtree->left) > 1)
+    {
+	if (GetHeight(subtree->right->right) >= 
+	    GetHeight(subtree->right->left))
+	{
+	    RotateRight(subtree);
+	}
+	else
+	{
+	    DoubleRotateRight(subtree);
+	}
+    }
+	
+    if (GetHeight(subtree->left) > GetHeight(subtree->right))
+    {
+        subtree->height = GetHeight(subtree->left) + 1;
+    }
+    else
+    {
+	subtree->height = GetHeight(subtree->right) + 1;
+    }
 }
 
 
