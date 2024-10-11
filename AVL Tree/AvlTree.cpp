@@ -124,14 +124,14 @@ void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 template <class T>
 void AvlTree<T>::RotateLeft(AvlNode<T>*& subtree)
 {
-	AvlNode<T>* temp = subtree->left;
-	subtree->left = temp->right;
-	temp->right = subtree;
+    AvlNode<T>* temp = subtree->left;
+    subtree->left = temp->right;
+    temp->right = subtree;
 	
-	subtree->height = max(GetHeight(subtree->left), 
-			      GetHeight(subtree->right)) + 1;
-	temp->height = max(GetHeight(temp->left), subtree->height) + 1;
-	subtree = temp;
+    subtree->height = max(GetHeight(subtree->left), 
+			  GetHeight(subtree->right)) + 1;
+    temp->height = max(GetHeight(temp->left), subtree->height) + 1;
+    subtree = temp;
 }
 
 
@@ -146,8 +146,8 @@ void AvlTree<T>::RotateLeft(AvlNode<T>*& subtree)
 template <class T>
 void AvlTree<T>::DoubleRotateLeft(AvlNode<T>*& subtree)
 {
-	RotateRight(subtree->left);
-	RotateLeft(subtree);
+    RotateRight(subtree->left);
+    RotateLeft(subtree);
 }
 
 
