@@ -254,23 +254,24 @@ void choose(AvlTree<T>& myTree)
 //	Parameters:
 //		value: the value entered by the user.
 //****************************************************************************
-
 template <class T>
 T validateInput(T &value)
 {
-	while (true)
+    while (true)
+    {
+        if (cin >> value)
 	{
-		if (cin >> value)
-			break;
-		else
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the tree." << endl;
-        	        cout << endl << ">> value: ";
-		}
+	    break;
 	}
-	return value;	
+	else
+	{
+	    cin.clear();
+	    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+	    system("cls");
+	    printMenu();
+	    cerr << endl << "Please enter a valid item for the tree." << endl;
+	    cout << endl << ">> value: ";
+	}
+    }
+    return value;	
 }
