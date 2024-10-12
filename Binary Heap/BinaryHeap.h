@@ -19,27 +19,27 @@ template <class T>
 class BinaryHeap
 {
 public:
-	BinaryHeap(): heap(new T[0]), size(0) {}
+    BinaryHeap(): heap(new T[0]), size(0) {}
 	
-	void Insert(T key);
-	bool Search(T key) const;
-	void Delete();
-	void Clear() { delete[] heap; heap = NULL; size = 0;}
-	void Print() const;
+    void Insert(T key);
+    bool Search(T key) const;
+    void Delete();
+    void Clear() { delete[] heap; heap = NULL; size = 0;}
+    void Print() const;
 
-	int GetSize() const { return size; }
-	int GetMin() const { return heap[0]; }
+    int GetSize() const { return size; }
+    int GetMin() const { return heap[0]; }
 
 private:
-	T  *heap;
-	int size;
+    T  *heap;
+    int size;
 	
-	int left(int par) { return (2 * par + 1); }
-	int right(int par) { return (2 * par + 2); }
-	int parent(int child) {	return (child - 1) / 2; }
+    int left(int par) { return (2 * par + 1); }
+    int right(int par) { return (2 * par + 2); }
+    int parent(int child) { return (child - 1) / 2; }
 
-	void HeapifyUp(int in);
-	void HeapifyDown(int in);
+    void HeapifyUp(int in);
+    void HeapifyDown(int in);
 };
 
 #endif
