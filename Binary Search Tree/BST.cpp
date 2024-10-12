@@ -20,7 +20,6 @@
 //		key: the key to be inserted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 {
@@ -67,7 +66,6 @@ void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 //	Parameters:
 //		key: the key to be searched for.
 //****************************************************************************
-
 template <class T>
 bool BST<T>::Search(const T key)
 {
@@ -118,7 +116,6 @@ bool BST<T>::Search(const T key)
 //	Parameters:
 //		key: the key to be deleted.
 //****************************************************************************
-
 template <class T>
 void BST<T>::Delete(const T key)
 {
@@ -159,7 +156,6 @@ void BST<T>::Delete(const T key)
 //		key: the key to be deleted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 {
@@ -237,7 +233,6 @@ BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PruneHelper(BNode<T>* subtree)
 {
@@ -262,7 +257,6 @@ void BST<T>::PruneHelper(BNode<T>* subtree)
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 BNode<T>* BST<T>::GetMin(BNode<T>* subtree) const
 {
@@ -282,7 +276,6 @@ BNode<T>* BST<T>::GetMin(BNode<T>* subtree) const
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 {
@@ -310,12 +303,11 @@ BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 
 
 //****************************************************************************
-//		Method to print the tree in level order.
+//	Method to print the tree in level order.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PrintTree() const
 {
@@ -339,12 +331,11 @@ void BST<T>::PrintTree() const
 
 
 //****************************************************************************
-//		Recursively calculates the height of the tree.
+//	Recursively calculates the height of the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 int BST<T>::TreeHeight(BNode<T>* subtree) const
 {
@@ -369,13 +360,12 @@ int BST<T>::TreeHeight(BNode<T>* subtree) const
 
 
 //****************************************************************************
-//		Calculates width to space out nodes and calls DispLevel to print
+//	    Calculates width to space out nodes and calls DispLevel to print
 //	nodes on given level.
 //
 //	Parameters:
 //		height: height of tree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PrintLevel(int height) const
 {
@@ -390,7 +380,7 @@ void BST<T>::PrintLevel(int height) const
 
 
 //****************************************************************************
-//		Displays the nodes on given level and will display 'x' where the
+//	    Displays the nodes on given level and will display 'x' where the
 //	pointers are NULL.
 //
 //	Parameters:
@@ -398,7 +388,6 @@ void BST<T>::PrintLevel(int height) const
 //		level: current level.
 //		displace: displacement.
 //****************************************************************************
-
 template <class T>
 void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 {
@@ -445,13 +434,12 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 
 
 //****************************************************************************
-//		Method to print the data of the node that the cursor pointer 
+//	    Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PrintCursor() const
 {
@@ -468,12 +456,11 @@ void BST<T>::PrintCursor() const
 
 
 //****************************************************************************
-//		In order print method.
+//	In order print method.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::InOrder() const
 {
@@ -485,12 +472,11 @@ void BST<T>::InOrder() const
 
 
 //****************************************************************************
-//		Helper method to print the contents of the tree in order.
+//	Helper method to print the contents of the tree in order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::InOrderHelper(const BNode<T>* subtree) const
 {
@@ -514,12 +500,11 @@ void BST<T>::InOrderHelper(const BNode<T>* subtree) const
 
 
 //****************************************************************************
-//		Pre-order print method.
+//	Pre-order print method.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PreOrder() const
 {
@@ -531,12 +516,11 @@ void BST<T>::PreOrder() const
 
 
 //****************************************************************************
-//		Helper method to print the contents of the tree in pre order.
+//	Helper method to print the contents of the tree in pre order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PreOrderHelper(const BNode<T>* subtree) const
 {
@@ -559,12 +543,11 @@ void BST<T>::PreOrderHelper(const BNode<T>* subtree) const
 
 
 //****************************************************************************
-//		Post-order print method.
+//	Post-order print method.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PostOrder() const
 {
@@ -576,12 +559,11 @@ void BST<T>::PostOrder() const
 
 
 //****************************************************************************
-//		Helper method to print the contents of the tree in post order.
+//	Helper method to print the contents of the tree in post order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PostOrderHelper(const BNode<T>* subtree) const
 {
@@ -604,9 +586,8 @@ void BST<T>::PostOrderHelper(const BNode<T>* subtree) const
 
 
 //****************************************************************************
-//		Copy Constructor.
+//	Copy Constructor.
 //****************************************************************************
-
 template <class T>
 BST<T>::BST(const BST& myBST)
 {
@@ -621,9 +602,8 @@ BST<T>::BST(const BST& myBST)
 
 
 //****************************************************************************
-//		Helper method to recursively allocate memory for the new tree.
+//	Helper method to recursively allocate memory for the new tree.
 //****************************************************************************
-
 template<class T>
 void BST<T>::CopyHelper(BNode<T>*& aRoot, BNode<T>* myRoot)
 {
@@ -642,9 +622,8 @@ void BST<T>::CopyHelper(BNode<T>*& aRoot, BNode<T>* myRoot)
 
 
 //****************************************************************************
-//		Destructor.
+//	Destructor.
 //****************************************************************************
-
 template<class T>
 BST<T>::~BST()
 {
@@ -655,9 +634,8 @@ BST<T>::~BST()
 
 
 //****************************************************************************
-//		Helper method to recursively deallocate the tree.
+//	Helper method to recursively deallocate the tree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::DestroyHelper(BNode<T>*& Tree)
 {
@@ -673,9 +651,8 @@ void BST<T>::DestroyHelper(BNode<T>*& Tree)
 
 
 //****************************************************************************
-//		Assignment Operator.
+//	Assignment Operator.
 //****************************************************************************
-
 template <class T>
 BST<T>& BST<T>::operator=(const BST<T>& rightTree)
 {
