@@ -105,7 +105,7 @@ void BinaryHeap<T>::Print() const
 
 
 //***************************************************************************
-//		Method to maintain the heap order property.  
+//	Method to maintain the heap order property.  
 //
 //	Parameters:
 //		in: index of newly inserted value.
@@ -132,29 +132,28 @@ void BinaryHeap<T>::HeapifyUp(int in)
 //	Parameters:
 //		in: index of newly inserted value.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::HeapifyDown(int in)
 {
-	int leftChild = left(in);
-	int rightChild = right(in);
-	int smallest = in;
+    int leftChild = left(in);
+    int rightChild = right(in);
+    int smallest = in;
 	
-	if (leftChild < size && heap[leftChild] < heap[in])
-	{
-		smallest = leftChild;
-	}
-	if (rightChild < size && heap[rightChild] > heap[smallest])
-	{
-		smallest = rightChild;
-	}
-	if (smallest != in)
-	{
-		int temp = heap[in];
-		heap[in] = heap[smallest];
-		heap[smallest] = temp;
-		HeapifyDown(smallest);
-	}
+    if (leftChild < size && heap[leftChild] < heap[in])
+    {
+	smallest = leftChild;
+    }
+    if (rightChild < size && heap[rightChild] > heap[smallest])
+    {
+	smallest = rightChild;
+    }
+    if (smallest != in)
+    {
+	int temp = heap[in];
+	heap[in] = heap[smallest];
+	heap[smallest] = temp;
+	HeapifyDown(smallest);
+    }
 }
 
 
