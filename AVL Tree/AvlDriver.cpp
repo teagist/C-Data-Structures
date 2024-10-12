@@ -44,11 +44,11 @@ T validateInput(T &value);
 
 int main()
 {
-	AvlTree<int> myTree;
-	printMenu();
-	choose(myTree);
+    AvlTree<int> myTree;
+    printMenu();
+    choose(myTree);
 	
-	return 0;
+    return 0;
 }
 
 
@@ -56,7 +56,7 @@ int main()
 
 
 //****************************************************************************
-//		Function to display the available options to the user.
+//	Function to display the available options to the user.
 //
 //	Parameters:
 //		N/A.
@@ -64,19 +64,19 @@ int main()
 
 void printMenu()
 {
-	cout << " ________________________________ " << endl;
-	cout << "| +Key  | Insert Item            |" << endl;
-	cout << "| -Key  | Remove Item            |" << endl;
-	cout << "| ?Key  | Search Item            |" << endl;
-	cout << "| R     | Prune Tree             |" << endl;
-	cout << "| I     | Print Items In Order   |" << endl;
-	cout << "| P     | Print Items Pre Order  |" << endl;
-	cout << "| T     | Print Items Post Order |" << endl;
-	cout << "| @     | Print Cursor Value     |" << endl;
-	cout << "| D     | Delete the Tree        |" << endl;
-	cout << "|_______|________________________|" << endl << endl;
-        cout << "Please choose an operation to perform on the tree." << endl;
-        cout << "Enter Q to quit." << endl;	
+    cout << " ________________________________ " << endl;
+    cout << "| +Key  | Insert Item            |" << endl;
+    cout << "| -Key  | Remove Item            |" << endl;
+    cout << "| ?Key  | Search Item            |" << endl;
+    cout << "| R     | Prune Tree             |" << endl;
+    cout << "| I     | Print Items In Order   |" << endl;
+    cout << "| P     | Print Items Pre Order  |" << endl;
+    cout << "| T     | Print Items Post Order |" << endl;
+    cout << "| @     | Print Cursor Value     |" << endl;
+    cout << "| D     | Delete the Tree        |" << endl;
+    cout << "|_______|________________________|" << endl << endl;
+    cout << "Please choose an operation to perform on the tree." << endl;
+    cout << "Enter Q to quit." << endl;	
 }
 
 
