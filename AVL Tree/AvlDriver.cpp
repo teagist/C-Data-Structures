@@ -61,7 +61,6 @@ int main()
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 void printMenu()
 {
     cout << " ________________________________ " << endl;
@@ -91,154 +90,156 @@ void printMenu()
 //	Parameters:
 //		myTree: templated AVL Tree.
 //****************************************************************************
-
 template <class T> 
 void choose(AvlTree<T>& myTree)
 {
-	char choice      = 'A';
-	bool hasInserted = false;
-	T    key;
+    char choice      = 'A';
+    bool hasInserted = false;
+    T    key;
 	
-	cout << "\nAVL>> ";
-	cin >> choice;
+    cout << "\nAVL>> ";
+    cin >> choice;
 	
-	while (choice != 'q' || choice != 'Q')
+    while (choice != 'q' || choice != 'Q')
+    {
+	switch(choice)
 	{
-		switch(choice)
-		{
-			case '+':
-				validateInput(key);
-				myTree.Insert(key);
+	    case '+':
+		validateInput(key);
+		myTree.Insert(key);
 				
-				hasInserted = true;
-				break;
+		hasInserted = true;
+		break;
 
-			case '-':
-				if (hasInserted)
-				{
-					validateInput(key);
-					myTree.Delete(key);
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-
-			case '?':
-				if (hasInserted)
-				{
-					validateInput(key);
-					if (myTree.Search(key))
-						cout << endl << key << " is in the tree!" << endl;
-					else
-						cerr << endl << key << " is not in the tree." << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-				
-			case 'r': case 'R':
-				if (hasInserted)
-				{
-					myTree.Prune();
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-
-			case 'i': case 'I':
-				if(hasInserted)
-				{
-					cout << "The contents of the tree in order are: ";
-					myTree.InOrder();
-					cout << endl << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-
-			case 'p': case 'P':
-				if (hasInserted)
-				{
-					cout << "The contents of the tree in pre order are: ";
-					myTree.PreOrder();
-					cout << endl << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-
-			case 't': case 'T':
-				if (hasInserted)
-				{
-					cout << "The contents of the tree in post order are: ";
-					myTree.PostOrder();
-					cout << endl << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-
-			case 'd': case 'D':
-				myTree.~AvlTree();
-				hasInserted = false;
-				break;  
-				
-			case'@':
-				if (hasInserted)
-				{
-					myTree.PrintCursor();
-					cout << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
-
-			case 'q': case 'Q':
-				exit(1);
-
-			default:
-				cerr << "Invalid option, please try again." << endl;
-				system("pause");
-				break;
-		}
-		system("cls");
-		printMenu();
-		cout << endl;
-		
+	    case '-':
 		if (hasInserted)
 		{
-			myTree.PrintTree();
+		    validateInput(key);
+		    myTree.Delete(key);
 		}
-			
-		cout << "AVL>> ";
-		cin >> choice;
-	}		
+		else
+		{
+		    cerr << "\nPlease insert data into the tree." << endl;
+		    system("pause");					
+		}
+		break;
+
+	    case '?':
+		if (hasInserted)
+		{
+		    validateInput(key);
+		    if (myTree.Search(key))
+		    {
+		        cout << endl << key << " is in the tree!" << endl;
+		    }
+		    else
+		    {
+		        cerr << endl << key << " is not in the tree." << endl;
+		        system("pause");
+		    }
+		}
+		else
+		{
+		    cerr << "\nPlease insert data into the tree." << endl;
+		    system("pause");					
+		}
+		break;
+				
+	    case 'r': case 'R':
+		if (hasInserted)
+		{
+			myTree.Prune();
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the tree." << endl;
+			system("pause");					
+		}
+		break;
+
+	    case 'i': case 'I':
+		if(hasInserted)
+		{
+			cout << "The contents of the tree in order are: ";
+			myTree.InOrder();
+			cout << endl << endl;
+			system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the tree." << endl;
+			system("pause");					
+		}
+		break;
+
+	    case 'p': case 'P':
+		if (hasInserted)
+		{
+			cout << "The contents of the tree in pre order are: ";
+			myTree.PreOrder();
+			cout << endl << endl;
+			system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the tree." << endl;
+			system("pause");					
+		}
+		break;
+
+	    case 't': case 'T':
+		if (hasInserted)
+		{
+			cout << "The contents of the tree in post order are: ";
+			myTree.PostOrder();
+			cout << endl << endl;
+			system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the tree." << endl;
+			system("pause");					
+		}
+		break;
+
+	    case 'd': case 'D':
+		myTree.~AvlTree();
+		hasInserted = false;
+		break;  
+				
+	    case'@':
+		if (hasInserted)
+		{
+			myTree.PrintCursor();
+			cout << endl;
+			system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the tree." << endl;
+			system("pause");					
+		}
+		break;
+
+	    case 'q': case 'Q':
+		exit(1);
+
+	    default:
+		cerr << "Invalid option, please try again." << endl;
+		system("pause");
+		break;
+        }
+	system("cls");
+	printMenu();
+	cout << endl;
+		
+        if (hasInserted)
+        {
+	    myTree.PrintTree();
+        }	
+        cout << "AVL>> ";
+        cin >> choice;
+    }		
 }
 /* End of choose function */
 
