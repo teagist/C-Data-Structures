@@ -15,22 +15,21 @@
 //	Parameters:
 //		key: the element to be inserted.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::Insert(T key)
 {
-	T *temp = new T[size + 1];
-	for (int i = 0; i< size; i++)
-	{
-		temp[i] = heap[i];
-	}
+    T *temp = new T[size + 1];
+    for (int i = 0; i< size; i++)
+    {
+        temp[i] = heap[i];
+    }
 	
-	size = size + 1;
-	delete[] heap;
-	heap = temp;
-	heap[size - 1] = key;
+    size = size + 1;
+    delete[] heap;
+    heap = temp;
+    heap[size - 1] = key;
 	
-	HeapifyUp(size - 1);
+    HeapifyUp(size - 1);
 }
 
 
@@ -43,66 +42,63 @@ void BinaryHeap<T>::Insert(T key)
 //	Parameters:
 //		key: the element to be searched.
 //***************************************************************************
-
 template <class T>
 bool BinaryHeap<T>::Search(T key) const
 {
-	for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
+    {
+	if (key == heap[i])
 	{
-		if (key == heap[i])
-		{
-			return true;
-		}
+	    return true;
 	}
-	return false;
+    }
+    return false;
 }
 
 
 
 
 //***************************************************************************
-//		Method to delete the value at the front of the array.  Or in other
+//	    Method to delete the value at the front of the array.  Or in other
 //	words, the minimum value in the heap.
 //
 //	Parameters:
 //		N/A.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::Delete()
 {
-	T *temp = new T[size - 1];
-	for (int i = 1; i< size; i++)
-	{
-		temp[i-1] = heap[i];
-	}
+    T *temp = new T[size - 1];
+    for (int i = 1; i< size; i++)
+    {
+        temp[i-1] = heap[i];
+    }
 	
-	size = size - 1;
-	delete[] heap;
-	heap = temp;
-
-	HeapifyDown(0);
+    size = size - 1;
+    delete[] heap;
+    heap = temp;
+	
+    HeapifyDown(0);
 }
 	
 
 
 
 //***************************************************************************
-//		Method to print the contents of the heap in line.  
+//	Method to print the contents of the heap in line.  
 //
 //	Parameters:
 //		N/A.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::Print() const
 {
-	cout << "Heap: ";
-	for (int i = 0; i < size; i++)
-	{
-		cout << heap[i] << " ";
-	}
-	cout << endl;
+    cout << "Heap: ";
+    for (int i = 0; i < size; i++)
+    {
+	cout << heap[i] << " ";
+    }
+    cout << endl;
 }
 
 
@@ -114,7 +110,6 @@ void BinaryHeap<T>::Print() const
 //	Parameters:
 //		in: index of newly inserted value.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::HeapifyUp(int in)
 {
