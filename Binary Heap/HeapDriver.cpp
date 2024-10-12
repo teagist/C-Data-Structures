@@ -44,11 +44,11 @@ T validateInput(T &value);
 
 int main()
 {
-	BinaryHeap<int> myHeap;
-	printMenu();
-	choose(myHeap);
+    BinaryHeap<int> myHeap;
+    printMenu();
+    choose(myHeap);
 	
-	return 0;
+    return 0;
 }
 
 
@@ -56,12 +56,11 @@ int main()
 
 
 //***************************************************************************
-//		Function to display the available options to the user.
+//	Function to display the available options to the user.
 //
 //	Parameters:
 //		N/A.
 //***************************************************************************
-
 void printMenu()
 {
     cout << " _____________________________" << endl;
@@ -88,7 +87,6 @@ void printMenu()
 //	Parameters:
 //		myHeap: templated binary heap.
 //***************************************************************************
-
 template <class T>
 void choose(BinaryHeap<T> &myHeap)
 {
@@ -103,79 +101,79 @@ void choose(BinaryHeap<T> &myHeap)
     {
         switch (choice)
         {
-			case '+':
-				validateInput(data);
-				myHeap.Insert(data);
-				hasInserted = true;
-				break;
+	    case '+':
+		validateInput(data);
+		myHeap.Insert(data);
+		hasInserted = true;
+		break;
 				
-			case '-':
-				if (hasInserted)
-			    	myHeap.Delete();
-				else
-				{
-					cerr << "\nPlease insert data into the heap." << endl;
-					system("pause");
-				}
-				break;
+	    case '-':
+		if (hasInserted)
+		myHeap.Delete();
+		else
+		{
+			cerr << "\nPlease insert data into the heap." << endl;
+			system("pause");
+		}
+		break;
 				
-			case '?':
-				if (hasInserted)
-				{
-	                             validateInput(data);
-	                             if (myHeap.Search(data))
-				     {
-				          cout << endl << data << " is in the heap!" << endl;
-				     }
-				     else
-				     {
-				          cerr << endl << data << " is not in the heap.";
-				     }
-				     cout << endl;
-				     system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the heap." << endl;
-					system("pause");
-				}
-				break;
+	    case '?':
+		if (hasInserted)
+		{
+		     validateInput(data);
+		     if (myHeap.Search(data))
+		     {
+			  cout << endl << data << " is in the heap!" << endl;
+		     }
+		     else
+		     {
+			  cerr << endl << data << " is not in the heap.";
+		     }
+		     cout << endl;
+		     system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the heap." << endl;
+			system("pause");
+		}
+		break;
 				
-			case '@' :
-				if (hasInserted)
-				{
-					cout << "\nThe minimum value is: " << myHeap.GetMin();
-					cout << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the heap." << endl;
-					system("pause");
-				}
-				break;
+	    case '@' :
+		if (hasInserted)
+		{
+			cout << "\nThe minimum value is: " << myHeap.GetMin();
+			cout << endl;
+			system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the heap." << endl;
+			system("pause");
+		}
+		break;
 				
-			case 'd': case 'D':
-				if (hasInserted)
-				{
-					myHeap.Clear();
-					hasInserted = false;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the heap." << endl;
-					system("pause");
-				}
-				break;
+	    case 'd': case 'D':
+		if (hasInserted)
+		{
+			myHeap.Clear();
+			hasInserted = false;
+			system("pause");
+		}
+		else
+		{
+			cerr << "\nPlease insert data into the heap." << endl;
+			system("pause");
+		}
+		break;
 				
-                        case 'q': case 'Q':
-                                exit(1);
+            case 'q': case 'Q':
+                exit(1);
                 
-			default:
-				cout << "\nInvalid choice. Please try again." << endl;
-				cout << endl;
-        system("pause");
+	    default:
+		cout << "\nInvalid choice. Please try again." << endl;
+		cout << endl;
+            system("pause");
 	}
         system("cls");
         printMenu();
@@ -203,25 +201,24 @@ void choose(BinaryHeap<T> &myHeap)
 //	Parameters:
 //		value: the value entered by the user.
 //***************************************************************************
-
 template <class T>
 T validateInput(T &value)
 {
-	while (true)
+    while (true)
+    {
+	if (cin >> value)
 	{
-		if (cin >> value)
-		{
-			break;
-		}
-		else
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the heap." << endl;
-        	        cout << endl << ">> value: ";
-		}
+	    break;
 	}
-	return value;
+	else
+	{
+	    cin.clear();
+	    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+	    system("cls");
+	    printMenu();
+	    cerr << endl << "Please enter a valid item for the heap." << endl;
+	    cout << endl << ">> value: ";
+	}
+    }
+    return value;
 }
