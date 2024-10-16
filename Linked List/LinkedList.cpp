@@ -349,7 +349,6 @@ void LinkedList<T>::Sort()
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template<class T>
 void LinkedList<T>::Clear()
 {
@@ -368,53 +367,51 @@ void LinkedList<T>::Clear()
 
 
 //****************************************************************************
-//		Method to print the contents of the list, within square brackets,
+//	    Method to print the contents of the list, within square brackets,
 //	and on one line.  Method will also print the square brackets around the
 //	cursor value.  
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template<class T>
 void LinkedList<T>::Print() const
 {
-	Node<T> *temp = head;
+    Node<T> *temp = head;
 	
-	if(head == NULL)
-	{
-		return;
-	}
+    if(head == NULL)
+    {
+	return;
+    }
 
-	cout << "[";
-	while(temp != NULL)
+    cout << "[";
+    while(temp != NULL)
+    {
+	if (temp->next == NULL)
 	{
-		if (temp->next == NULL)
-		{
-			if (temp == cursor)
-			{
-				cout << "[" << temp->data << "]";
-			}
-			else
-			{
-				cout << temp->data;
-			}
-		}
-		else
-		{
-			if (temp == cursor)
-			{
-				cout << "[" << temp->data << "], ";
-			}
-			else
-			{
-				cout << temp->data << ", ";
-			}
-		}
-			
-		temp = temp->next;
+	    if (temp == cursor)
+	    {
+		cout << "[" << temp->data << "]";
+	    }
+	    else
+	    {
+		cout << temp->data;
+	    }
 	}
-	cout << "]";
+	else
+	{
+	    if (temp == cursor)
+	    {
+		cout << "[" << temp->data << "], ";
+	    }
+	    else
+	    {
+		cout << temp->data << ", ";
+	    }
+	}	
+	temp = temp->next;
+    }
+    cout << "]";
 }
 
 
