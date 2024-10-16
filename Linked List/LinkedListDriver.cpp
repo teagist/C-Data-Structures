@@ -292,7 +292,7 @@ void choose(LinkedList<T>& myList)
 
 
 //****************************************************************************
-//		This function will validate the input from the user.  If the user
+//	    This function will validate the input from the user.  If the user
 //	enters an invalid option for the value, then a message will be displayed
 //	and the user will be asked to try again.  Otherwise, the function will
 //	return the value to the caller.
@@ -303,20 +303,22 @@ void choose(LinkedList<T>& myList)
 template <class T>
 T validateInput(T &value)
 {
-	while (true)
+    while (true)
+    {
+	if (cin >> value)
 	{
-		if (cin >> value)
-			break;
-		else
-		{
-		    cin.clear();
-		    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			
-		    system("cls");
-		    printMenu();
-		    cerr << endl << "Please enter a valid item for the list." << endl;
-        	    cout << endl << ">> value: ";
-		}
+	    break;
 	}
-	return value;
+	else
+	{
+	    cin.clear();
+	    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			
+	    system("cls");
+	    printMenu();
+	    cerr << endl << "Please enter a valid item for the list." << endl;
+            cout << endl << ">> value: ";
+	}
+    }
+    return value;
 }
