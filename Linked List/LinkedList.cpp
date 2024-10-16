@@ -127,7 +127,7 @@ void LinkedList<T>::InsertAtTail(const T key)
 
 
 //****************************************************************************
-//		Method to delete a node from the list.  If the list is empty, this
+//	    Method to delete a node from the list.  If the list is empty, this
 //	method will return.  Otherwise, the list will be searched for the given
 //	key.  Once it has been found, it will be deleted and the cursor set
 //	to the node before it.  If key cannot be found, an appropriate message 
@@ -179,7 +179,7 @@ void LinkedList<T>::Remove(const T key)
 
 
 //****************************************************************************
-//		Method to remove the node at the front of the list.  The cursor will
+//	    Method to remove the node at the front of the list.  The cursor will
 //	point to the new head of the list.  
 //
 //	Parameters:
@@ -214,7 +214,7 @@ void LinkedList<T>::RemoveAtHead()
 
 
 //****************************************************************************
-//		Method will remove the node at the end of the list.  The cursor
+//	    Method will remove the node at the end of the list.  The cursor
 //	will point to the new tail of the list.
 //
 //	Parameters:
@@ -257,7 +257,7 @@ void LinkedList<T>::RemoveAtTail()
 
 
 //****************************************************************************
-//		Method to search the list for a given key.  If the key is found, a
+//	    Method to search the list for a given key.  If the key is found, a
 //	message will be displayed and true returned.  Otherwise, an appropriate
 //	message will be displayed, and false will be returned.  If the value is
 //	found, the cursor will point to the node containing the key.  Otherwise
@@ -270,37 +270,34 @@ void LinkedList<T>::RemoveAtTail()
 template<class T>
 bool LinkedList<T>::Search(const T key)
 {
-	Node<T> *curr = head; 
-	bool success  = false;
+    Node<T> *curr = head; 
+    bool success  = false;
 
-	if (curr == NULL)
-	{
-		return false;
-	}
-		
-	while(curr != NULL)
-	{
-		if(curr->data == key)
-		{
-			success = true;
-			//cout << key << " is in the list!" << endl;
-			cursor = curr;
-		}
-		curr = curr->next;
-	}
-
-	if(success == false)
-	{
-	//cout << key << " is not in the list" << endl;
-		
-		if (head)
-		{
-		    cursor = head;
-		}
-			
+    if (curr == NULL)
+    {
         return false;
+    }
+		
+    while(curr != NULL)
+    {
+	if(curr->data == key)
+	{
+	    success = true;
+	    //cout << key << " is in the list!" << endl;
+	    cursor = curr;
 	}
+	curr = curr->next;
+    }
 
+    if(success == false)
+    {
+	//cout << key << " is not in the list" << endl;
+	if (head)
+	{
+	    cursor = head;
+	}	
+        return false;
+    }
     return true;
 }
 
