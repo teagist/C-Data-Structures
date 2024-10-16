@@ -10,7 +10,7 @@
 
 
 //****************************************************************************
-//		Method to insert a node in order of the list.  If memory cannot 
+//	    Method to insert a node in order of the list.  If memory cannot 
 //	be allocated, an appropriate message will be displayed.  Otherwise,
 //	the new key will be inserted.  The cursor will be updated to point to 
 //	the new node.  
@@ -18,40 +18,40 @@
 //	Parameters:
 //		key: the value to be inserted into the list.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::Insert(const T key)
 {	
-	Node<T> *curr = head;
-	if(head == NULL || head->data >= key)
+    Node<T> *curr = head;
+    if(head == NULL || head->data >= key)
+    {
+	try
 	{
-		try
-		{
-			curr = new Node<T>(key, head);
-			head = curr;
-			cursor = curr;
-		}
-		catch (bad_alloc& ex)
-		{
-			cerr << "Failed to insert " << key << " into the List." << endl;
-		}
+	    curr = new Node<T>(key, head);
+	    head = curr;
+	    cursor = curr;
 	}
-	
-	else 
+	catch (bad_alloc& ex)
 	{
-		while(curr->next != NULL && curr->next->data < key)                                                       
-			curr = curr->next;
+	    cerr << "Failed to insert " << key << " into the List." << endl;
+	}
+    }
+    else 
+    {
+	while(curr->next != NULL && curr->next->data < key)   
+	{
+	    curr = curr->next;
+	}
 		
-		try
-		{
-			curr->next = new Node<T>(key, curr->next);
-			cursor = curr->next;
-		}
-		catch (bad_alloc& ex)
-		{
-			cerr << "Failed to insert " << key << " into the List." << endl;			
-		}
+	try
+	{
+	    curr->next = new Node<T>(key, curr->next);
+	    cursor = curr->next;
 	}
+	catch (bad_alloc& ex)
+	{
+	    cerr << "Failed to insert " << key << " into the List." << endl;			
+	}
+    }
 }
 
 
