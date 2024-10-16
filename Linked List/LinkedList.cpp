@@ -66,7 +66,6 @@ void LinkedList<T>::Insert(const T key)
 //	Parameters:
 //		key: the value to be inserted into the list.
 //****************************************************************************
-
 template<class T>
 void LinkedList<T>::InsertAtHead(const T key)
 {
@@ -93,7 +92,6 @@ void LinkedList<T>::InsertAtHead(const T key)
 //	Parameters:
 //		key: the value to be inserted into the list.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::InsertAtTail(const T key)
 {
@@ -136,7 +134,6 @@ void LinkedList<T>::InsertAtTail(const T key)
 //	Parameters:
 //		key: the value to be deleted from the list.  
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::Remove(const T key)
 {
@@ -185,7 +182,6 @@ void LinkedList<T>::Remove(const T key)
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template<class T>		
 void LinkedList<T>::RemoveAtHead()
 {
@@ -220,7 +216,6 @@ void LinkedList<T>::RemoveAtHead()
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::RemoveAtTail()
 {
@@ -266,7 +261,6 @@ void LinkedList<T>::RemoveAtTail()
 //	Parameters:
 //		key: the value to be searched for.
 //****************************************************************************
-
 template<class T>
 bool LinkedList<T>::Search(const T key)
 {
@@ -305,53 +299,52 @@ bool LinkedList<T>::Search(const T key)
 
 
 //****************************************************************************
-//		Method will sort the contents of the Linked List using a Bubble Sort
+//	    Method will sort the contents of the Linked List using a Bubble Sort
 //	algorithm.  At the end the cursor will point to the head of the list.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::Sort()
 {
-	Node<T>* curr = head;
-	Node<T>* index = NULL;
-	T temp;
+    Node<T>* curr = head;
+    Node<T>* index = NULL;
+    T temp;
 	
-	if (head == NULL)
-	{
-		return;
-	}
+    if (head == NULL)
+    {
+	return;
+    }
 		
-	while (curr != NULL)
-	{
-		index = curr->next;
+    while (curr != NULL)
+    {
+	index = curr->next;
 		
-		while (index != NULL)
-		{
-			if (curr->data > index->data)
-			{
-				temp = curr->data;
-				curr->data = index->data;
-				index->data = temp;
-			}
-			index = index->next;
-		}
-		curr = curr->next;
+	while (index != NULL)
+	{
+	    if (curr->data > index->data)
+	    {
+		temp = curr->data;
+		curr->data = index->data;
+		index->data = temp;
+	    }
+	    index = index->next;
 	}
+	curr = curr->next;
+    }
 	
-	if (head)
-	{
-		cursor = head;
-	}
+    if (head)
+    {
+	cursor = head;
+    }
 }
 
 
 
 
 //****************************************************************************
-//		Clear method calls the linked list destructor  .
+//		Clear method calls the linked list destructor.
 //
 //	Parameters:
 //		N/A.
