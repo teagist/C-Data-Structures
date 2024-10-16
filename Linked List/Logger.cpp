@@ -198,7 +198,7 @@ void Logger::printTime() const
     // Increase size to accommodate the formatted date/time
     char formattedTime[25]; 
     std::strftime(formattedTime, sizeof(formattedTime), 
-				"%m/%d/%Y %H:%M:%S", localTime);
+		  "%m/%d/%Y %H:%M:%S", localTime);
 
     // Output the formatted date and time
     std::cout << formattedTime;	
@@ -210,24 +210,23 @@ void Logger::printTime() const
 //	NAME: setTitlebar.
 //
 //	DESCRIPTION: This function will display the current test name and version
-//				 in the titlebar of the executable window.  It will also
-//				 display the pass/fail status of the test.      
+//		     in the titlebar of the executable window.  It will also
+//		     display the pass/fail status of the test.      
 //****************************************************************************
 void Logger::setTitlebar() const
 {
-	std::stringstream title;
-	std::string       endTime;		// To be implemented at a later date
+    std::stringstream title;
+    std::string       endTime;		// To be implemented at a later date
 	
-	if (m_isPassing == OK)
-	{
-		title << "Passing |  " << m_test << " (Version: " << m_version << ")";
-	}
-	else if (m_isPassing == FAIL)
-	{
-		title << "Failing |  " << m_test << " (Version: " << m_version << ")";		
-	}
-
-	SetConsoleTitle(title.str().c_str());	
+    if (m_isPassing == OK)
+    {
+	title << "Passing |  " << m_test << " (Version: " << m_version << ")";
+    }
+    else if (m_isPassing == FAIL)
+    {
+	title << "Failing |  " << m_test << " (Version: " << m_version << ")";		
+    }
+    SetConsoleTitle(title.str().c_str());	
 }
 
 
