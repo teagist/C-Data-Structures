@@ -11,28 +11,23 @@
 using namespace std;
 
 
-
 template <class T>
 class LinkedList;
-
-
 
 
 template <class T>
 class Node
 {
-	T data; 
-	Node* next;
-	LinkedList<T> subList;
+    T data; 
+    Node* next;
+    LinkedList<T> subList;
 	
-	Node():next(NULL){};
-	Node(const T key): data(key), next(NULL){};
-	Node(const T key, Node* n): data(key), next(n){};
+    Node():next(NULL){};
+    Node(const T key): data(key), next(NULL){};
+    Node(const T key, Node* n): data(key), next(n){};
 
-	friend class LinkedList<T>;
+    friend class LinkedList<T>;
 };
-
-
 
 
 template <class T>
