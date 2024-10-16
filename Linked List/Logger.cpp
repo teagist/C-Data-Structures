@@ -139,29 +139,28 @@ void Logger::printStatusMessage(const std::string& message,
 
 
 //****************************************************************************
-//	NAME: log.
+//	NAME: logEvent.
 //
 //	DESCRIPTION: Logs and prints the time and message.     
 //****************************************************************************
 void Logger::logEvent(const std::string& message, const int type) const
 {
-	std::cout << "[";
-	printTime();
+    std::cout << "[";
+    printTime();
 	
-	if (type == OK)
-	{
-		std::cout << " Notice]: ";
-	}
-	else if (type == FAIL)
-	{
-		std::cerr << " Error]: ";
-	}
-	else
-	{
-		std::cout << " Information]: ";
-	}
-
-	std::cout << message << std::endl;
+    if (type == OK)
+    {
+	std::cout << " Notice]: ";
+    }
+    else if (type == FAIL)
+    {
+	std::cerr << " Error]: ";
+    }
+    else
+    {
+	std::cout << " Information]: ";
+    }
+    std::cout << message << std::endl;
 }
 
 
@@ -170,14 +169,14 @@ void Logger::logEvent(const std::string& message, const int type) const
 //	NAME: printLineHeader.
 //
 //	DESCRIPTION: Prints the header information of each line of each log.  
-//				 Each log header contains the test name with the date and 
-//				 time.  
+//		     Each log header contains the test name with the date and 
+//		     time.  
 //****************************************************************************
 void Logger::printLineHeader() const
 {
-	std::cout << "[";
-	printTime();
-	std::cout << "]: ";
+    std::cout << "[";
+    printTime();
+    std::cout << "]: ";
 }
 
 
