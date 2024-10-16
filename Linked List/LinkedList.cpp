@@ -58,7 +58,7 @@ void LinkedList<T>::Insert(const T key)
 
 
 //****************************************************************************
-//		Method to insert a node at the front of the list.  If memory cannot 
+//	    Method to insert a node at the front of the list.  If memory cannot 
 //	be allocated, an appropriate message will be displayed.  Otherwise,
 //	the new key will be inserted.  The cursor will be updated to point to 
 //	the new node.  
@@ -70,15 +70,15 @@ void LinkedList<T>::Insert(const T key)
 template<class T>
 void LinkedList<T>::InsertAtHead(const T key)
 {
-	try
-	{
-		head = new Node<T>(key, head);
-		cursor = head;
-	}
-	catch (bad_alloc& ex)
-	{
-		cerr << "Failed to insert " << key << " into the List." << endl;
-	}	
+    try
+    {
+	head = new Node<T>(key, head);
+	cursor = head;
+    }
+    catch (bad_alloc& ex)
+    {
+	cerr << "Failed to insert " << key << " into the List." << endl;
+    }	
 }
 
 
