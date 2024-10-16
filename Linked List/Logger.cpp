@@ -238,26 +238,25 @@ void Logger::setTitlebar() const
 //****************************************************************************
 void Logger::printResult() const
 {
-	std::cout << std::endl;
-	printLineHeader();
-	std::cout << m_test << " Status: ";
+    std::cout << std::endl;
+    printLineHeader();
+    std::cout << m_test << " Status: ";
 	
-	HANDLE hConsole;
-	CONSOLE_SCREEN_BUFFER_INFO myBuffInfo;
+    HANDLE hConsole;
+    CONSOLE_SCREEN_BUFFER_INFO myBuffInfo;
 		
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	GetConsoleScreenBufferInfo(hConsole, &myBuffInfo);    
-	SetConsoleTextAttribute(hConsole, 224);
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleScreenBufferInfo(hConsole, &myBuffInfo);    
+    SetConsoleTextAttribute(hConsole, 224);
 	
-	if (m_isPassing == OK)
-	{
-		std::cout << "  PASSED  ";
-	}
-	else if (m_isPassing == FAIL)
-	{
-		std::cout << "  FAILED  ";		
-	}
-	
-	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
-	std::cout << std::endl;	
+    if (m_isPassing == OK)
+    {
+	std::cout << "  PASSED  ";
+    }
+    else if (m_isPassing == FAIL)
+    {
+	std::cout << "  FAILED  ";		
+    }
+    SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
+    std::cout << std::endl;	
 }
