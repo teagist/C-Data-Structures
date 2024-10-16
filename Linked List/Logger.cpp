@@ -95,45 +95,45 @@ void Logger::readVersionInfo()
 //	NAME: printStatusMessage.
 //
 //	DESCRIPTION: Method to print the status message contained in the message
-//				 string.  If the status is 0, then a "success" tag will be
-//				 displayed.  If the status is 1, and "error" tag will be 
-//				 displayed.    
+//		     string.  If the status is 0, then a "success" tag will be
+//		     displayed.  If the status is 1, and "error" tag will be 
+//		     displayed.    
 //****************************************************************************
 void Logger::printStatusMessage(const std::string& message, 
 			        const int& status) const
 {
-	if (status == OK)
-	{
-		printLineHeader();
-		std:: cout << " ";
+    if (status == OK)
+    {
+	printLineHeader();
+	std:: cout << " ";
 						
-		HANDLE hConsole;
-		CONSOLE_SCREEN_BUFFER_INFO myBuffInfo;
+	HANDLE hConsole;
+	CONSOLE_SCREEN_BUFFER_INFO myBuffInfo;
 			
-		hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		GetConsoleScreenBufferInfo(hConsole, &myBuffInfo);    
-		SetConsoleTextAttribute(hConsole, 47);
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	GetConsoleScreenBufferInfo(hConsole, &myBuffInfo);    
+	SetConsoleTextAttribute(hConsole, 47);
 		
-		std::cout << "  Success  ";
-		SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
-		std::cout << "  " << message << std::endl;			
-	}
-	else if (status == FAIL)
-	{
-		printLineHeader();
-		std:: cout << " ";
+	std::cout << "  Success  ";
+	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
+	std::cout << "  " << message << std::endl;			
+    }
+    else if (status == FAIL)
+    {
+	printLineHeader();
+	std:: cout << " ";
 		
-		HANDLE hConsole;
-		CONSOLE_SCREEN_BUFFER_INFO myBuffInfo;
+	HANDLE hConsole;
+	CONSOLE_SCREEN_BUFFER_INFO myBuffInfo;
 			
-		hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		GetConsoleScreenBufferInfo(hConsole, &myBuffInfo);    
-		SetConsoleTextAttribute(hConsole, 79);
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	GetConsoleScreenBufferInfo(hConsole, &myBuffInfo);    
+	SetConsoleTextAttribute(hConsole, 79);
 		
-		std::cout << "  Error  ";
-		SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
-		std::cout << "  " << message << std::endl;
-	}
+	std::cout << "  Error  ";
+	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
+	std::cout << "  " << message << std::endl;
+    }
 }
 
 
