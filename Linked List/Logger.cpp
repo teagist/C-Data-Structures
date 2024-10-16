@@ -38,7 +38,7 @@ Logger::Logger(std::string newTest, std::string newVersion)
 //****************************************************************************
 void Logger::setTest(std::string newTest)
 {
-	m_test = newTest;
+    m_test = newTest;
 }
 
 
@@ -48,7 +48,7 @@ void Logger::setTest(std::string newTest)
 //****************************************************************************
 void Logger::setVersion(std::string newVersion)
 {
-	m_version = newVersion;
+    m_version = newVersion;
 }
 
 
@@ -58,9 +58,8 @@ void Logger::setVersion(std::string newVersion)
 //****************************************************************************
 void Logger::setPassingStatus(bool isSuccess)
 {
-	m_isPassing = isSuccess;
-	
-	setTitlebar();
+    m_isPassing = isSuccess;
+    setTitlebar();
 }
 
 
@@ -69,25 +68,25 @@ void Logger::setPassingStatus(bool isSuccess)
 //	NAME: readVersionInfo.
 //
 //	DESCRIPTION: Reads the version information from the text file.  If the
-//				 version file cannot be found, then the program terminates.    
+//		     version file cannot be found, then the program terminates.    
 //****************************************************************************
 void Logger::readVersionInfo()
 {
-	std::ifstream infile("versionInfo.txt");
+    std::ifstream infile("versionInfo.txt");
 	
-	if (infile.fail())
-	{
-		printStatusMessage("Version infomation file unable to be read", 1);
-		setPassingStatus(false);
-		setTitlebar();
-		printResult();
-		exit(1);
-	}
-	else
-	{
-		std::getline(infile, m_test);
-		std::getline(infile, m_version);	
-	}
+    if (infile.fail())
+    {
+	printStatusMessage("Version infomation file unable to be read", 1);
+	setPassingStatus(false);
+	setTitlebar();
+	printResult();
+	exit(1);
+    }
+    else
+    {
+	std::getline(infile, m_test);
+	std::getline(infile, m_version);	
+    }
 }
 
 
