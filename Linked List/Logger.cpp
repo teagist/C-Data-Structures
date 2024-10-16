@@ -10,26 +10,25 @@
 //****************************************************************************
 //	DEFAULT CONSTRUCTOR
 //****************************************************************************
-
 Logger::Logger(std::string newTest, std::string newVersion)
 {
-	m_test      = newTest;
-	m_version   = newVersion;
-	m_isPassing = true;
+    m_test      = newTest;
+    m_version   = newVersion;
+    m_isPassing = true;
     
     
-	/*std::time_t t = std::time(NULL);
-        std::tm* now = std::localtime(&t);
+    /*std::time_t t = std::time(NULL);
+    std::tm* now = std::localtime(&t);
 
-        // Format the date as YYYYMMDD
-        std::stringstream date_stream;
-        date_stream << (now->tm_year + 1900); // Year since 1900
-        date_stream << std::setw(2) << std::setfill('0') << (now->tm_mon + 1);
-        date_stream << std::setw(2) << std::setfill('0') << now->tm_mday; 
-        std::string date_str = date_stream.str();	
+    // Format the date as YYYYMMDD
+    std::stringstream date_stream;
+    date_stream << (now->tm_year + 1900); // Year since 1900
+    date_stream << std::setw(2) << std::setfill('0') << (now->tm_mon + 1);
+    date_stream << std::setw(2) << std::setfill('0') << now->tm_mday; 
+    std::string date_str = date_stream.str();	
     
-        std::string fileName = "log_file" + date_str + ".txt";
-	logFile.open(fileName);*/
+    std::string fileName = "log_file" + date_str + ".txt";
+    logFile.open(fileName);*/
 }
 
 
@@ -37,7 +36,6 @@ Logger::Logger(std::string newTest, std::string newVersion)
 //****************************************************************************
 //	SETTER FOR TEST NAME
 //****************************************************************************
-
 void Logger::setTest(std::string newTest)
 {
 	m_test = newTest;
@@ -48,7 +46,6 @@ void Logger::setTest(std::string newTest)
 //****************************************************************************
 //	SETTER FOR VERSION NAME
 //****************************************************************************
-
 void Logger::setVersion(std::string newVersion)
 {
 	m_version = newVersion;
@@ -59,7 +56,6 @@ void Logger::setVersion(std::string newVersion)
 //****************************************************************************
 //	SETTER FOR PASSING/FAILING STATUS
 //****************************************************************************
-
 void Logger::setPassingStatus(bool isSuccess)
 {
 	m_isPassing = isSuccess;
@@ -75,7 +71,6 @@ void Logger::setPassingStatus(bool isSuccess)
 //	DESCRIPTION: Reads the version information from the text file.  If the
 //				 version file cannot be found, then the program terminates.    
 //****************************************************************************
-
 void Logger::readVersionInfo()
 {
 	std::ifstream infile("versionInfo.txt");
@@ -105,7 +100,6 @@ void Logger::readVersionInfo()
 //				 displayed.  If the status is 1, and "error" tag will be 
 //				 displayed.    
 //****************************************************************************
-
 void Logger::printStatusMessage(const std::string& message, 
 			        const int& status) const
 {
@@ -150,7 +144,6 @@ void Logger::printStatusMessage(const std::string& message,
 //
 //	DESCRIPTION: Logs and prints the time and message.     
 //****************************************************************************
-
 void Logger::logEvent(const std::string& message, const int type) const
 {
 	std::cout << "[";
@@ -181,7 +174,6 @@ void Logger::logEvent(const std::string& message, const int type) const
 //				 Each log header contains the test name with the date and 
 //				 time.  
 //****************************************************************************
-
 void Logger::printLineHeader() const
 {
 	std::cout << "[";
@@ -196,7 +188,6 @@ void Logger::printLineHeader() const
 //
 //	DESCRIPTION: Method to print the current date and time.   
 //****************************************************************************
-
 void Logger::printTime() const
 {
     // Get the current time using time_t
@@ -224,7 +215,6 @@ void Logger::printTime() const
 //				 in the titlebar of the executable window.  It will also
 //				 display the pass/fail status of the test.      
 //****************************************************************************
-
 void Logger::setTitlebar() const
 {
 	std::stringstream title;
@@ -249,7 +239,6 @@ void Logger::setTitlebar() const
 //
 //	DESCRIPTION: Method to print the final result of the test.     
 //****************************************************************************
-
 void Logger::printResult() const
 {
 	std::cout << std::endl;
