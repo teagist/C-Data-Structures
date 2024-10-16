@@ -85,7 +85,7 @@ void LinkedList<T>::InsertAtHead(const T key)
 
 
 //****************************************************************************
-//		Method to insert a node at the end of the list.  If memory cannot 
+//	    Method to insert a node at the end of the list.  If memory cannot 
 //	be allocated, an appropriate message will be displayed.  Otherwise,
 //	the new key will be inserted at the end of the list.  The cursor will
 //	be updated to point to the new node.  
@@ -97,30 +97,30 @@ void LinkedList<T>::InsertAtHead(const T key)
 template <class T>
 void LinkedList<T>::InsertAtTail(const T key)
 {
-	try
-	{
-		Node<T>* tail = new Node<T>(key, NULL);
-		cursor = tail;
+    try
+    {
+	Node<T>* tail = new Node<T>(key, NULL);
+	cursor = tail;
 		
-		if (head != NULL)
-		{
-			Node<T>* temp = head;
-			while (temp->next != NULL)
-			{
-				temp = temp->next;
-			}
-
-			temp->next = tail;
-		}
-		else
-		{
-			head = tail;
-		}
-	}
-	catch (bad_alloc& ex)
+	if (head != NULL)
 	{
-		cerr << "Failed to insert " << key << " into the List." << endl;
+	    Node<T>* temp = head;
+	    while (temp->next != NULL)
+	    {
+		temp = temp->next;
+	    }
+
+	    temp->next = tail;
 	}
+	else
+	{
+	    head = tail;
+	}
+    }
+    catch (bad_alloc& ex)
+    {
+	cerr << "Failed to insert " << key << " into the List." << endl;
+    }
 }
 
 
