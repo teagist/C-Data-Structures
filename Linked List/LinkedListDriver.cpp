@@ -23,7 +23,7 @@
 //	use or other dealings in the Software.
 //
 //	DISCLAIMER: This program uses system calls that will only work on 
-//				Windows operating system.
+//		    Windows operating system.
 //****************************************************************************
 
 #include "LinkedList.h"
@@ -56,12 +56,11 @@ int main()
 
 
 //****************************************************************************
-//		Function to prompt the user to select automatic test or manaul.
+//        Function to prompt the user to select automatic test or manaul.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 void getManualOrAuto()
 {
     char userEntry;
@@ -117,7 +116,6 @@ void getManualOrAuto()
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 void printMenu()
 {
     cout << " ___________________________________" << endl;
@@ -140,7 +138,7 @@ void printMenu()
 
 
 //****************************************************************************
-//		This function will prompt and accept the user's choice.  If the
+//	    This function will prompt and accept the user's choice.  If the
 //	choice is invalid, a message will be displayed.  Otherwise, the action
 //	will be executed and the updated list will be displayed along with the
 //	menu.  The user will continue to be prompted until they enter the 
@@ -149,140 +147,144 @@ void printMenu()
 //	Parameters:
 //		myList: a templated Linked List.
 //****************************************************************************
-
 template <class T> 
 void choose(LinkedList<T>& myList)
 {
-	char   choice = 'A';
-	bool   hasInserted = false;
-	T      key;
+    char choice = 'A';
+    bool hasInserted = false;
+    T    key;
 	
-	cout << "\nLinked List>> ";
-	cin >> choice;
+    cout << "\nLinked List>> ";
+    cin >> choice;
 	
-	while (choice != 'q' || choice != 'Q')
+    while (choice != 'q' || choice != 'Q')
+    {
+	switch(choice)
 	{
-		switch(choice)
-		{
-			case '+':
-				validateInput(key);
-				myList.Insert(key);
+	    case '+':
+	        validateInput(key);
+		myList.Insert(key);
 				
-				hasInserted = true;
-				break;
+		hasInserted = true;
+		break;
 				
-			case '*':
-				validateInput(key);
-				myList.InsertAtHead(key);
+	    case '*':
+		validateInput(key);
+		myList.InsertAtHead(key);
 				
-				hasInserted = true;
-				break;
+		hasInserted = true;
+		break;
 				
-			case '#':
-				validateInput(key);
-				myList.InsertAtTail(key);
+	    case '#':
+		validateInput(key);
+		myList.InsertAtTail(key);
 				
-				hasInserted = true;
-				break;
+		hasInserted = true;
+		break;
 
-			case '-':
-				if (hasInserted)
-				{
-					validateInput(key);
-					myList.Remove(key);
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the list." << endl;
-					system("pause");					
-				}
-				break;
-				
-			case '~':
-				if (hasInserted)
-					myList.RemoveAtHead();
-				else
-				{
-					cerr << "\nPlease insert data into the list." << endl;
-					system("pause");					
-				}
-				break;
-				
-				
-				case '`':
-				if (hasInserted)
-					myList.RemoveAtTail();
-				else
-				{
-					cerr << "\nPlease insert data into the list." << endl;
-					system("pause");					
-				}
-				break;
-
-			case '?':
-				if (hasInserted)
-				{
-					validateInput(key);
-					myList.Search(key);
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the list." << endl;
-					system("pause");					
-				}
-				break;
-				
-			case 's': case 'S':
-				if (hasInserted)
-					myList.Sort();
-				else
-				{
-					cerr << "\nPlease insert data into the list." << endl;
-					system("pause");
-				}
-				break;
-
-			case '@':
-				if (hasInserted)
-				{
-					myList.PrintCursor();
-					cout << endl;
-					system("pause");
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the list." << endl;
-					system("pause");					
-				}
-				break;
-
-			case 'd': case 'D':
-				myList.~LinkedList();
-				hasInserted = false;
-				break;  
-
-			case 'q': case 'Q':
-				exit(1);
-
-			default:
-				cerr << "Invalid option, please try again." << endl;
-				system("pause");
-				break;
-		}
-		system("cls");
-		printMenu();
-		cout << endl;
-		
+	    case '-':
 		if (hasInserted)
 		{
-			myList.Print();
-			cout << endl << endl;
+		    validateInput(key);
+		    myList.Remove(key);
 		}
-			
-		cout << "Linked List>> ";
-		cin >> choice;
+		else
+		{
+		    cerr << "\nPlease insert data into the list." << endl;
+		    system("pause");					
+		}
+		break;
+				
+	    case '~':
+		if (hasInserted)
+		{
+		    myList.RemoveAtHead();
+		}
+		else
+		{
+		    cerr << "\nPlease insert data into the list." << endl;
+		    system("pause");					
+		}
+		break;
+				
+				
+	    case '`':
+		if (hasInserted)
+		{
+		     myList.RemoveAtTail();
+		}
+		else
+		{
+		    cerr << "\nPlease insert data into the list." << endl;
+		    system("pause");					
+		}
+		break;
+
+	    case '?':
+		if (hasInserted)
+		{
+		    validateInput(key);
+		    myList.Search(key);
+		    system("pause");
+		}
+		else
+		{
+		    cerr << "\nPlease insert data into the list." << endl;
+		    system("pause");					
+		}
+		break;
+				
+	    case 's': case 'S':
+		if (hasInserted)
+		{
+		    myList.Sort();
+		}
+		else
+		{
+		    cerr << "\nPlease insert data into the list." << endl;
+		    system("pause");
+		}
+		break;
+
+	    case '@':
+		if (hasInserted)
+		{
+		    myList.PrintCursor();
+		    cout << endl;
+		    system("pause");
+		}
+		else
+		{
+		    cerr << "\nPlease insert data into the list." << endl;
+		    system("pause");					
+		}
+		break;
+
+	    case 'd': case 'D':
+		myList.~LinkedList();
+		hasInserted = false;
+		break;  
+
+	    case 'q': case 'Q':
+		exit(1);
+
+	    default:
+		cerr << "Invalid option, please try again." << endl;
+		system("pause");
+		break;
+	}
+	system("cls");
+	printMenu();
+	cout << endl;
+		
+	if (hasInserted)
+	{
+	    myList.Print();
+	    cout << endl << endl;
 	}	
+	cout << "Linked List>> ";
+	cin >> choice;
+    }	
 }
 /* End of choose function */
 
@@ -298,7 +300,6 @@ void choose(LinkedList<T>& myList)
 //	Parameters:
 //		value: the value entered by the user.
 //****************************************************************************
-
 template <class T>
 T validateInput(T &value)
 {
