@@ -418,30 +418,29 @@ void LinkedList<T>::Print() const
 
 
 //****************************************************************************
-//		Method to print the data of the node that the cursor pointer 
+//	    Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::PrintCursor() const
 {
-	if (cursor)
-	{
-		cout << "[" << cursor->data << "]" << endl;
-	}
-	else
-	{
-		cout << "[]" << endl;
-	}
+    if (cursor)
+    {
+	cout << "[" << cursor->data << "]" << endl;
+    }
+    else
+    {
+	cout << "[]" << endl;
+    }
 }
 
 
 
 //****************************************************************************
-//		Function to return the first value, or head, of the list.  
+//	Function to return the first value, or head, of the list.  
 //
 //	Parameters:
 //		N/A.
@@ -449,48 +448,46 @@ void LinkedList<T>::PrintCursor() const
 template <class T>
 T LinkedList<T>::getHeadValue() const
 {
-	if (head)
-	{
-		return head->data;
-	}
-	else
-	{
-		return (T)NULL;
-	}
+    if (head)
+    {
+	return head->data;
+    }
+    else
+    {
+	return (T)NULL;
+    }
 }
 
 
 
 
 //****************************************************************************
-//		Function to return the last value, or tail, of the list.  
+//	Function to return the last value, or tail, of the list.  
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 T LinkedList<T>::getTailValue() const
 {
-	Node<T>* temp = head; 
-	
-	while (temp != NULL)
+    Node<T>* temp = head; 
+
+    while (temp != NULL)
+    {
+	if (temp->next == NULL)
 	{
-		if (temp->next == NULL)
-		{
-			return temp->data;
-		}
-		temp = temp->next;
+	    return temp->data;
 	}
+	temp = temp->next;
+    }
 }
     
 
 
 
 //****************************************************************************
-//		Copy Constructor.
+//	Copy Constructor.
 //****************************************************************************
-
 template<class T>
 LinkedList<T>::LinkedList(const LinkedList<T>& myList)
 {
