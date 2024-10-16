@@ -344,7 +344,7 @@ void LinkedList<T>::Sort()
 
 
 //****************************************************************************
-//		Clear method calls the linked list destructor.
+//	Clear method calls the linked list destructor.
 //
 //	Parameters:
 //		N/A.
@@ -353,15 +353,15 @@ void LinkedList<T>::Sort()
 template<class T>
 void LinkedList<T>::Clear()
 {
-	while (head != NULL)
-	{
-		Node<T>* temp = head;
-		head = head->next;
-		delete temp;
-	}
+    while (head != NULL)
+    {
+        Node<T>* temp = head;
+	head = head->next;
+	delete temp;
+    }
 	
-	cursor = NULL;
-	head   = NULL;
+    cursor = NULL;
+    head   = NULL;
 }
 
 
