@@ -514,51 +514,49 @@ LinkedList<T>::LinkedList(const LinkedList<T>& myList)
 
 
 //****************************************************************************
-//		Assignment Operator.
+//	Assignment Operator.
 //****************************************************************************
-
 template<class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& myList)
 {
-	if (myList.head == head)
-	{
-		return *this;
-	}
-		
-	this->~LinkedList();
-
-	if (!myList.head)
-	{ 
-		head = NULL; 
-		return *this;
-	}
-	
-	head = new Node<T>(myList.head->data);
-
-	Node<T> *oldtemp = myList.head->next;
-	Node<T> *newtemp = head;
-	
-	while (oldtemp)
-	{
-		newtemp->next = new Node<T>(oldtemp->data);
-		newtemp=newtemp->next;
-		oldtemp=oldtemp->next;		
-	}
+    if (myList.head == head)
+    {
 	return *this;
+    }
+ 	
+    this->~LinkedList();
+
+    if (!myList.head)
+    { 
+	head = NULL; 
+	return *this;
+    }
+	
+    head = new Node<T>(myList.head->data);
+
+    Node<T> *oldtemp = myList.head->next;
+    Node<T> *newtemp = head;
+	
+    while (oldtemp)
+    {
+	newtemp->next = new Node<T>(oldtemp->data);
+	newtemp=newtemp->next;
+	oldtemp=oldtemp->next;		
+    }
+    return *this;
 }
 
 
 
 
 //****************************************************************************
-//		Destructor.
+//	Destructor.
 //****************************************************************************
-
 template<class T>
 LinkedList<T>::~LinkedList()
 {
     while(head)
-	{   
+    {   
         Node<T>* temp = head->next;
         delete head;
         head = temp;
