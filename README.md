@@ -4,3 +4,6 @@ This repo hosts the data structures that I've templated in C++.  Some of these w
 
 The main goal here for each structure is to make it, template it, have a driver for the user to manually test the functionality, have an automatic test file that ensures 
 the fully working nature of the structure, and finally some semi real world simulated issue that the data structure can be used in.  
+
+## Update Log
+Linked List: 
