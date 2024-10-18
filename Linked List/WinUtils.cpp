@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Implementation File for Windows Utils
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 1/15/2024
+//	Last Compiled Date: 10/17/2024
 //****************************************************************************
 
 #include "WinUtils.h"
@@ -13,7 +13,6 @@
 //	DESCRIPTION: Delays the booting of the system while displaying the 
 //				 booting information.  
 //****************************************************************************
-
 void WinUtils::delayBoot(int bootSeconds)
 {
 	std::string clk[4] = {"booting...|",
@@ -55,14 +54,12 @@ void WinUtils::delayBoot(int bootSeconds)
 }
 
 
-
 //****************************************************************************
 //	NAME: wait.
 //
 //	DESCRIPTION: Places a wait on the program until the number of seconds
 //				 have been exhausted.  
 //****************************************************************************
-
 void WinUtils::wait(int seconds)
 {
 	time_t currentSeconds = time(NULL);
@@ -82,21 +79,21 @@ void WinUtils::wait(int seconds)
 }
 
 
-
 //****************************************************************************
 //	NAME: pauseScreen.
 //
 //	DESCRIPTION: Pauses the program an prompts the user to press the <enter>
 //				 key to continue.
 //****************************************************************************
-
 void WinUtils::pauseScreen()
 {
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	
 	std::string entry = "";
 	std::cout << "Please press <enter> to continue..." << std::endl;
 	std::getline(std::cin, entry);
 }
-
 
 
 //****************************************************************************
@@ -105,7 +102,6 @@ void WinUtils::pauseScreen()
 //	DESCRIPTION: This function displays the hardware information of the 
 //				 machine running the system.  
 //****************************************************************************
-
 void WinUtils::printHardwareDetails()
 {
 #ifdef _WIN32 
@@ -124,14 +120,12 @@ void WinUtils::printHardwareDetails()
 }
 
 
-
 //****************************************************************************
 //	NAME: printOSDetails.
 //
 //	DESCRIPTION: This function displays the operating system information of
 //				 the machine running the system.
 //****************************************************************************
-
 void WinUtils::printOSDetails()
 {
 #ifdef _WIN32
@@ -146,14 +140,12 @@ void WinUtils::printOSDetails()
 }
 
 
-
 //****************************************************************************
 //	NAME: printUIBanner.
 //
 //	DESCRIPTION: Displays a block of text that will alert the user that 
 //				 their input is needed.  
 //****************************************************************************
-
 void WinUtils::printUIBanner()
 {
 	HANDLE hConsole;
@@ -170,7 +162,6 @@ void WinUtils::printUIBanner()
 	std::cout << stars << stars << std::endl;
 	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
 }
-
 
 
 //****************************************************************************
@@ -195,7 +186,6 @@ void WinUtils::printInvalidUIBanner()
 	std::cout << stars << stars << std::endl;
 	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
 }
-
 
 
 //****************************************************************************
@@ -230,7 +220,6 @@ int WinUtils::getUserInput()
 }
 
 
-
 //****************************************************************************
 //	NAME: getYesOrNo.
 //
@@ -239,7 +228,6 @@ int WinUtils::getUserInput()
 //				 entry is invalid, a message will be displayed.  Otherwise,
 //				 the value will be returned to the caller.
 //****************************************************************************
-
 int WinUtils::getYesOrNo(std::string prompt)
 {
     char userEntry;

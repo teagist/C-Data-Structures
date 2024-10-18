@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Driver File for Templated Linked List
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 1/15/2024
+//	Last Compiled Date: 10/17/2024
 //
 //	Copyright (c) 2024 Houston Brown
 //
@@ -37,7 +37,7 @@ void getManualOrAuto();
 void printMenu();
 
 template <class T> 
-void choose(LinkedList<T>& myList);
+void choose(LinkedList<T> &myList);
 
 template <class T>
 T validateInput(T &value);
@@ -53,15 +53,15 @@ int main()
 
 
 
-
-
 //****************************************************************************
-//		Function to prompt the user to select automatic test or manaul.
+//	NAME: getManualOrAuto.
 //
-//	Parameters:
+//	DESCRIPTION: Function to prompt the user to select automatic test or 
+//				 manaul.
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 void getManualOrAuto()
 {
 	char userEntry;
@@ -109,49 +109,56 @@ void getManualOrAuto()
 }
 
 
-
-
 //****************************************************************************
-//		Function to display the available options to the user.
+//	NAME: printMenu.
 //
-//	Parameters:
+//	DESCRIPTION: Function to display the available options to the user.
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 void printMenu()
 {
-	cout << " ___________________________________" << endl;
-	cout << "| +Key  | Insert Item In Order      |" << endl;
-	cout << "| *Key  | Insert Item at the Front  |" << endl;
-	cout << "| #Key  | Insert Item at the End    |" << endl;
-	cout << "| -Key  | Remove Item               |" << endl;
-	cout << "| ~     | Remove Item at the Front  |" << endl;
-	cout << "| `     | Remove Item at the End    |" << endl;
-	cout << "| ?Key  | Search Item               |" << endl;
-	cout << "| S     | Sort the List             |" << endl;
-	cout << "| @     | Print Cursor Value        |" << endl;
-	cout << "| D     | Delete the List           |" << endl;
-	cout << "|_______|___________________________|" << endl << endl;
-    cout << "Please choose an operation to perform on the list." << endl;
-    cout << "Enter Q to quit." << endl;	
+    std::cout << " ______________________________________________________________________";
+    std::cout << std::endl;
+    
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 47);
+
+    std::cout << "|                 |                   |               |                |" << std::endl;
+    std::cout << "|     INSERT      |       DELETE      |     PRINT     |     CURSOR     |" << std::endl;
+    std::cout << "|_________________|___________________|_______________|________________|" << std::endl;
+    
+    SetConsoleTextAttribute(hConsole, 7);
+    
+    std::cout << "| +Key   In Order | -Key   Item       | F   to File   | @      Current |" << std::endl;
+    std::cout << "| *Key   At Front | ~      At Front   | L   in Lines  | ?Key   Search  |" << std::endl;
+    std::cout << "| #Key   At End   | `      At End     | B   Sort List | W      Up      |" << std::endl;
+    std::cout << "|                 | C      Clear List | G   Size      | S      Down    |" << std::endl;
+    std::cout << "|_________________|___________________|_______________|________________|" << std::endl;
+    std::cout << "Please choose an operation to perform on the list." << std::endl;
+    std::cout << "Enter E to exit." << std::endl;	
+    
+
 }
 
 
-
-
 //****************************************************************************
-//		This function will prompt and accept the user's choice.  If the
-//	choice is invalid, a message will be displayed.  Otherwise, the action
-//	will be executed and the updated list will be displayed along with the
-//	menu.  The user will continue to be prompted until they enter the 
-//	stopping condition.
+//	NAME: choose.
 //
-//	Parameters:
+//	DESCRIPTION: This function will prompt and accept the user's choice.  
+//	             If the choice is invalid, a message will be displayed.  
+//	             Otherwise, the action will be executed and the updated list 
+//	             will be displayed along with the menu.  The user will 
+//	             continue to be prompted until they enter the  stopping 
+//				 condition.
+//
+//	PARAMETERS:
 //		myList: a templated Linked List.
 //****************************************************************************
-
 template <class T> 
-void choose(LinkedList<T>& myList)
+void choose(LinkedList<T> &myList)
 {
 	char   choice = 'A';
 	bool   hasInserted = false;
@@ -194,6 +201,7 @@ void choose(LinkedList<T>& myList)
 				else
 				{
 					cerr << "\nPlease insert data into the list." << endl;
+					WinUtils::pauseScreen();
 					system("pause");					
 				}
 				break;
@@ -233,9 +241,11 @@ void choose(LinkedList<T>& myList)
 				}
 				break;
 				
-			case 's': case 'S':
+			case 'b': case 'B':
 				if (hasInserted)
+				{
 					myList.Sort();
+				}
 				else
 				{
 					cerr << "\nPlease insert data into the list." << endl;
@@ -257,12 +267,80 @@ void choose(LinkedList<T>& myList)
 				}
 				break;
 
-			case 'd': case 'D':
+			case 'c': case 'C':
 				myList.~LinkedList();
 				hasInserted = false;
 				break;  
 
-			case 'q': case 'Q':
+			case 'f': case 'F':
+				if (hasInserted)
+				{
+					myList.PrintToFile();
+				}
+				else
+				{
+					std::cerr << "\nPlease insert data into the list.";
+					std::cerr << std::endl;
+					WinUtils::pauseScreen();
+				}
+				break; 
+				
+			case 'l': case 'L':
+				if (hasInserted)
+				{
+					std::cout << std::endl;
+					myList.PrintInLines();
+					std::cout << std::endl;
+				}
+				else
+				{
+					std::cerr << "\nPlease insert data into the list.";
+					std::cerr << std::endl;
+				}
+				WinUtils::pauseScreen();
+				break; 
+				
+			case 'g': case 'G':
+				if (hasInserted)
+				{
+					std::cout << "Current list size: " << myList.getSize();
+					std::cout << std::endl;
+				}
+				else
+				{
+					std::cerr << "\nPlease insert data into the list.";
+					std::cerr << std::endl;
+				}
+				WinUtils::pauseScreen();
+				break; 
+				
+			case 'w': case 'W':
+				if (hasInserted)
+				{
+					myList.moveCursorUp();
+				}
+				else
+				{
+					std::cerr << "\nPlease insert data into the list.";
+					std::cerr << std::endl;
+					WinUtils::pauseScreen();
+				}
+				break; 
+				
+			case 's': case 'S':
+				if (hasInserted)
+				{
+					myList.moveCursorDown();
+				}
+				else
+				{
+					std::cerr << "\nPlease insert data into the list.";
+					std::cerr << std::endl;
+					WinUtils::pauseScreen();
+				}
+				break; 															
+
+			case 'e': case 'E':
 				exit(1);
 
 			default:
@@ -287,25 +365,27 @@ void choose(LinkedList<T>& myList)
 /* End of choose function */
 
 
-
-
 //****************************************************************************
-//		This function will validate the input from the user.  If the user
-//	enters an invalid option for the value, then a message will be displayed
-//	and the user will be asked to try again.  Otherwise, the function will
-//	return the value to the caller.
+//	NAME: validateInput.
 //
-//	Parameters:
+//	DESCRIPTION: This function will validate the input from the user.  If 
+//				 the user enters an invalid option for the value, then a 
+//				 message will be displayed and the user will be asked to try 
+//				 again.  Otherwise, the function will return the value to 
+//				 the caller.
+//
+//	PARAMETERS:
 //		value: the value entered by the user.
 //****************************************************************************
-
 template <class T>
 T validateInput(T &value)
 {
 	while (true)
 	{
 		if (cin >> value)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();

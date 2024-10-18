@@ -1,16 +1,15 @@
 //****************************************************************************
 //	Implementation File for Logger Class
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 1/15/2024
+//	Last Compiled Date: 10/17/2024
 //****************************************************************************
 
 #include "Logger.h"
 
 
 //****************************************************************************
-//	DEFAULT CONSTRUCTOR
+//	CONSTRUCTOR.
 //****************************************************************************
-
 Logger::Logger(std::string newTest, std::string newVersion)
 {
 	m_test      = newTest;
@@ -33,33 +32,27 @@ Logger::Logger(std::string newTest, std::string newVersion)
 }
 
 
-
 //****************************************************************************
-//	SETTER FOR TEST NAME
+//	SETTER FOR TEST NAME.
 //****************************************************************************
-
 void Logger::setTest(std::string newTest)
 {
 	m_test = newTest;
 }
 
 
-
 //****************************************************************************
-//	SETTER FOR VERSION NAME
+//	SETTER FOR VERSION NAME.
 //****************************************************************************
-
 void Logger::setVersion(std::string newVersion)
 {
 	m_version = newVersion;
 }
 
 
-
 //****************************************************************************
-//	SETTER FOR PASSING/FAILING STATUS
+//	SETTER FOR PASSING/FAILING STATUS.
 //****************************************************************************
-
 void Logger::setPassingStatus(bool isSuccess)
 {
 	m_isPassing = isSuccess;
@@ -68,14 +61,12 @@ void Logger::setPassingStatus(bool isSuccess)
 }
 
 
-
 //****************************************************************************
 //	NAME: readVersionInfo.
 //
 //	DESCRIPTION: Reads the version information from the text file.  If the
 //				 version file cannot be found, then the program terminates.    
 //****************************************************************************
-
 void Logger::readVersionInfo()
 {
 	std::ifstream infile("versionInfo.txt");
@@ -96,7 +87,6 @@ void Logger::readVersionInfo()
 }
 
 
-
 //****************************************************************************
 //	NAME: printStatusMessage.
 //
@@ -105,9 +95,8 @@ void Logger::readVersionInfo()
 //				 displayed.  If the status is 1, and "error" tag will be 
 //				 displayed.    
 //****************************************************************************
-
 void Logger::printStatusMessage(const std::string& message, 
-													const int& status) const
+                                const int& status) const
 {
 	if (status == OK)
 	{
@@ -144,13 +133,11 @@ void Logger::printStatusMessage(const std::string& message,
 }
 
 
-
 //****************************************************************************
-//	NAME: log.
+//	NAME: logEvent.
 //
 //	DESCRIPTION: Logs and prints the time and message.     
 //****************************************************************************
-
 void Logger::logEvent(const std::string& message, const int type) const
 {
 	std::cout << "[";
@@ -173,7 +160,6 @@ void Logger::logEvent(const std::string& message, const int type) const
 }
 
 
-
 //****************************************************************************
 //	NAME: printLineHeader.
 //
@@ -181,7 +167,6 @@ void Logger::logEvent(const std::string& message, const int type) const
 //				 Each log header contains the test name with the date and 
 //				 time.  
 //****************************************************************************
-
 void Logger::printLineHeader() const
 {
 	std::cout << "[";
@@ -190,13 +175,11 @@ void Logger::printLineHeader() const
 }
 
 
-
 //****************************************************************************
 //	NAME: printTime.
 //
 //	DESCRIPTION: Method to print the current date and time.   
 //****************************************************************************
-
 void Logger::printTime() const
 {
     // Get the current time using time_t
@@ -216,7 +199,6 @@ void Logger::printTime() const
 }
 
 
-
 //****************************************************************************
 //	NAME: setTitlebar.
 //
@@ -224,7 +206,6 @@ void Logger::printTime() const
 //				 in the titlebar of the executable window.  It will also
 //				 display the pass/fail status of the test.      
 //****************************************************************************
-
 void Logger::setTitlebar() const
 {
 	std::stringstream title;
@@ -243,13 +224,11 @@ void Logger::setTitlebar() const
 }
 
 
-
 //****************************************************************************
 //	NAME: printResult.
 //
 //	DESCRIPTION: Method to print the final result of the test.     
 //****************************************************************************
-
 void Logger::printResult() const
 {
 	std::cout << std::endl;

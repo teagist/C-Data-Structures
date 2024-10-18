@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Header File for Windows Utils
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 1/15/2024
+//	Last Compiled Date: 10/17/2024
 //****************************************************************************
 
 #ifndef _WIN_UTILS_H

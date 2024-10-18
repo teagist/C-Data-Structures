@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Implementation File for Linked List Test
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 1/15/2024
+//	Last Compiled Date: 10/17/2024
 //****************************************************************************
 
 #include "TestLinkedList.h"
@@ -11,7 +11,6 @@
 //****************************************************************************
 //	CONSTRUCTOR.   
 //****************************************************************************
-
 template <class U>
 TestLinkedList<U>::TestLinkedList()
 {
@@ -28,7 +27,6 @@ TestLinkedList<U>::TestLinkedList()
 //	DESCRIPTION: Return the max number of possible nodes that can be 
 //				 allocated.   
 //****************************************************************************
-
 template <class U>
 int TestLinkedList<U>::getMaxPossibleListNodes()
 {
@@ -62,7 +60,6 @@ int TestLinkedList<U>::getMaxPossibleListNodes()
 //
 //	DESCRIPTION: Print the preliminary information about the test.  
 //****************************************************************************
-
 template <class U>
 void TestLinkedList<U>::printTestInfoHeader()
 {
@@ -101,7 +98,6 @@ void TestLinkedList<U>::printTestInfoHeader()
 //	DESCRIPTION: The purpose of this function is to load the lsit with 100
 //				 items.  
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::bulkInsert()
 {
@@ -136,7 +132,6 @@ bool TestLinkedList<U>::bulkInsert()
 //
 //	DESCRIPTION: This method will run all of the subtests for the test case. 
 //****************************************************************************
-
 template <class U>
 void TestLinkedList<U>::runTests()
 {
@@ -204,7 +199,6 @@ void TestLinkedList<U>::runTests()
 //	DESCRIPTION: Test method that will fill the list, and attempt to insert
 //				 a value "in-order".  
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testInOrderInsert()
 {
@@ -291,7 +285,6 @@ bool TestLinkedList<U>::testInOrderInsert()
 //				 of the list.  If the item becomes the new head of the list,
 //				 then the test will pass.  Otherwise, it will fail.
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testInsertAtHead()
 {
@@ -363,7 +356,6 @@ bool TestLinkedList<U>::testInsertAtHead()
 //				 of the list.  If the item becomes the new tail of the list,
 //				 then the test will pass.  Otherwise, it will fail. 
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testInsertAtTail()
 {
@@ -435,7 +427,6 @@ bool TestLinkedList<U>::testInsertAtTail()
 //				 attempt to delete the middle value.  If this is successful,
 //				 the test will pass, otherwise it will fail.  
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testRemove()
 {
@@ -529,7 +520,6 @@ bool TestLinkedList<U>::testRemove()
 //	DESCRIPTION: Test method that will attempt to remove items from the head
 //				 of the list.  
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testRemoveFromHead()
 {
@@ -626,7 +616,6 @@ bool TestLinkedList<U>::testRemoveFromHead()
 //	DESCRIPTION: Test method that will attempt to remove items from the tail
 //				 of the list.   
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testRemoveFromTail()
 {
@@ -723,7 +712,6 @@ bool TestLinkedList<U>::testRemoveFromTail()
 //	DESCRIPTION: Test method that will attempt to search for a value in an
 //				 empty list.  
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testEmptyListSearch()
 {
@@ -779,7 +767,6 @@ bool TestLinkedList<U>::testEmptyListSearch()
 //	DESCRIPTION: Test method to search the list for a value that is not in
 //				 the list.  
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testNotFoundSearch()
 {
@@ -848,7 +835,6 @@ bool TestLinkedList<U>::testNotFoundSearch()
 //
 //	DESCRIPTION: Test method that will search for the head value of the list.
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testAtHeadSearch()
 {
@@ -916,7 +902,6 @@ bool TestLinkedList<U>::testAtHeadSearch()
 //
 //	DESCRIPTION: Test method that will search for the tail value of the list.
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testAtTailSearch()
 {
@@ -986,7 +971,6 @@ bool TestLinkedList<U>::testAtTailSearch()
 //				 attempt to search for them.  If the item is detected, the 
 //				 test will pass.  Otherwise, the test will fail. 
 //****************************************************************************
-
 template <class U>
 bool TestLinkedList<U>::testSearch()
 {

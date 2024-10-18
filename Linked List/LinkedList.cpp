@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Implementation File for Templated Linked List
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 1/15/2024
+//	Last Compiled Date: 10/17/2024
 //****************************************************************************
 
 #include "LinkedList.h"
@@ -10,15 +10,16 @@
 
 
 //****************************************************************************
-//		Method to insert a node in order of the list.  If memory cannot 
-//	be allocated, an appropriate message will be displayed.  Otherwise,
-//	the new key will be inserted.  The cursor will be updated to point to 
-//	the new node.  
+//	NAME: Insert.
 //
-//	Parameters:
+//	DESCRIPTION: Method to insert a node in order of the list.  If memory
+//	            cannot be allocated, an appropriate message will be
+//	            displayed.  Otherwise, the new key will be inserted.  The
+//	            cursor will be updated to point to  the new node. 
+//
+//	PARAMETERS:
 //		key: the value to be inserted into the list.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::Insert(const T key)
 {	
@@ -30,6 +31,7 @@ void LinkedList<T>::Insert(const T key)
 			curr = new Node<T>(key, head);
 			head = curr;
 			cursor = curr;
+			size = size + 1;
 		}
 		catch (bad_alloc& ex)
 		{
@@ -39,13 +41,16 @@ void LinkedList<T>::Insert(const T key)
 	
 	else 
 	{
-		while(curr->next != NULL && curr->next->data < key)                                                       
+		while(curr->next != NULL && curr->next->data < key)  
+		{                                                   
 			curr = curr->next;
+		}
 		
 		try
 		{
 			curr->next = new Node<T>(key, curr->next);
 			cursor = curr->next;
+			size = size + 1;
 		}
 		catch (bad_alloc& ex)
 		{
@@ -55,18 +60,17 @@ void LinkedList<T>::Insert(const T key)
 }
 
 
-
-
 //****************************************************************************
-//		Method to insert a node at the front of the list.  If memory cannot 
-//	be allocated, an appropriate message will be displayed.  Otherwise,
-//	the new key will be inserted.  The cursor will be updated to point to 
-//	the new node.  
+//	NAME: InsertAtHead.
 //
-//	Parameters:
+//	DESCRIPTION: Method to insert a node at the front of the list.  If 
+//	             memory cannot  be allocated, an appropriate message will 
+//	             be displayed.  Otherwise, the new key will be inserted.   
+//	             The cursor will be updated to point to the new node.  
+//
+//	PARAMETERS:
 //		key: the value to be inserted into the list.
 //****************************************************************************
-
 template<class T>
 void LinkedList<T>::InsertAtHead(const T key)
 {
@@ -74,6 +78,7 @@ void LinkedList<T>::InsertAtHead(const T key)
 	{
 		head = new Node<T>(key, head);
 		cursor = head;
+		size = size + 1;
 	}
 	catch (bad_alloc& ex)
 	{
@@ -82,18 +87,18 @@ void LinkedList<T>::InsertAtHead(const T key)
 }
 
 
-
-
 //****************************************************************************
-//		Method to insert a node at the end of the list.  If memory cannot 
-//	be allocated, an appropriate message will be displayed.  Otherwise,
-//	the new key will be inserted at the end of the list.  The cursor will
-//	be updated to point to the new node.  
+//	NAME: InsertAtTail.
 //
-//	Parameters:
+//	DESCRIPTION: Method to insert a node at the end of the list.  If memory  
+//	             cannot be allocated, an appropriate message will be
+//	             displayed.  Otherwise, the new key will be inserted at the 
+//	             end of the list.  The cursor will be updated to point to  
+//				 the new node. 
+//
+//	PARAMETERS:
 //		key: the value to be inserted into the list.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::InsertAtTail(const T key)
 {
@@ -114,6 +119,7 @@ void LinkedList<T>::InsertAtTail(const T key)
 		{
 			head = tail;
 		}
+		size = size + 1;
 	}
 	catch (bad_alloc& ex)
 	{
@@ -122,19 +128,19 @@ void LinkedList<T>::InsertAtTail(const T key)
 }
 
 
-
-
 //****************************************************************************
-//		Method to delete a node from the list.  If the list is empty, this
-//	method will return.  Otherwise, the list will be searched for the given
-//	key.  Once it has been found, it will be deleted and the cursor set
-//	to the node before it.  If key cannot be found, an appropriate message 
-//	will be displayed, and this method will return.  
+//	NAME: Remove.
 //
-//	Parameters:
+//	DESCRIPTION: Method to delete a node from the list.  If the list is 
+//	             empty, this method will return.  Otherwise, the list will 
+//	             be searched for the given key.  Once it has been found, it 
+//	             will be deleted and the cursor set to the node before it.  
+//	             If key cannot be found, an appropriate message  will be
+//				 displayed, and this method will return.  
+//
+//	PARAMETERS:
 //		key: the value to be deleted from the list.  
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::Remove(const T key)
 {
@@ -171,19 +177,22 @@ void LinkedList<T>::Remove(const T key)
     }
     
     delete curr;
+    curr = NULL;
+    
+    cursor = head;
+    size = size - 1;
 }
 
 
-
-
 //****************************************************************************
-//		Method to remove the node at the front of the list.  The cursor will
-//	point to the new head of the list.  
+//	NAME: RemoveAtHead.
 //
-//	Parameters:
+//	DESCRIPTION: Method to remove the node at the front of the list.  The 
+//	             cursor will point to the new head of the list.  
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template<class T>		
 void LinkedList<T>::RemoveAtHead()
 {
@@ -191,12 +200,12 @@ void LinkedList<T>::RemoveAtHead()
 	
 	if (head == NULL)
     {
-		//cerr << "The list is empty.  Please try again." << endl;
         return;	
 	}
 	
 	head = head->next;
 	delete curr;
+	curr = NULL;
 	
 	if (head != NULL)
 	{
@@ -206,19 +215,20 @@ void LinkedList<T>::RemoveAtHead()
 	{
 		cursor = NULL;
 	}
+	cursor = head;
+	size = size - 1;
 }
 
 
-
-
 //****************************************************************************
-//		Method will remove the node at the end of the list.  The cursor
-//	will point to the new tail of the list.
+//	NAME: RemoveAtTail.
 //
-//	Parameters:
+//	DESCRIPTION: Method will remove the node at the end of the list.  The 
+//	             cursor will point to the new tail of the list.
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::RemoveAtTail()
 {
@@ -240,31 +250,35 @@ void LinkedList<T>::RemoveAtTail()
 	if (prev == NULL)
     {
     	delete curr;
+    	curr = NULL;
     	head = NULL;
+    	cursor = head;
     }
     
     else
     {    
     	delete curr;
+    	curr = NULL;
     	prev->next = NULL;
 		cursor = prev;    
 	}
+	size = size - 1;
 }
 
 
-
-
 //****************************************************************************
-//		Method to search the list for a given key.  If the key is found, a
-//	message will be displayed and true returned.  Otherwise, an appropriate
-//	message will be displayed, and false will be returned.  If the value is
-//	found, the cursor will point to the node containing the key.  Otherwise
-//	the cursor will point to the head.
+//	NAME: Search.
 //
-//	Parameters:
+//	DESCRIPTION: Method to search the list for a given key.  If the key is 
+//	             found, a message will be displayed and true returned. 
+//	             Otherwise, an appropriate message will be displayed, and 
+//	             false will be returned.  If the value is found, the cursor 
+//	             will point to the node containing the key.  Otherwise the 
+//	             cursor will point to the head.
+//
+//	PARAMETERS:
 //		key: the value to be searched for.
 //****************************************************************************
-
 template<class T>
 bool LinkedList<T>::Search(const T key)
 {
@@ -281,16 +295,13 @@ bool LinkedList<T>::Search(const T key)
 		if(curr->data == key)
 		{
 			success = true;
-			//cout << key << " is in the list!" << endl;
 			cursor = curr;
 		}
 		curr = curr->next;
 	}
 
 	if(success == false)
-	{
-		//cout << key << " is not in the list" << endl;
-		
+	{		
 		if (head)
 		{
 			cursor = head;
@@ -303,16 +314,16 @@ bool LinkedList<T>::Search(const T key)
 }
 
 
-
-
 //****************************************************************************
-//		Method will sort the contents of the Linked List using a Bubble Sort
-//	algorithm.  At the end the cursor will point to the head of the list.
+//	NAME: Sort.
 //
-//	Parameters:
+//	DESCRIPTION: Method will sort the contents of the Linked List using a 
+//	             Bubble Sort algorithm.  At the end the cursor will point to 
+//				 the head of the list.
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::Sort()
 {
@@ -349,15 +360,14 @@ void LinkedList<T>::Sort()
 }
 
 
-
-
 //****************************************************************************
-//		Clear method calls the linked list destructor  .
+//	NAME: Clear.
 //
-//	Parameters:
+//	DESCRIPTION: Clear method calls the linked list destructor  .
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template<class T>
 void LinkedList<T>::Clear()
 {
@@ -373,17 +383,16 @@ void LinkedList<T>::Clear()
 }
 
 
-
-
 //****************************************************************************
-//		Method to print the contents of the list, within square brackets,
-//	and on one line.  Method will also print the square brackets around the
-//	cursor value.  
+//	NAME: Print.
 //
-//	Parameters:
+//	DESCRIPTION: Method to print the contents of the list, within square 
+//				 brackets, and on one line.  Method will also print the 
+//				 square brackets around the cursor value.  
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template<class T>
 void LinkedList<T>::Print() const
 {
@@ -401,7 +410,16 @@ void LinkedList<T>::Print() const
 		{
 			if (temp == cursor)
 			{
-				cout << "[" << temp->data << "]";
+				cout << "[";
+				
+				HANDLE hConsole;
+		    	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		    	SetConsoleTextAttribute(hConsole, 112);
+		    	
+				cout << cursor->data;
+				
+				SetConsoleTextAttribute(hConsole, 7);
+				cout << "]";				
 			}
 			else
 			{
@@ -412,7 +430,16 @@ void LinkedList<T>::Print() const
 		{
 			if (temp == cursor)
 			{
-				cout << "[" << temp->data << "], ";
+				cout << "[";
+				
+				HANDLE hConsole;
+		    	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		    	SetConsoleTextAttribute(hConsole, 112);
+		    	
+				cout << cursor->data;
+				
+				SetConsoleTextAttribute(hConsole, 7);
+				cout << "],";;				
 			}
 			else
 			{
@@ -426,22 +453,133 @@ void LinkedList<T>::Print() const
 }
 
 
+//****************************************************************************
+//	NAME: PrintInLines.
+//
+//	DESCRIPTION: Print the contents of the list one item per line.  
+//
+//	PARAMETERS: N/A.
+//****************************************************************************
+template <class T>
+void LinkedList<T>::PrintInLines() const
+{
+	Node<T> *temp = head;
+	
+	if(head == NULL)
+	{
+		return;
+	}
+
+	while(temp != NULL)
+	{
+		if (temp->next == NULL)
+		{
+			if (temp == cursor)
+			{
+				cout << "[";
+		
+				HANDLE hConsole;
+		    	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		    	SetConsoleTextAttribute(hConsole, 112);
+		    	
+				cout << cursor->data;
+				
+				SetConsoleTextAttribute(hConsole, 7);
+				cout << "]";
+				std::cout << std::endl;
+			}
+			else
+			{
+				cout << temp->data << endl;
+			}
+		}
+		else
+		{
+			if (temp == cursor)
+			{
+				cout << "[";
+				
+				HANDLE hConsole;
+		    	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		    	SetConsoleTextAttribute(hConsole, 112);
+		    	
+				cout << cursor->data;
+				
+				SetConsoleTextAttribute(hConsole, 7);
+				cout << "],";				
+			}
+			else
+			{
+				cout << temp->data << ", " << endl;
+			}
+		}
+			
+		temp = temp->next;
+	}
+}
 
 
 //****************************************************************************
-//		Method to print the data of the node that the cursor pointer 
-//	references.  If cursor is NULL, then '[]' will be displayed.
+//	NAME: PrintToFile.
 //
-//	Parameters:
+//	DESCRIPTION: Print the contents of the list to a text file.  
+//
+//	PARAMETERS: N/A.
+//****************************************************************************
+template <class T>
+void LinkedList<T>::PrintToFile() const
+{	
+	std::ofstream outfile("listContents.txt");
+	try
+	{
+		if (outfile.fail())
+		{
+			std::cerr << "Error: unable to open output file." << std::endl;
+		}
+	}
+	catch(...)
+	{
+		std::string errMsg = "Unexpected error caught while opening file.";
+		std::cerr << errMsg << std::endl;
+	}
+
+	int      ctr  = 1;
+	Node<T>* temp = head;
+	
+	while (temp)
+	{
+		outfile << ctr << ".) " << temp->data << std::endl;
+		temp = temp->next;
+		ctr = ctr + 1;
+	}
+	outfile.close();
+}
+
+
+//****************************************************************************
+//	NAME: PrintCursor.
+//
+//	DESCRIPTION: Method to print the data of the node that the cursor pointer 
+//				 references.  If cursor is NULL, then '[]' will be displayed.
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void LinkedList<T>::PrintCursor() const
 {
 	if (cursor)
 	{
-		cout << "[" << cursor->data << "]" << endl;
+		cout << "[";
+		
+		HANDLE hConsole;
+    	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    	SetConsoleTextAttribute(hConsole, 112);
+    	
+		cout << cursor->data;
+		
+		SetConsoleTextAttribute(hConsole, 7);
+		cout << "]" << endl;
 	}
 	else
 	{
@@ -450,11 +588,72 @@ void LinkedList<T>::PrintCursor() const
 }
 
 
+//****************************************************************************
+//	NAME: moveCursorUp.
+//
+//	DESCRIPTION: Move the cursor to the previous entry in the list.  If the 
+//				 cursor is currently at the head, then do not move it. 
+//
+//	PARAMETERS: N/A.
+//****************************************************************************
+template <class T>
+void LinkedList<T>::moveCursorUp()
+{
+	Node<T>* current = head;
+	
+	if (current == NULL)
+	{
+		return;
+	}
+		
+	while(current != NULL)
+	{
+		if(current->next == cursor)
+		{
+			cursor = current;
+			break;
+		}
+		current = current ->next;
+	}
+}
+
 
 //****************************************************************************
-//		Function to return the first value, or head, of the list.  
+//	NAME: moveCursorDown.
 //
-//	Parameters:
+//	DESCRIPTION: Move the cursor to the next entry in the list.  If the 
+//				 cursor is currently at the tail, then do not move it.  
+//
+//	PARAMETERS: N/A.
+//****************************************************************************
+template <class T>
+void LinkedList<T>::moveCursorDown()
+{
+	Node<T>* current = head;
+	
+	if (current == NULL)
+	{
+		return;
+	}
+		
+	while(current != NULL)
+	{
+		if(current == cursor && cursor->next != NULL)
+		{
+			cursor = cursor->next;
+			break;
+		}
+		current = current->next;
+	}
+}
+
+
+//****************************************************************************
+//	NAME: getHeadValue.
+//
+//	DESCRIPTION: Function to return the first value, or head, of the list.  
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
 template <class T>
@@ -471,15 +670,14 @@ T LinkedList<T>::getHeadValue() const
 }
 
 
-
-
 //****************************************************************************
-//		Function to return the last value, or tail, of the list.  
+//	NAME: getTailValue.
 //
-//	Parameters:
+//	DESCRIPTION: Function to return the last value, or tail, of the list.  
+//
+//	PARAMETERS:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 T LinkedList<T>::getTailValue() const
 {
@@ -494,14 +692,11 @@ T LinkedList<T>::getTailValue() const
 		temp = temp->next;
 	}
 }
-    
-
 
 
 //****************************************************************************
 //		Copy Constructor.
 //****************************************************************************
-
 template<class T>
 LinkedList<T>::LinkedList(const LinkedList<T>& myList)
 {
@@ -525,12 +720,9 @@ LinkedList<T>::LinkedList(const LinkedList<T>& myList)
 }
 
 
-
-
 //****************************************************************************
 //		Assignment Operator.
 //****************************************************************************
-
 template<class T>
 LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& myList)
 {
@@ -562,12 +754,9 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& myList)
 }
 
 
-
-
 //****************************************************************************
 //		Destructor.
 //****************************************************************************
-
 template<class T>
 LinkedList<T>::~LinkedList()
 {
