@@ -201,53 +201,47 @@ void Treap<T>::PruneHelper(TreapNode<T>* subtree)
     }	
 }
 
+
 //****************************************************************************
-//		Treap method to clear and deallocate all dynamic memory allocated
+//	    Treap method to clear and deallocate all dynamic memory allocated
 //	to the nodes of the treap.  
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::Clear()
 {	
-	ClearHelper(root);
-	root = NULL;
+    ClearHelper(root);
+    root = NULL;
 }
 
 
-
-
 //****************************************************************************
-//		Helper method to deallocate all nodes of the tree.
+//	Helper method to deallocate all nodes of the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::ClearHelper(TreapNode<T> *&subtree)
 {
-	if (subtree != NULL)
-   {
-      ClearHelper(subtree->left);
-      ClearHelper(subtree->right);
-      delete subtree;
-   }
+    if (subtree != NULL)
+    {
+        ClearHelper(subtree->left);
+        ClearHelper(subtree->right);
+        delete subtree;
+    }
    subtree = NULL;
 }
 
 
-
-
 //****************************************************************************
-//		Treap method to print the contents of the tree in level order.   
+//	Treap method to print the contents of the tree in level order.   
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::TreePrint() const
 {
@@ -268,16 +262,13 @@ void Treap<T>::TreePrint() const
 }
 
 
-
-
 //****************************************************************************
-//		Treap method to calculate the distance from the beginning of a new
+//	    Treap method to calculate the distance from the beginning of a new
 //	line.    
 //
 //	Parameters:
 //		level: current level that we are printing from.  
 //****************************************************************************
-
 template <class T>
 void Treap<T>::PrintLevel(int level) const
 {
@@ -289,10 +280,8 @@ void Treap<T>::PrintLevel(int level) const
 }
 
 
-
-
 //****************************************************************************
-//		Treap method to print the data and priority of the nodes and 
+//	    Treap method to print the data and priority of the nodes and 
 //	calculates the distance between to points.     
 //
 //	Parameters:
@@ -300,7 +289,6 @@ void Treap<T>::PrintLevel(int level) const
 //		level: current level that we are printing from.
 //		dist: the calculated distance between two points.
 //****************************************************************************
-
 template <class T> 
 void Treap<T>::DispLevel(TreapNode<T>* subtree, int level, int dist) const
 {
@@ -342,15 +330,12 @@ void Treap<T>::DispLevel(TreapNode<T>* subtree, int level, int dist) const
 }
 
 
-
-
 //****************************************************************************
-//		Utility function to return the height of the Treap.
+//	Utility function to return the height of the Treap.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 int Treap<T>::GetHeight(TreapNode<T>* subtree) const
 {
@@ -374,15 +359,12 @@ int Treap<T>::GetHeight(TreapNode<T>* subtree) const
 }
 
 
-
-
 //****************************************************************************
-//		Helper method to print the contents of the Treap in order.
+//	Helper method to print the contents of the Treap in order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 {
@@ -395,8 +377,6 @@ void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 }
 
 
-
-
 //****************************************************************************
 //		Helper method to print the contents of the Treap in pre order
 //	processing.
@@ -404,7 +384,6 @@ void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 {
@@ -417,8 +396,6 @@ void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 }
 
 
-
-
 //****************************************************************************
 //		Helper method to print the contents of the Treap in post order
 //	processing.
@@ -426,7 +403,6 @@ void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::PostOrderHelper(TreapNode<T>* subtree) const
 {
@@ -439,11 +415,9 @@ void Treap<T>::PostOrderHelper(TreapNode<T>* subtree) const
 }
 
 
-
 //****************************************************************************
 //		Copy Constructor.
 //****************************************************************************
-
 template <class T>
 Treap<T>::Treap(const Treap& myTreap)
 {
@@ -456,11 +430,9 @@ Treap<T>::Treap(const Treap& myTreap)
 }
 
 
-
 //****************************************************************************
-//		Helper method to recursively allocate memory for the new tree.
+//	Helper method to recursively allocate memory for the new tree.
 //****************************************************************************
-
 template<class T>
 void Treap<T>::CopyHelper(TreapNode<T>*& aRoot, TreapNode<T>* myRoot)
 {
@@ -477,11 +449,9 @@ void Treap<T>::CopyHelper(TreapNode<T>*& aRoot, TreapNode<T>* myRoot)
 }
 
 
-
 //****************************************************************************
-//		Destructor.
+//	Destructor.
 //****************************************************************************
-
 template<class T>
 Treap<T>::~Treap()
 {
@@ -490,11 +460,9 @@ Treap<T>::~Treap()
 }
 
 
-
 //****************************************************************************
-//		Helper method to recursively deallocate the tree.
+//	Helper method to recursively deallocate the tree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::DestroyHelper(TreapNode<T>*& Tree)
 {
@@ -508,11 +476,9 @@ void Treap<T>::DestroyHelper(TreapNode<T>*& Tree)
 }
 
 
-
 //****************************************************************************
-//		Assignment Operator.
+//	Assignment Operator.
 //****************************************************************************
-
 template <class T>
 Treap<T>& Treap<T>::operator=(const Treap<T>& rightTree)
 {
