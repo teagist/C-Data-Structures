@@ -177,7 +177,7 @@ void Treap<T>::DeleteHelper(T key, TreapNode<T> *&subtree)
 
 
 //****************************************************************************
-//		Helper method to traverse the tree and check each node to see if it
+//	    Helper method to traverse the tree and check each node to see if it
 //	is a leaf.  If it is, the deletion method will be called on that node.
 //	Otherwise, the traversal will continue until the entire tree has been
 //	pruned of leaves.  
@@ -185,7 +185,6 @@ void Treap<T>::DeleteHelper(T key, TreapNode<T> *&subtree)
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::PruneHelper(TreapNode<T>* subtree)
 {
@@ -195,14 +194,12 @@ void Treap<T>::PruneHelper(TreapNode<T>* subtree)
         
         if (isLeaf(subtree) && subtree != root)
         {
-        	Delete(subtree->data);
-		}
+            Delete(subtree->data);
+	}
 			
         PruneHelper(subtree->right);
     }	
 }
-
-
 
 //****************************************************************************
 //		Treap method to clear and deallocate all dynamic memory allocated
