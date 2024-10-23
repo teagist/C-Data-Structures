@@ -10,7 +10,7 @@
 
 
 //****************************************************************************
-//		Helper method to perform insertion.  If the heap order has been 
+//	    Helper method to perform insertion.  If the heap order has been 
 //	violated, then a rotation will be performed.
 //
 //	Parameters:
@@ -50,24 +50,21 @@ void Treap<T>::InsertHelper(T key, TreapNode<T> *&subtree)
 
 
 //****************************************************************************
-//		Utility function to perform a left rotation of the tree.
+//	Utility function to perform a left rotation of the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::RotateLeft(TreapNode<T>* &subtree)
 {
-	TreapNode<T>* rightPtr = subtree->right;
-	TreapNode<T>* temp = subtree->right->left;
+    TreapNode<T>* rightPtr = subtree->right;
+    TreapNode<T>* temp = subtree->right->left;
 	
-	rightPtr->left = subtree;
-	subtree->right = temp;
-	subtree = rightPtr;
+    rightPtr->left = subtree;
+    subtree->right = temp;
+    subtree = rightPtr;
 }
-
-
 
 
 //****************************************************************************
