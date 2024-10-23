@@ -68,24 +68,21 @@ void Treap<T>::RotateLeft(TreapNode<T>* &subtree)
 
 
 //****************************************************************************
-//		Utility function to perform a right rotation of the tree.
+//	Utility function to perform a right rotation of the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::RotateRight(TreapNode<T>* &subtree)
 {
-	TreapNode<T>* leftPtr = subtree->left;
-	TreapNode<T>* temp = subtree->left->right;
+    TreapNode<T>* leftPtr = subtree->left;
+    TreapNode<T>* temp = subtree->left->right;
 	
-	leftPtr->right = subtree;
-	subtree->left = temp;
-	subtree = leftPtr;
+    leftPtr->right = subtree;
+    subtree->left = temp;
+    subtree = leftPtr;
 }
-
-
 
 
 //****************************************************************************
