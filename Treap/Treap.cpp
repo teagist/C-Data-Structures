@@ -487,16 +487,16 @@ Treap<T>& Treap<T>::operator=(const Treap<T>& rightTree)
     {
         if(root != NULL)
         {
-			DestroyHelper(root);
-		}
-		if(rightTree.root == NULL)
-		{
-			root = NULL;
-		}
-		else
-		{
-			CopyHelper(root, rightTree.root);
-		}
+	    DestroyHelper(root);
+	}
+	if(rightTree.root == NULL)
+	{
+	    root = NULL;
+	}
+	else
+	{
+	    CopyHelper(root, rightTree.root);
+	}
     }
     return *this;
 }
