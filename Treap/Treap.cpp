@@ -113,69 +113,67 @@ bool Treap<T>::SearchHelper(T key, TreapNode<T> *subtree) const
 
 
 //****************************************************************************
-//		Helper method to delete a given key from the Treap.  If the key
+//	    Helper method to delete a given key from the Treap.  If the key
 //	is not in the Treap, then this function will return.
 //
 //	Parameters:
 //		key: the element to be deleted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void Treap<T>::DeleteHelper(T key, TreapNode<T> *&subtree)
 {
-	if (subtree == NULL)
+    if (subtree == NULL)
+    {
+	return;
+    }
+    if (key < subtree->data)
+    {
+	DeleteHelper(key, subtree->left);
+    }
+    else if (key > subtree->data)
+    {
+	DeleteHelper(key, subtree->right);
+    }	
+    else
+    {
+        if (subtree->left == NULL && subtree->right == NULL)
 	{
-		return;
+	    delete subtree;
+	    subtree = NULL;
 	}
-	if (key < subtree->data)
+	else if (subtree->left && subtree->right)
 	{
+	    if (subtree->left->priority < subtree->right->priority)
+	    {
+		RotateLeft(subtree);
 		DeleteHelper(key, subtree->left);
+            }
+	    else
+	    {
+		RotateRight(subtree);
+	        DeleteHelper(key, subtree->right);
+	    }
 	}
-	else if (key > subtree->data)
-	{
-		DeleteHelper(key, subtree->right);
-	}
-		
 	else
 	{
-		if (subtree->left == NULL && subtree->right == NULL)
-		{
-			delete subtree;
-			subtree = NULL;
-		}
-		else if (subtree->left && subtree->right)
-		{
-			if (subtree->left->priority < subtree->right->priority)
-			{
-				RotateLeft(subtree);
-				DeleteHelper(key, subtree->left);
-			}
-			else
-			{
-				RotateRight(subtree);
-				DeleteHelper(key, subtree->right);
-			}
-		}
-		else
-		{
-			TreapNode<T> *child;
-			if (subtree->left)
-			{
-				child = subtree->left;
-			}
-			else
-			{
-				child = subtree->right;
-			}
+	    TreapNode<T> *child;
+	    if (subtree->left)
+	    {
+	        child = subtree->left;
+	    }
+	    else
+	    {
+		child = subtree->right;
+	    }
 				
-			TreapNode<T>* curr = subtree;
-			subtree = child;
-			delete curr;
-		}
+	    TreapNode<T>* curr = subtree;
+	    subtree = child;
+	    delete curr;
+	    curr = NULL;
 	}
+    }
 }
-
 
 
 //****************************************************************************
