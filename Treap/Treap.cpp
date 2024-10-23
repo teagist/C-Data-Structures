@@ -369,17 +369,17 @@ int Treap<T>::GetHeight(TreapNode<T>* subtree) const
 template <class T>
 void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 {
-	if (subtree)
+    if (subtree)
     {
-		InOrderHelper(subtree->left);
+	InOrderHelper(subtree->left);
         cout << subtree->data << " (" << subtree->priority << ")" << endl;
-		InOrderHelper(subtree->right);	
+	InOrderHelper(subtree->right);	
     }
 }
 
 
 //****************************************************************************
-//		Helper method to print the contents of the Treap in pre order
+//	    Helper method to print the contents of the Treap in pre order
 //	processing.
 //
 //	Parameters:
@@ -388,17 +388,17 @@ void Treap<T>::InOrderHelper(TreapNode<T>* subtree) const
 template <class T>
 void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 {
-	if (subtree)
+    if (subtree)
     {
     	cout << subtree->data << " (" << subtree->priority << ")" << endl;
-		PreOrderHelper(subtree->left);
-		PreOrderHelper(subtree->right);	
+	PreOrderHelper(subtree->left);
+	PreOrderHelper(subtree->right);	
     }
 }
 
 
 //****************************************************************************
-//		Helper method to print the contents of the Treap in post order
+//	    Helper method to print the contents of the Treap in post order
 //	processing.
 //
 //	Parameters:
@@ -407,17 +407,17 @@ void Treap<T>::PreOrderHelper(TreapNode<T>* subtree) const
 template <class T>
 void Treap<T>::PostOrderHelper(TreapNode<T>* subtree) const
 {
-	if (subtree)
+    if (subtree)
     {
-		PostOrderHelper(subtree->left);
-		PostOrderHelper(subtree->right);
-		cout << subtree->data << " (" << subtree->priority << ")" << endl;	
+	PostOrderHelper(subtree->left);
+	PostOrderHelper(subtree->right);
+	cout << subtree->data << " (" << subtree->priority << ")" << endl;	
     }
 }
 
 
 //****************************************************************************
-//		Copy Constructor.
+//	Copy Constructor.
 //****************************************************************************
 template <class T>
 Treap<T>::Treap(const Treap& myTreap)
