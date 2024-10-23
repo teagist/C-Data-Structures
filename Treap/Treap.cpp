@@ -86,33 +86,30 @@ void Treap<T>::RotateRight(TreapNode<T>* &subtree)
 
 
 //****************************************************************************
-//		Helper method to perform a search of the Treap.  The function will
+//	    Helper method to perform a search of the Treap.  The function will
 //	return true if the item is found, and false otherwise.
 //
 //	Parameters:
 //		key: the element to be searched for.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 bool Treap<T>::SearchHelper(T key, TreapNode<T> *subtree) const
 {
-	if (subtree == NULL)
-	{
-		return false;
-	}
-	if (subtree->data == key)
-	{
-		return true;
-	}
-	if (key < subtree->data)
-	{
-		return SearchHelper(key, subtree->left);
-	}
-	return SearchHelper(key, subtree->right);
+    if (subtree == NULL)
+    {
+	return false;
+    }
+    if (subtree->data == key)
+    {
+	return true;
+    }
+    if (key < subtree->data)
+    {
+	return SearchHelper(key, subtree->left);
+    }
+    return SearchHelper(key, subtree->right);
 }
-
-
 
 
 //****************************************************************************
