@@ -24,15 +24,15 @@ class Treap;
 template <class T>
 class TreapNode
 {
-	T          data;
-	TreapNode* left;
-	TreapNode* right;
-	int        priority;
+    T          data;
+    TreapNode* left;
+    TreapNode* right;
+    int        priority;
 
-	TreapNode(T key): data(key), left(NULL), right(NULL), 
-					  priority(rand() % 100){}
+    TreapNode(T key): data(key), left(NULL), right(NULL), 
+		      priority(rand() % 100){}
 
-	friend class Treap<T>;
+    friend class Treap<T>;
 };
 
 
