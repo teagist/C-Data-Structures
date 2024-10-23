@@ -245,19 +245,18 @@ void Treap<T>::ClearHelper(TreapNode<T> *&subtree)
 template <class T>
 void Treap<T>::TreePrint() const
 {
-	if (!root)
-	{
-		cerr << endl << "The treap is empty." << endl;
-		return;
-	}
-
+    if (!root)
+    {
+	cerr << endl << "The treap is empty." << endl;
+	return;
+    }
     else
     {
     	for (int i = 0; i <= GetHeight(root); i++)
     	{
-    		PrintLevel(i);
-    		cout << endl << endl;
-		}
+    	    PrintLevel(i);
+    	    cout << endl << endl;
+	}
     }
 }
 
@@ -272,11 +271,11 @@ void Treap<T>::TreePrint() const
 template <class T>
 void Treap<T>::PrintLevel(int level) const
 {
-	TreapNode<T>* temp = root;
+    TreapNode<T>* temp = root;
 	
-	int value = pow(2, GetHeight(root) - level + 2);
-	cout << setw(value) << "";
-	DispLevel(temp, level, value);
+    int value = pow(2, GetHeight(root) - level + 2);
+    cout << setw(value) << "";
+    DispLevel(temp, level, value);
 }
 
 
@@ -292,41 +291,43 @@ void Treap<T>::PrintLevel(int level) const
 template <class T> 
 void Treap<T>::DispLevel(TreapNode<T>* subtree, int level, int dist) const
 {
-	int disp = 2 * dist;
-	if (level == 0)
+    int disp = 2 * dist;
+    if (level == 0)
+    {
+        if (subtree == NULL)
 	{
-		if (subtree == NULL)
-		{
-			cout << " x ";
-			cout << setw(disp - 3) << "";
-			return;
-		}
-		else
-		{
-			int result = 0;
-			if (subtree->priority <= 1)
-				result = 1;
-			else
-				result = (log10(subtree->priority) + 1);
-				
-			cout << " " << subtree->data << " (" << subtree->priority << ") ";
-			cout << setw(disp - result - 5) << "";
-		}
+	    cout << " x ";
+	    cout << setw(disp - 3) << "";
+	    return;
 	}
-	
 	else
 	{
-		if (subtree == NULL && level >= 1)
-		{
-			DispLevel(NULL, level - 1, dist);
-			DispLevel(NULL, level - 1, dist);
-		}
-		else
-		{
-			DispLevel(subtree->left, level - 1, dist);
-			DispLevel(subtree->right, level - 1, dist);
-		}
+	    int result = 0;
+	    if (subtree->priority <= 1)
+	    {
+	        result = 1;
+	    }
+	    else
+	    {
+	        result = (log10(subtree->priority) + 1);
+	    }	
+	    cout << " " << subtree->data << " (" << subtree->priority << ") ";
+	    cout << setw(disp - result - 5) << "";
 	}
+    }
+    else
+    {
+        if (subtree == NULL && level >= 1)
+	{
+	    DispLevel(NULL, level - 1, dist);
+	    DispLevel(NULL, level - 1, dist);
+	}
+	else
+	{
+	    DispLevel(subtree->left, level - 1, dist);
+	    DispLevel(subtree->right, level - 1, dist);
+	}
+    }
 }
 
 
@@ -339,23 +340,23 @@ void Treap<T>::DispLevel(TreapNode<T>* subtree, int level, int dist) const
 template <class T>
 int Treap<T>::GetHeight(TreapNode<T>* subtree) const
 {
-	if (subtree == NULL)
+    if (subtree == NULL)
+    {
+	return 0;
+    }
+    else
+    {
+        int leftHeight = GetHeight(subtree->left);
+	int rightHeight = GetHeight(subtree->right);
+	if (leftHeight >= rightHeight)
 	{
-		return 0;
+	    return leftHeight + 1;
 	}
 	else
 	{
-		int leftHeight = GetHeight(subtree->left);
-		int rightHeight = GetHeight(subtree->right);
-		if (leftHeight >= rightHeight)
-		{
-			return leftHeight + 1;
-		}
-		else
-		{
-			return rightHeight + 1;
-		}
+	    return rightHeight + 1;
 	}
+    }
 }
 
 
