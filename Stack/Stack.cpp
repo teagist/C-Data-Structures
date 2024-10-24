@@ -30,8 +30,6 @@ void Stack<T>::Push(T item)
 }
 
 
-
-
 //***************************************************************************
 //	    Stack method will pop the top most item off the stack, unless the 
 //	stack is empty.  If the stack is empty, then a message will be displayed
@@ -58,17 +56,14 @@ void Stack<T>::Pop()
 }
 
 
-
-
 //***************************************************************************
-//		Stack method will return the top most value off the stack.  If the
+//	    Stack method will return the top most value off the stack.  If the
 //	stack is empty, then an appropriate message will be displayed to the 
 //	user.    
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 T Stack<T>::Peek()const
 {
@@ -76,11 +71,12 @@ T Stack<T>::Peek()const
     if(head == NULL)
     {
         cerr << "The stack is empty." <<endl;
-		return T(NULL);
-	}
-	
+	return T(NULL);
+    }
     else
+    {
         return temp->data;
+    }
 }
 
 
