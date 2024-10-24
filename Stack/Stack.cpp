@@ -178,28 +178,28 @@ void Stack<T>::Print()const
 }
 
 
-
-
 //***************************************************************************
-//		Copy Constructor
+//	Copy Constructor
 //***************************************************************************
-
 template<class T>
 Stack<T>::Stack(const Stack<T>& myStack)
 {
-	if (!myStack.head)
-		head = NULL; return;
+    if (!myStack.head)
+    {
+        head = NULL;
+	return;
+    }
 
-	head = new StackNode<T>(myStack.head->data);
+    head = new StackNode<T>(myStack.head->data);
 
-	StackNode<T> *oldtemp = myStack.head->next;
-	StackNode<T> *newtemp = head;
-	while (oldtemp)
-	{
-		newtemp->next = new StackNode<T>(oldtemp->data);
-		newtemp=newtemp->next;
-		oldtemp=oldtemp->next;		
-	}
+    StackNode<T> *oldtemp = myStack.head->next;
+    StackNode<T> *newtemp = head;
+    while (oldtemp)
+    {
+	newtemp->next = new StackNode<T>(oldtemp->data);
+	newtemp=newtemp->next;
+	oldtemp=oldtemp->next;		
+    }
 }
 
 
