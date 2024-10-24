@@ -147,36 +147,34 @@ StackNode<T>* Stack<T>::Search(T item)const
 }
 
 
-
-
 //***************************************************************************
-//		Stack method that will print the contents of the stack.  The top 
+//	    Stack method that will print the contents of the stack.  The top 
 //	element will be enclosed in square brackets to denote the top.     
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 void Stack<T>::Print()const
 {
-	if (head == NULL)
-		return;
+    if (head == NULL)
+    {
+        return;
+    }
+    else
+    {
+	StackNode<T>* temp = head;
+	cout << "-------------" << endl;
+	cout << "[" << temp->data << "]" << endl;
+	temp = temp->next;
 		
-	else
+	while (temp != NULL)
 	{
-		StackNode<T>* temp = head;
-		cout << "-------------" << endl;
-		cout << "[" << temp->data << "]" << endl;
-		temp = temp->next;
-		
-		while (temp != NULL)
-		{
-			cout << temp->data << endl;	
-        	temp= temp->next;
-		}
-		cout << "-------------" << endl;
+	    cout << temp->data << endl;	
+            temp= temp->next;
 	}
+	cout << "-------------" << endl;
+    }
 }
 
 
