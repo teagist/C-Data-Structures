@@ -10,7 +10,7 @@
 
 
 //***************************************************************************
-//		Stack method will attempt to push the new item onto the stack.  If
+//	    Stack method will attempt to push the new item onto the stack.  If
 //	a bad memory allocation exception is detected, then an appropritate
 //	message will be displayed to the user, and the item will not be pushed.
 //
@@ -21,14 +21,14 @@
 template<class T>
 void Stack<T>::Push(T item)
 {
-	try
-	{
-		head = new StackNode<T>(item, head);
-	}
-	catch (bad_alloc & ex)
-	{
-		cerr << "Failed to push " << item << " onto the stack." << endl;
-	}
+    try
+    {
+	head = new StackNode<T>(item, head);
+    }
+    catch (bad_alloc & ex)
+    {
+	cerr << "Failed to push " << item << " onto the stack." << endl;
+    }
 }
 
 
