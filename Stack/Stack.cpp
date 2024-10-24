@@ -8,7 +8,6 @@
 
 
 
-
 //***************************************************************************
 //	    Stack method will attempt to push the new item onto the stack.  If
 //	a bad memory allocation exception is detected, then an appropritate
@@ -17,7 +16,6 @@
 //	Parameters:
 //		item: the element to be pushed.
 //***************************************************************************
-
 template<class T>
 void Stack<T>::Push(T item)
 {
@@ -35,26 +33,28 @@ void Stack<T>::Push(T item)
 
 
 //***************************************************************************
-//		Stack method will pop the top most item off the stack, unless the 
+//	    Stack method will pop the top most item off the stack, unless the 
 //	stack is empty.  If the stack is empty, then a message will be displayed
 //	to the user.  
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>		
 void Stack<T>::Pop()
 {
-	if (head == NULL)
-		cerr << "The stack is empty." << endl;	
-
-	else
+    if (head == NULL)
     {
-		StackNode<T>* ptr = head;
-		head = head->next;
-		delete[] ptr;
-	}  
+        cerr << "The stack is empty." << endl;
+    }
+
+    else
+    {
+        StackNode<T>* ptr = head;
+	head = head->next;
+	delete[] ptr;
+	ptr = NULL;
+    }  
 }
 
 
