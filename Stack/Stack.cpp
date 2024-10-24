@@ -80,33 +80,31 @@ T Stack<T>::Peek()const
 }
 
 
-
-
 //***************************************************************************
-//		Stack method to return the size of the stack.     
+//	Stack method to return the size of the stack.     
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 int Stack<T>::Size() const
 {
-	int size = 0;
+    int size = 0;
 	
-	if (head == NULL)
-		return 0;
-		
-	else
+    if (head == NULL)
+    {
+        return 0;
+    }	
+    else
+    {
+	StackNode<T>* temp = head;
+	while (temp != NULL)
 	{
-		StackNode<T>* temp = head;
-		while (temp != NULL)
-		{
-			temp = temp->next;
-			size = size + 1;
-		}
-		return size;
+	    temp = temp->next;
+	    size = size + 1;
 	}
+	return size;
+    }
 }
 
 
