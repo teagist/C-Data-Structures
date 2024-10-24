@@ -36,7 +36,7 @@ void Stack<T>::Push(T item)
 //	to the user.  
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
 template<class T>		
 void Stack<T>::Pop()
@@ -62,7 +62,7 @@ void Stack<T>::Pop()
 //	user.    
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
 template<class T>
 T Stack<T>::Peek()const
@@ -84,7 +84,7 @@ T Stack<T>::Peek()const
 //	Stack method to return the size of the stack.     
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
 template<class T>
 int Stack<T>::Size() const
@@ -115,7 +115,7 @@ int Stack<T>::Size() const
 //	location returned.    
 //
 //	Parameters:
-//		item: the element to be searched for
+//		item: the element to be searched for.
 //***************************************************************************
 template<class T>
 StackNode<T>* Stack<T>::Search(T item)const
@@ -152,7 +152,7 @@ StackNode<T>* Stack<T>::Search(T item)const
 //	element will be enclosed in square brackets to denote the top.     
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
 template<class T>
 void Stack<T>::Print()const
@@ -179,7 +179,7 @@ void Stack<T>::Print()const
 
 
 //***************************************************************************
-//	Copy Constructor
+//	Copy Constructor.
 //***************************************************************************
 template<class T>
 Stack<T>::Stack(const Stack<T>& myStack)
@@ -204,7 +204,7 @@ Stack<T>::Stack(const Stack<T>& myStack)
 
 
 //***************************************************************************
-//	Assignment Operator
+//	Assignment Operator.
 //***************************************************************************
 template<class T>
 Stack<T>& Stack<T>::operator=(const Stack<T>& myStack)
@@ -235,17 +235,14 @@ Stack<T>& Stack<T>::operator=(const Stack<T>& myStack)
 }
 
 
-
-
 //***************************************************************************
-//		Destructor
+//	Destructor.
 //***************************************************************************
-
 template<class T>
 Stack<T>::~Stack()
 {
     while(head != NULL)
-	{
+    {
         StackNode<T>* temp = head->next;
         delete head;
         head = temp;
