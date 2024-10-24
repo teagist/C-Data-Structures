@@ -203,36 +203,35 @@ Stack<T>::Stack(const Stack<T>& myStack)
 }
 
 
-
-
 //***************************************************************************
-//		Assignment Operator
+//	Assignment Operator
 //***************************************************************************
-
 template<class T>
 Stack<T>& Stack<T>::operator=(const Stack<T>& myStack)
 {
-	if (myStack.head == head)
+    if (myStack.head == head)
+    {
 		return *this;
-	this->~Stack();
+    }
+    this->~Stack();
 
-	if (!myStack.head)
-	{ 
-		head = NULL; 
-		return *this;
-	}
-	head = new StackNode<T>(myStack.head->data);
-
-	StackNode<T> *oldtemp = myStack.head->next;
-	StackNode<T> *newtemp = head;
-	
-	while (oldtemp)
-	{
-		newtemp->next = new StackNode<T>(oldtemp->data);
-		newtemp=newtemp->next;
-		oldtemp=oldtemp->next;		
-	}
+    if (!myStack.head)
+    { 
+	head = NULL; 
 	return *this;
+    }
+    head = new StackNode<T>(myStack.head->data);
+
+    StackNode<T> *oldtemp = myStack.head->next;
+    StackNode<T> *newtemp = head;
+	
+    while (oldtemp)
+    {
+	newtemp->next = new StackNode<T>(oldtemp->data);
+	newtemp=newtemp->next;
+	oldtemp=oldtemp->next;		
+    }
+    return *this;
 }
 
 
