@@ -41,15 +41,14 @@ int main()
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 void printMenu()
 {
     cout << " _____________________________" << endl;
     cout << "| +Item  | Push Item          | " << endl;
-	cout << "|   -    | Pop Item           | " << endl;
+    cout << "|   -    | Pop Item           | " << endl;
     cout << "| ?Item  | Search Item        | " << endl;
     cout << "|   @    | Peek               | " << endl;
-	cout << "|   D    | Destory the Stack  | " << endl;
+    cout << "|   D    | Destory the Stack  | " << endl;
     cout << "|________|____________________| " << endl << endl;
     cout << "Please choose an operation to perform on a stack." << endl;
     cout << "Enter Q to quit." << endl;
