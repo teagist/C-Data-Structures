@@ -29,7 +29,7 @@ int main()
     Stack<int> myStack;
     printMenu();
     choose(myStack);
-	return 0;
+    return 0;
 }
 
 
