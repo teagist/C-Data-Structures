@@ -119,10 +119,8 @@ void choose(Stack<T>& myStack)
 }
 
 
-
-
 //***************************************************************************
-//		This function will validate the input from the user.  If the user
+//	    This function will validate the input from the user.  If the user
 //	enters an invalid option for the value, then a message will be displayed
 //	and the user will be asked to try again.  Otherwise, the function will
 //	return the value to the caller.
@@ -134,19 +132,21 @@ void choose(Stack<T>& myStack)
 template <class T>
 T validateInput(T &val)
 {
-	while (true)
+    while (true)
+    {
+	if (cin >> val)
 	{
-		if (cin >> val)
-			break;
-		else
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			printMenu();
-			cerr << endl << "Please enter a valid item for the stack." << endl;
-        	cout << endl << ">> value: ";
-		}
+	    break;
 	}
-	return val;
+	else
+	{
+	    cin.clear();
+	    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+	    system("cls");
+	    printMenu();
+	    cerr << endl << "Please enter a valid item for the stack." << endl;
+            cout << endl << ">> value: ";
+	}
+    }
+    return val;
 }
