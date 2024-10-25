@@ -1,5 +1,5 @@
 //***************************************************************************
-//		Driver to test the templated stack.  This program will open by 
+//	    Driver to test the templated stack.  This program will open by 
 //	displaying the available operations to the user and prompting them for
 //	input.  Once the user enters the letter 'q' or 'Q', then the program
 //	will terminate.
@@ -55,10 +55,8 @@ void printMenu()
 }
 
 
-
-
 //***************************************************************************
-//		This function will prompt and accept the user's choice.  If the
+//	    This function will prompt and accept the user's choice.  If the
 //	choice is invalid, a message will be displayed.  Otherwise, the action
 //	will be executed and the updated stack will be displayed along with the
 //	menu.  The user will continue to be prompted until they enter the 
@@ -67,7 +65,6 @@ void printMenu()
 //	Parameters:
 //		myStack: templated stack.
 //***************************************************************************
-
 template<class T>
 void choose(Stack<T>& myStack)
 {
@@ -81,37 +78,37 @@ void choose(Stack<T>& myStack)
     {
         switch (choice)
         {
-			case '+':
-				validateInput(value);
-				myStack.Push(value);
-				break;
-			case '-':
-			    myStack.Pop();
-				break;
-			case '?':
+	    case '+':
+	        validateInput(value);
+		myStack.Push(value);
+		break;
+	    case '-':
+		myStack.Pop();
+		break;
+	    case '?':
                 validateInput(value);
                 myStack.Search(value);
                 system("pause");
-				break;
-			case '@' :
-				cout << endl;
-				if (myStack.Peek())
-				{
-					cout << "The top of the stack is: " << myStack.Peek();
-					cout << endl;
-				}
-				system("pause");
-				break;
-			case 'd': case 'D':
-				myStack.~Stack();
-				break;
+		break;
+	    case '@' :
+		cout << endl;
+		if (myStack.Peek())
+		{
+		    cout << "The top of the stack is: " << myStack.Peek();
+		    cout << endl;
+		}
+		system("pause");
+		break;
+	    case 'd': case 'D':
+		myStack.~Stack();
+		break;
             case 'q': case 'Q':
                 exit(1);
-			default:
-				cerr << "\nInvalid choice. Please try again." << endl;
-				cout << endl;
+	    default:
+		cerr << "\nInvalid choice. Please try again." << endl;
+		cout << endl;
                 system("pause");
-		}
+	}
         system("cls");
         printMenu();
         cout << endl;
