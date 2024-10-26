@@ -55,9 +55,9 @@ template <class K, class V>
 class RBTree
 {
 public:
-	RBTree(): root(NULL), cursor(NULL){}
+    RBTree(): root(NULL), cursor(NULL){}
 	
-	void Insert(K key, V value);
+   void Insert(K key, V value);
     bool Search(const K key); 
     void Delete(const K key); 
     void ClearTree();
@@ -66,40 +66,40 @@ public:
     void InOrder();
     void PreOrder();
     void PostOrder();
-	void PrintCursor(); 
-	void Prune() { return PruneHelper(root); };
+    void PrintCursor(); 
+    void Prune() { return PruneHelper(root); };
  
 private:
-	RBNode<K, V>* root;
-	RBNode<K, V>* cursor;
+    RBNode<K, V>* root;
+    RBNode<K, V>* cursor;
 	
-	// Insertion Helper Methods
-	void RotateLeft(RBNode<K, V>*& subtree);
-	void RotateRight(RBNode<K, V>*& subtree);
-	void FixViolation(RBNode<K, V>* subtree); 
+    // Insertion Helper Methods
+    void RotateLeft(RBNode<K, V>*& subtree);
+    void RotateRight(RBNode<K, V>*& subtree);
+    void FixViolation(RBNode<K, V>* subtree); 
 	
-	// Deletion Helper Methods
-	void Delete(RBNode<K, V>*& delNode);
-	RBNode<K, V>* GetNode(const K key); 
-	void FixDoubleBlack(RBNode<K, V>* subtree); 
-	RBNode<K, V>* Successor(RBNode<K, V>* subtree);
-	RBNode<K, V>* Replace(RBNode<K, V>* subtree);
-	void SwapValues(RBNode<K, V>* firstNode, RBNode<K, V>* secNode); 
+    // Deletion Helper Methods
+    void Delete(RBNode<K, V>*& delNode);
+    RBNode<K, V>* GetNode(const K key); 
+    void FixDoubleBlack(RBNode<K, V>* subtree); 
+    RBNode<K, V>* Successor(RBNode<K, V>* subtree);
+    RBNode<K, V>* Replace(RBNode<K, V>* subtree);
+    void SwapValues(RBNode<K, V>* firstNode, RBNode<K, V>* secNode); 
 	
-	void ClearHelper(RBNode<K, V>* tree);
-	void PruneHelper(RBNode<K, V>* subtree);
-	bool isLeaf(RBNode<K, V>* subtree) const { return (subtree->left == NULL && 
-												   subtree->right == NULL); }
+    void ClearHelper(RBNode<K, V>* tree);
+    void PruneHelper(RBNode<K, V>* subtree);
+    bool isLeaf(RBNode<K, V>* subtree) const { return (subtree->left == NULL && 
+						       subtree->right == NULL); }
 	
-	// Printing in Level Order Helper Methods
-	int TreeHeight(RBNode<K, V>* subtree); 
-	void PrintLevel(int treeHeight); 
-	void DispLevel(RBNode<K, V>* subtree, int level, int displace);
+    // Printing in Level Order Helper Methods
+    int TreeHeight(RBNode<K, V>* subtree); 
+    void PrintLevel(int treeHeight); 
+    void DispLevel(RBNode<K, V>* subtree, int level, int displace);
 	
-	// Printing in Other Order Helper Methods
-	void InOrder(RBNode<K, V>* subtree);
-	void PreOrder(RBNode<K, V>* subtree);
-	void PostOrder(RBNode<K, V>* subtree);
+    // Printing in Other Order Helper Methods
+    void InOrder(RBNode<K, V>* subtree);
+    void PreOrder(RBNode<K, V>* subtree);
+    void PostOrder(RBNode<K, V>* subtree);
 };
 
 #endif
