@@ -105,36 +105,38 @@ void RBTree<K, V>::Insert(K key, V value)
 }
 
 
-
-
 //***************************************************************************
-//		Method to rotate the arrangement of subtree and children to
+//	    Method to rotate the arrangement of subtree and children to
 //	the left.  
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //***************************************************************************
-
 template <class K, class V>
 void RBTree<K, V>::RotateLeft(RBNode<K, V>*& subtree)
 {
-	RBNode<K, V>* rightPtr = subtree->right;
-
+    RBNode<K, V>* rightPtr = subtree->right;
     subtree->right = rightPtr->left;
 
     if (subtree->right != NULL)
+    {
         subtree->right->parent = subtree;
+    }
 
     rightPtr->parent = subtree->parent;
 
     if (subtree->parent == NULL)
+    {
         root = rightPtr;
-
+    }
     else if (subtree == subtree->parent->left)
+    {
         subtree->parent->left = rightPtr;
-
+    }
     else
+    {
         subtree->parent->right = rightPtr;
+    }
 
     rightPtr->left = subtree;
     subtree->parent = rightPtr;
