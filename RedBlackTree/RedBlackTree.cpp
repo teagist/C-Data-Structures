@@ -32,10 +32,8 @@ RBNode<K, V>* RBNode<K, V>::GetSibling()
 }
 
 
-
-
 //***************************************************************************
-//		Method to insert key value pair as a new node into the Red-Black 
+//	    Method to insert key value pair as a new node into the Red-Black 
 //	tree.  If the given key is already in the tree, an appropriate message
 //	will be displayed and the method will return.  Once the new node has 
 //	been inserted into the tree, the tree will be checked to ensure that
@@ -47,57 +45,63 @@ RBNode<K, V>* RBNode<K, V>::GetSibling()
 //		key  : the key to be inserted.
 //		value: the value to be inserted.
 //***************************************************************************
-
 template <class K, class V>
 void RBTree<K, V>::Insert(K key, V value)
 {
-	if (Search(key))
+    if (Search(key))
+    {
+	cerr << "No duplicates allowed." << endl;
+	return;
+    }
+    else
+    {
+	RBNode<K, V>* newNode = new RBNode<K,V>(key, value);
+        cursor = newNode;
+	
+	RBNode<K, V>* temp = NULL;
+	RBNode<K, V>* rootPtr = root;
+	
+	while (rootPtr != NULL) 
 	{
-		cerr << "No duplicates allowed." << endl;
-		return;
+	    temp = rootPtr;
+	    if (newNode->data < rootPtr->data)
+	    {
+	    	rootPtr = rootPtr->left;
+	    }
+	    else 
+	    {
+	    	rootPtr = rootPtr->right;
+	    }
 	}
 	
-	else
+        newNode->parent = temp;
+	if (temp == NULL) 
 	{
-		RBNode<K, V>* newNode = new RBNode<K,V>(key, value);
-		cursor = newNode;
-	
-	    RBNode<K, V>* temp = NULL;
-	    RBNode<K, V>* rootPtr = root;
-	
-	    while (rootPtr != NULL) 
-		{
-	    	temp = rootPtr;
-	    	if (newNode->data < rootPtr->data) 
-	    		rootPtr = rootPtr->left;
-			else 
-	    		rootPtr = rootPtr->right;
-	    }
-	
-	    newNode->parent = temp;
-	    if (temp == NULL) 
-		{
-	    	root = newNode;
-	    	root->color = BLACK;
-	    } 
-	    
-		else if (newNode->data < temp->data) 
-	    	temp->left = newNode;
-	    	
-		else 
-	    	temp->right = newNode;
-	
-	    if (newNode->parent == NULL) 
-		{
-	    	newNode->color = BLACK;
-	    	return;
-	    }
-	
-	    if (newNode->parent->parent == NULL) 
-	    	return;
-	    	
-	    FixViolation(newNode);
+	    root = newNode;
+	    root->color = BLACK;
+	} 
+	else if (newNode->data < temp->data) 
+	{
+	    temp->left = newNode;
 	}
+	else 
+	{
+	    temp->right = newNode;
+	}
+	
+	if (newNode->parent == NULL) 
+	{
+	    newNode->color = BLACK;
+	    return;
+	}
+	
+	if (newNode->parent->parent == NULL)
+	{
+	    return;
+	}
+	    	
+	FixViolation(newNode);
+    }
 }
 
 
