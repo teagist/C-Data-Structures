@@ -10,22 +10,25 @@
 
 
 //***************************************************************************
-//		Method will return address of the sibling node of the caller.  If
+//	    Method will return address of the sibling node of the caller.  If
 //	the caller is the root, NULL will be returned.
 //
 //	Parameters:
 //		N/A.
 //***************************************************************************
-
 template <class K, class V>
 RBNode<K, V>* RBNode<K, V>::GetSibling()
 {
-	if (parent == NULL)
-		return NULL;
-	if (IsOnLeft())
-		return parent->right;
-		
-	return parent->left;
+    if (parent == NULL)
+    {
+	return NULL;
+    }
+    if (IsOnLeft())
+    {
+	return parent->right;
+    }
+
+    return parent->left;
 }
 
 
