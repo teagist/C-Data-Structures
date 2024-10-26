@@ -1016,28 +1016,31 @@ void RBTree<K, V>::PostOrder(RBNode<K, V>* subtree)
 }
 
 
-
-
 //***************************************************************************
-//		Method to print the data of the node that the cursor pointer 
+//	    Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
 //
 //	Parameters:
 //		N/A.
 //***************************************************************************
-
 template <class K, class V>
 void RBTree<K, V>::PrintCursor()
 {
-	if (cursor != NULL)
+    if (cursor != NULL)
+    {
+	if (cursor->color == 0)
 	{
-		if (cursor->color == 0)
-			cout << " [<" << cursor->data << ", " << cursor->name << ">(R)]\n";
-		else
-			cout << " [<" << cursor->data << ", " << cursor->name << ">(B)]\n";
+	    cout << " [<" << cursor->data << ", " << cursor->name << ">(R)]\n";
 	}
 	else
-		cout << "[]" << endl;
+	{
+	    cout << " [<" << cursor->data << ", " << cursor->name << ">(B)]\n";
+	}
+    }
+    else
+    {
+        cout << "[]" << endl;
+    }
 }
 
 
