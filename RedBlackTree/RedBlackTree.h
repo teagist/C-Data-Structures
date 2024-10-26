@@ -26,27 +26,27 @@ enum NodeColor {RED, BLACK};
 template <class K, class V>
 class RBNode
 {
-	K data;
-	V name;
-	NodeColor color;
-	RBNode* left;
-	RBNode* right;
-	RBNode* parent;
+private:
+    K data;
+    V name;
+    NodeColor color;
+    RBNode* left;
+    RBNode* right;
+    RBNode* parent;
 
-  
-	RBNode(K key): data(key), name(""), left(NULL), right(NULL), 
-				   parent(NULL), color(RED){}
+    RBNode(K key): data(key), name(""), left(NULL), right(NULL), 
+		   parent(NULL), color(RED){}
 					  
-	RBNode(K key, V value): data(key), name(value), left(NULL), 
-							right(NULL), parent(NULL), color(RED){}
+    RBNode(K key, V value): data(key), name(value), left(NULL), 
+			    right(NULL), parent(NULL), color(RED){}
 	
 	
-	bool IsOnLeft() {  return this == parent->left;  }
-	bool HasRedChild() { return (left != NULL && left->color == RED) ||
-								(right != NULL && right->color == RED);	}
-	RBNode<K, V> *GetSibling();
+    bool IsOnLeft() {  return this == parent->left;  }
+    bool HasRedChild() { return (left != NULL && left->color == RED) ||
+				(right != NULL && right->color == RED);	}
+    RBNode<K, V> *GetSibling();
 	
-	friend class RBTree<K, V>;
+    friend class RBTree<K, V>;
 };
 
 
