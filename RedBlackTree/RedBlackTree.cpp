@@ -379,10 +379,8 @@ RBNode<K, V>* RBTree<K, V>::GetNode(const K key)
 }
 
 
-
-
 //***************************************************************************
-//		Method to delete node by the given key.  If the tree is empty, a 
+//	    Method to delete node by the given key.  If the tree is empty, a 
 //	message will be displayed.  If there is not a node with the given key,
 //	an appropriate message will be displayed.  Otherwise, the position of
 //	the node will be determined, and the node deleted.
@@ -390,26 +388,29 @@ RBNode<K, V>* RBTree<K, V>::GetNode(const K key)
 //	Parameters:
 //		key: the key of the node to be deleted.
 //***************************************************************************
-
 template <class K, class V>
 void RBTree<K, V>::Delete(const K key)
 {
-	if (root == NULL)
-	{
-		cerr << "The tree is empty." << endl;
-		return;
-	}
+    if (root == NULL)
+    {
+	cerr << "The tree is empty." << endl;
+	return;
+    }
 	
-	RBNode<K, V>* nodePtr = GetNode(key);
+    RBNode<K, V>* nodePtr = GetNode(key);
 
     if (nodePtr->data != key)
+    {
         cerr << "There is not a node with value: " << key << endl;
+    }
     else
-		Delete(nodePtr);
-		
-	if (root == NULL)
-		cursor = NULL;
-
+    {
+	Delete(nodePtr);
+    }
+    if (root == NULL)
+    {
+	cursor = NULL;
+    }
 }
 
 
