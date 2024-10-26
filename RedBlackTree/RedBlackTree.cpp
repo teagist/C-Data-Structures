@@ -290,42 +290,45 @@ void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
 /* End of FixViolation method */
 
 
-
-
 //***************************************************************************
-//		Method to search for a given key within the tree.  If the key is 
+//	    Method to search for a given key within the tree.  If the key is 
 //	found, true will be returned.  Otherwise, false will be returned.  
 //
 //	Parameters:
 //		key: the key of the node to be found.
 //***************************************************************************
-
 template <class K, class V>
 bool RBTree<K, V>::Search(const K key)
 {
-	RBNode<K, V>* temp = root;
+    RBNode<K, V>* temp = root;
     while (temp != NULL)
     {
         if (key < temp->data)
         {
             if (temp->left == NULL)
+	    {
                 return false;
+	    }
             else
+	    {
                 temp = temp->left;
+	    }
         }
-
         else if (key == temp->data)
         {
-        	cursor = temp;
+            cursor = temp;
             return true;
         }
-
         else
         {
             if (temp->right == NULL)
+	    {
                 return false;
+	    }
             else
+	    {
                 temp = temp->right;
+	    }
         }
     }
 }
