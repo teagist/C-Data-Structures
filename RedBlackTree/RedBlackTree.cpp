@@ -181,10 +181,8 @@ void RBTree<K, V>::RotateRight(RBNode<K, V>*& subtree)
 }
 
 
-
-
 //***************************************************************************
-//		Method to correct any violations to the Red-Black tree ordering
+//	    Method to correct any violations to the Red-Black tree ordering
 //	properties.  If any rotations, recolorings, or swapping of values is
 //	needed, they will occur here.  Finally the root will be ensured to be
 //	colored black.    
@@ -192,11 +190,10 @@ void RBTree<K, V>::RotateRight(RBNode<K, V>*& subtree)
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //***************************************************************************
-
 template <class K, class V>
 void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
 {
-	RBNode<K, V>* parentPtr = NULL;
+    RBNode<K, V>* parentPtr = NULL;
     RBNode<K, V>* grandParentPtr = NULL;
 
     while ((subtree != root) && (subtree->color != BLACK) &&
@@ -242,7 +239,7 @@ void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
                 //   Right-rotation required 
                 RotateRight(grandParentPtr);
                 swap(parentPtr->color,
-                    grandParentPtr->color);
+                grandParentPtr->color);
                 subtree = parentPtr;
             }
         }
@@ -282,7 +279,7 @@ void RBTree<K, V>::FixViolation(RBNode<K, V>* subtree)
                 //   Left-rotation required 
                 RotateLeft(grandParentPtr);
                 swap(parentPtr->color,
-                    grandParentPtr->color);
+                grandParentPtr->color);
                 subtree = parentPtr;
             }
         }
