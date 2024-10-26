@@ -334,38 +334,44 @@ bool RBTree<K, V>::Search(const K key)
 }
 
 
-
-
 //***************************************************************************
-//		Method to return the address of a node that contains the given key.
+//	    Method to return the address of a node that contains the given key.
 //	If the node cannot be found, NULL is returned.
 //
 //	Parameters:
 //		key: the key of the node to be found.
 //***************************************************************************
-
 template <class K, class V>
 RBNode<K, V>* RBTree<K, V>::GetNode(const K key)
 {
-	RBNode<K, V>* temp = root;
-	
+    RBNode<K, V>* temp = root;
     while (temp != NULL) 
-	{
+    {
         if (key < temp->data) 
-		{
+	{
             if (temp->left == NULL)
+	    {
                 break;
+	    }
             else
+	    {
                 temp = temp->left;
+	    }
         }
         else if (key == temp->data) 
+	{
             break;
+	}
         else 
-		{
+	{
             if (temp->right == NULL)
+	    {
                 break;
+	    }
             else
+	    {
                 temp = temp->right;
+	    }
         }
     }
 
