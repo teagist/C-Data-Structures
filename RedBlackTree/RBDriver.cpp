@@ -1,9 +1,9 @@
 //***************************************************************************
 //	Driver File for Templated Red-Black Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 7/31/2022
+//	Last Compiled Date: 10/26/2024
 //
-//	Copyright (c) 2022 Houston Brown
+//	Copyright (c) 2024 Houston Brown
 //
 //	Permission is hereby granted to any person that obtains a copy of this
 //	software and associated documentation files (the "Software"), to deal
@@ -54,14 +54,14 @@ int main()
 
 
 
-
 //***************************************************************************
-//		Function to display the available options to the user.
+//	NAME: printMenu.
 //
-//	Parameters:
+//	DESCRIPTION: Function to display the available options to the user.
+//
+//	PARAMETERS:
 //		N/A.
 //***************************************************************************
-
 void printMenu()
 {
 	cout << " ________________________________ " << endl;
@@ -80,19 +80,19 @@ void printMenu()
 }
 
 
-
-
 //***************************************************************************
-//		This function will prompt and accept the user's choice.  If the
-//	choice is invalid, a message will be displayed.  Otherwise, the action
-//	will be executed and the updated tree will be displayed along with the
-//	menu.  The user will continue to be prompted until they enter the 
-//	stopping condition.
+//	NAME: choose.
 //
-//	Parameters:
+//	DESCRIPTION: This function will prompt and accept the user's choice. 
+//	             If the choice is invalid, a message will be displayed. 
+//	             Otherwise, the actionwill be executed and the updated tree 
+//	             will be displayed along with themenu.  The user will 
+//	             continue to be prompted until they enter the stopping 
+//				 condition.
+//
+//	PARAMETERS:
 //		myTree: templated Red-Black Tree.
 //***************************************************************************
-
 template <class K, class V> 
 void choose(RBTree<K, V>& myTree)
 {
@@ -114,7 +114,7 @@ void choose(RBTree<K, V>& myTree)
 				cout << " key: " << key << "?\n";
 				validateInput(value); 
 				
-				myTree.Insert(key, value);
+				myTree.insertKey(key, value);
 				hasInserted = true;
 				break;
 
@@ -122,7 +122,7 @@ void choose(RBTree<K, V>& myTree)
 				if (hasInserted)
 				{
 					validateInput(key);
-					myTree.Delete(key);
+					myTree.deleteKey(key);
 				}
 				else
 				{
@@ -135,10 +135,14 @@ void choose(RBTree<K, V>& myTree)
 				if (hasInserted)
 				{
 					validateInput(key);
-					if (myTree.Search(key))
+					if (myTree.searchKey(key))
+					{
 						cout << key << " is in the tree!" << endl;
+					}
 					else
+					{
 						cerr << key << " is not in the tree." << endl;
+					}
 					system("pause");
 				}
 				else
@@ -151,7 +155,7 @@ void choose(RBTree<K, V>& myTree)
 			case 'r': case 'R':
 				if (hasInserted)
 				{
-					myTree.Prune();
+					myTree.prune();
 				}
 				else
 				{
@@ -164,7 +168,7 @@ void choose(RBTree<K, V>& myTree)
 				if(hasInserted)
 				{
 					cout << "The contents of the tree in order are: ";
-					myTree.InOrder();
+					myTree.inOrder();
 					cout << endl << endl;
 					system("pause");
 				}
@@ -179,7 +183,7 @@ void choose(RBTree<K, V>& myTree)
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in pre order are: ";
-					myTree.PreOrder();
+					myTree.preOrder();
 					cout << endl << endl;
 					system("pause");
 				}
@@ -194,7 +198,7 @@ void choose(RBTree<K, V>& myTree)
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in post order are: ";
-					myTree.PostOrder();
+					myTree.postOrder();
 					cout << endl << endl;
 					system("pause");
 				}
@@ -206,13 +210,13 @@ void choose(RBTree<K, V>& myTree)
 				break;
 
 			case 'd': case 'D':
-				myTree.ClearTree();
+				myTree.clearTree();
 				break;
 				
 			case'@':
 				if (hasInserted)
 				{
-					myTree.PrintCursor();
+					myTree.printCursor();
 					cout << endl;
 					system("pause");
 				}
@@ -234,7 +238,7 @@ void choose(RBTree<K, V>& myTree)
 		system("cls");
 		printMenu();
 		cout << endl;
-		myTree.PrintTree();
+		myTree.printTree();
 		cout << "RB Tree>> ";
 		cin >> choice;
 	}
@@ -242,15 +246,16 @@ void choose(RBTree<K, V>& myTree)
 /* End of choose function */
 
 
-
-
 //***************************************************************************
-//		This function will validate the input from the user.  If the user
-//	enters an invalid option for the value, then a message will be displayed
-//	and the user will be asked to try again.  Otherwise, the function will
-//	return the value to the caller.
+//	NAME: validateInput.
 //
-//	Parameters:
+//	DESCRIPTION: This function will validate the input from the user.  If 
+//	             the user enters an invalid option for the value, then a 
+//	             message will be displayed and the user will be asked to 
+//	             try again.  Otherwise, the function will return the value 
+//			     to the caller.
+//
+//	PARAMETERS:
 //		value: the value entered by the user.
 //***************************************************************************
 
