@@ -96,10 +96,10 @@ void printMenu()
 template <class K, class V> 
 void choose(RBTree<K, V>& myTree)
 {
-	char   choice = 'A';
-	bool   hasInserted = false;
-	K      key;
-	V      value;
+	char choice      = 'A';
+	bool hasInserted = false;
+	K    key;
+	V    value;
 	
 	cout << "\nRB Tree>> ";
 	cin >> choice;
