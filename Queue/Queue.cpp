@@ -8,7 +8,6 @@
 
 
 
-
 //***************************************************************************
 //		Method to insert a new item at the end of the queue.  If the new 
 //	node cannot be created due to a bad allocation error, a message will
@@ -17,7 +16,6 @@
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 void Queue<T>::Enqueue(T item)
 {
@@ -34,7 +32,9 @@ void Queue<T>::Enqueue(T item)
 			temp->next = tail;
 		}
 		else
+		{
 			head = tail;
+		}
 	}
 	catch (bad_alloc & ex)
 	{
@@ -43,15 +43,12 @@ void Queue<T>::Enqueue(T item)
 }
 
 
-
-
 //***************************************************************************
 //		Method to remove the item at the front of the queue.   
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 void Queue<T>::Dequeue()
 {
