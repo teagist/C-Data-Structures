@@ -110,8 +110,6 @@ int Queue<T>::Size() const
 }
 
 
-
-
 //***************************************************************************
 //		Method to search the queue for a given element and return a 
 //	pointer to the item if it is found.  Otherwise it will return NULL.    
@@ -119,7 +117,6 @@ int Queue<T>::Size() const
 //	Parameters:
 //		item: the element to be searched for.
 //***************************************************************************
-
 template<class T>
 QNode<T>* Queue<T>::Search(T item) const
 {
@@ -127,7 +124,9 @@ QNode<T>* Queue<T>::Search(T item) const
 	QNode<T>* temp = head;
 	
 	if (temp == NULL)
+	{
 		return NULL;
+	}
 		
 	while(temp != NULL)
 	{
