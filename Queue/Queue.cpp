@@ -81,21 +81,21 @@ T Queue<T>::Peek() const
 }
 
 
-
 //***************************************************************************
 //		Method to return the size of the queue.      
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 int Queue<T>::Size() const
 {
 	int size = 0;
 	
 	if (head == NULL)
+	{
 		return 0;
+	}
 		
 	else
 	{
