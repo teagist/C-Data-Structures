@@ -39,9 +39,8 @@ int main()
 //	Function to display the available options to the user.
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
-
 void printMenu()
 {
     cout << " _____________________________" << endl;
@@ -56,8 +55,6 @@ void printMenu()
 }
 
 
-
-
 //***************************************************************************
 //		This function will prompt and accept the user's choice.  If the
 //	choice is invalid, a message will be displayed.  Otherwise, the action
@@ -68,7 +65,6 @@ void printMenu()
 //	Parameters:
 //		myQueue: templated queue.
 //***************************************************************************
-
 template<class T>
 void choose(Queue<T>& myQueue)
 {
@@ -123,8 +119,6 @@ void choose(Queue<T>& myQueue)
 }
 
 
-
-
 //***************************************************************************
 //		This function will validate the input from the user.  If the user
 //	enters an invalid option for the value, then a message will be displayed
@@ -132,16 +126,17 @@ void choose(Queue<T>& myQueue)
 //	return the value to the caller.
 //
 //	Parameters:
-//		val: the value entered by the user
+//		val: the value entered by the user.
 //***************************************************************************
-
 template <class T>
 T validateInput(T &val)
 {
 	while (true)
 	{
 		if (cin >> val)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();
