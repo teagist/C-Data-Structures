@@ -61,22 +61,23 @@ void Queue<T>::Dequeue()
 }
 
 
-
-
 //***************************************************************************
 //		Method to return the item at the front of the queue.    
 //
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 T Queue<T>::Peek() const
 {
 	if (head != NULL)
+	{
 		return head->data;
+	}
 	else
+	{
 		return T(NULL);
+	}
 }
 
 
