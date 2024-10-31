@@ -148,8 +148,6 @@ QNode<T>* Queue<T>::Search(T item) const
 }
 
 
-
-
 //***************************************************************************
 //		Method that will print the contents of the queue.  The front 
 //	element will be enclosed in square brackets to denote the start of the
@@ -158,13 +156,13 @@ QNode<T>* Queue<T>::Search(T item) const
 //	Parameters:
 //		N/A
 //***************************************************************************
-
 template<class T>
 void Queue<T>::Print() const
 {
 	if (head == NULL)
+	{
 		return;
-		
+	}
 	else
 	{
 		QNode<T>* temp = head;
