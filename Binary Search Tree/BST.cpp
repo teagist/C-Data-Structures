@@ -8,7 +8,6 @@
 
 
 
-
 //****************************************************************************
 //		Method to insert key into the Binary Search Tree.  If the key is
 //	already in the tree, a message will be displayed informing the user.
@@ -20,19 +19,23 @@
 //		key: the key to be inserted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 {
 	if (subtree)
     {
         if (key < subtree->data)
+		{
 		    return InsertHelper(key, subtree->left);
-		    
+		}
         else if (key > subtree->data)
+		{
 		    return InsertHelper(key, subtree->right);
+		}
         else
+		{
 		    cerr << "No duplicates allowed, please try again." << endl;
+		}
     }
     
     else
