@@ -265,7 +265,9 @@ T validateInput(T &value)
 	while (true)
 	{
 		if (cin >> value)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();
