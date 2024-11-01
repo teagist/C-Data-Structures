@@ -79,19 +79,19 @@ void printMenu()
 }
 
 
-
-
 //****************************************************************************
-//		This function will prompt and accept the user's choice.  If the
-//	choice is invalid, a message will be displayed.  Otherwise, the action
-//	will be executed and the updated tree will be displayed along with the
-//	menu.  The user will continue to be prompted until they enter the 
-//	stopping condition.
+//	NAME: choose.
+//
+//	DESCRIPTION: This function will prompt and accept the user's choice.  
+//	             If the choice is invalid, a message will be displayed.  
+//	             Otherwise, the action will be executed and the updated 
+//	             tree will be displayed along with the menu.  The user will 
+//	             continue to be prompted until they enter the stopping 
+//			     condition.
 //
 //	Parameters:
 //		myTree: templated Binary Search Tree.
 //****************************************************************************
-
 template <class T> 
 void choose(BST<T>& myTree)
 {
@@ -239,8 +239,6 @@ void choose(BST<T>& myTree)
 	}	
 }
 /* End of choose function */
-
-
 
 
 //****************************************************************************
