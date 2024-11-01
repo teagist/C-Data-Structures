@@ -80,8 +80,15 @@ void choose(Stack<T>& myStack)
         {
 	    case '+':
 	        validateInput(value);
-		myStack.Push(value);
-		break;
+		    try 
+			{
+                myStack.Push(42);
+            } 
+			catch (const InsertException& ex) 
+			{
+                std::cerr << ex.what() << std::endl;
+			}
+		    break;
 	    case '-':
 		myStack.Pop();
 		break;
