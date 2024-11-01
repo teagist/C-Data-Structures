@@ -89,8 +89,7 @@ void printMenu()
 //	             continue to be prompted until they enter the stopping 
 //			     condition.
 //
-//	Parameters:
-//		myTree: templated Binary Search Tree.
+//	PARAMETERS: myTree: templated Binary Search Tree.
 //****************************************************************************
 template <class T> 
 void choose(BST<T>& myTree)
@@ -242,15 +241,16 @@ void choose(BST<T>& myTree)
 
 
 //****************************************************************************
-//		This function will validate the input from the user.  If the user
-//	enters an invalid option for the value, then a message will be displayed
-//	and the user will be asked to try again.  Otherwise, the function will
-//	return the value to the caller.
+//	NAME: validateInput.
 //
-//	Parameters:
-//		value: the value entered by the user.
+//	DESCRIPTION: This function will validate the input from the user.  If 
+//	             the user enters an invalid option for the value, then a 
+//	             message will be displayed and the user will be asked to  
+//	             try again.  Otherwise, the function will return the value 
+//               to the caller.
+//
+//	PARAMETERS: value: the value entered by the user.
 //****************************************************************************
-
 template <class T>
 T validateInput(T &value)
 {
