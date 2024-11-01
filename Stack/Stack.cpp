@@ -21,12 +21,20 @@ void Stack<T>::Push(T item)
 {
     try
     {
-	head = new StackNode<T>(item, head);
+	    head = new StackNode<T>(item, head);
     }
-    catch (bad_alloc & ex)
+    /*catch (bad_alloc & ex)
     {
-	cerr << "Failed to push " << item << " onto the stack." << endl;
+	    cerr << "Failed to push " << item << " onto the stack." << endl;
+    }*/
+    catch (const std::bad_alloc& ex)
+    {
+        throw InsertException("Failed to allocate memory for " + std::to_string(item));
     }
+    catch (const std::exception& ex) // Catch any other std exceptions
+    {
+        throw InsertException("An unexpected error occurred: " + std::string(ex.what()));
+    }	
 }
 
 
