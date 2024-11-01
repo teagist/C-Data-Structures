@@ -54,14 +54,13 @@ int main()
 
 
 
-
 //****************************************************************************
-//		Function to display the available options to the user.
+//	NAME: printMenu.
 //
-//	Parameters:
-//		N/A.
+//	DESCRIPTION: Function to display the available options to the user.
+//
+//	PARAMETERS: N/A.
 //****************************************************************************
-
 void printMenu()
 {
 	cout << " ________________________________ " << endl;
