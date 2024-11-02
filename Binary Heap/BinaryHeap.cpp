@@ -161,15 +161,13 @@ void BinaryHeap<T>::HeapifyUp(int in)
 }
 
 
-
-
 //***************************************************************************
-//		Method to maintain the heap order property.  
+//	NAME: HeapifyDown.
 //
-//	Parameters:
-//		in: index of newly inserted value.
+//	DESCRIPTION: Method to maintain the heap order property.  
+//
+//	PARAMETERS: in: index of newly inserted value.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::HeapifyDown(int in)
 {
@@ -178,9 +176,15 @@ void BinaryHeap<T>::HeapifyDown(int in)
 	int smallest = in;
 	
 	if (leftChild < size && heap[leftChild] < heap[in])
+	{
 		smallest = leftChild;
+	}
+	
 	if (rightChild < size && heap[rightChild] > heap[smallest])
+	{
 		smallest = rightChild;
+	}
+
 	if (smallest != in)
 	{
 		int temp = heap[in];
