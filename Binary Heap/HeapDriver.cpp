@@ -53,18 +53,16 @@ int main()
 
 
 
-
-
 //***************************************************************************
-//		Function to display the available options to the user.
+//	NAME: printMenu.
 //
-//	Parameters:
-//		N/A.
+//	DESCRIPTION: Function to display the available options to the user.
+//
+//	PARAMETERS:	N/A.
 //***************************************************************************
-
 void printMenu()
 {
-    cout << " _____________________________" << endl;
+    cout << " _____________________________  " << endl;
     cout << "| +Item  | Insert Item        | " << endl;
 	cout << "|   -    | Delete Item        | " << endl;
     cout << "| ?Item  | Search Item        | " << endl;
