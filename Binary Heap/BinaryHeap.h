@@ -23,7 +23,7 @@ public:
 	void Insert(T key);
 	bool Search(T key) const;
 	void Delete();
-	void Clear() { delete[] heap; heap = NULL; size = 0;}
+	void Clear() { delete[] heap; heap = NULL; size = 0; }
 	void Print() const;
 
 	int GetSize() const { return size; }
