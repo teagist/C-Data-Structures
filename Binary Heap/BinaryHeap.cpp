@@ -44,16 +44,15 @@ void BinaryHeap<T>::Insert(T key)
 }
 
 
-
-
 //***************************************************************************
-//		Method to perform search for given key.  If the element is found,
-//	the method will return true, otherwise it will return false.
+//	NAME: Search.
 //
-//	Parameters:
-//		key: the element to be searched.
+//	DESCRIPTION: Method to perform search for given key.  If the element
+//	             is found, the method will return true, otherwise it will 
+//               return false.
+//
+//	PARAMETERS: key: the element to be searched.
 //***************************************************************************
-
 template <class T>
 bool BinaryHeap<T>::Search(T key) const
 {
