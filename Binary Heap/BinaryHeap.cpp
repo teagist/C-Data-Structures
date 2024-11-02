@@ -93,15 +93,13 @@ void BinaryHeap<T>::Delete()
 }
 	
 
-
-
 //***************************************************************************
-//		Method to print the contents of the heap in line.  
+//	NAME: Print.
 //
-//	Parameters:
-//		N/A.
+//	DESCRIPTION: Method to print the contents of the heap in line.  
+//
+//	PARAMETERS: N/A.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::Print() const
 {
