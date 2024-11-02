@@ -66,16 +66,14 @@ bool BinaryHeap<T>::Search(T key) const
 }
 
 
-
-
 //***************************************************************************
-//		Method to delete the value at the front of the array.  Or in other
-//	words, the minimum value in the heap.
+//	NAME: Delete.
 //
-//	Parameters:
-//		N/A.
+//	DESCRIPTION: Method to delete the value at the front of the array.  Or 
+//	             in other words, the minimum value in the heap.
+//
+//	PARAMETERS: N/A.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::Delete()
 {
