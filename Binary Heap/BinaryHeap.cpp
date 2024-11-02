@@ -9,13 +9,13 @@
 
 
 //***************************************************************************
-//		Method to perform insertion.  Helper function will be called at the
-//	end to maintain the heap order property.
+//	NAME: Insert.
 //
-//	Parameters:
-//		key: the element to be inserted.
+//	DESCRIPTION: Method to perform insertion.  Helper function will be 
+//	             called at the end to maintain the heap order property.
+//
+//	PARAMETERS: key: the element to be inserted.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::Insert(T key)
 {
