@@ -74,19 +74,18 @@ void printMenu()
 }
 
 
-
-
 //***************************************************************************
-//		This function will prompt and accept the user's choice.  If the
-//	choice is invalid, a message will be displayed.  Otherwise, the action
-//	will be executed and the updated heap will be displayed along with the
-//	menu.  The user will continue to be prompted until they enter the 
-//	stopping condition.
+//	NAME: choose.
 //
-//	Parameters:
-//		myHeap: templated binary heap.
+//	DESCRIPTION: This function will prompt and accept the user's choice. 
+//	             If the choice is invalid, a message will be displayed. 
+//	             Otherwise, the action will be executed and the updated 
+//	             heap will be displayed along with the menu.  The user will 
+//	             continue to be prompted until they enter the stopping 
+//               condition.
+//
+//	PARAMETERS: myHeap: templated binary heap.
 //***************************************************************************
-
 template <class T>
 void choose(BinaryHeap<T> &myHeap)
 {
@@ -109,7 +108,9 @@ void choose(BinaryHeap<T> &myHeap)
 				
 			case '-':
 				if (hasInserted)
+				{
 			    	myHeap.Delete();
+				}
 				else
 				{
 					cerr << "\nPlease insert data into the heap." << endl;
@@ -122,10 +123,14 @@ void choose(BinaryHeap<T> &myHeap)
 				{
 	                validateInput(data);
 	                if (myHeap.Search(data))
+					{
 						cout << endl << data << " is in the heap!" << endl;
+					}
 					else
+					{
 						cerr << endl << data << " is not in the heap.";
-						cout << endl;
+					}
+					cout << endl;
 					system("pause");
 				}
 				else
@@ -176,7 +181,9 @@ void choose(BinaryHeap<T> &myHeap)
         cout << endl;
         
         if (hasInserted)
+		{
         	myHeap.Print();
+		}
         cout << "Binary Heap>> ";
         cin >> choice;
     }
