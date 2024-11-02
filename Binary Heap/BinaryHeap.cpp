@@ -114,15 +114,13 @@ void BinaryHeap<T>::Print() const
 }
 
 
-
-
 //***************************************************************************
-//		Method to maintain the heap order property.  
+//	NAME: HeapifyUp.
 //
-//	Parameters:
-//		in: index of newly inserted value.
+//	DESCRIPTION: Method to maintain the heap order property.  
+//
+//	PARAMETERS: in: index of newly inserted value.
 //***************************************************************************
-
 template <class T>
 void BinaryHeap<T>::HeapifyUp(int in)
 {
