@@ -1,10 +1,11 @@
 //***************************************************************************
 //	Implementation File for Templated Queue
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 5/3/2022
+//	Last Compiled Date: 11/3/2024
 //***************************************************************************
 
 #include "Queue.h"
+
 
 
 
@@ -14,8 +15,9 @@
 //	be displayed.   
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
+
 template<class T>
 void Queue<T>::Enqueue(T item)
 {
@@ -43,12 +45,15 @@ void Queue<T>::Enqueue(T item)
 }
 
 
+
+
 //***************************************************************************
 //		Method to remove the item at the front of the queue.   
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
+
 template<class T>
 void Queue<T>::Dequeue()
 {
@@ -61,12 +66,15 @@ void Queue<T>::Dequeue()
 }
 
 
+
+
 //***************************************************************************
 //		Method to return the item at the front of the queue.    
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
+
 template<class T>
 T Queue<T>::Peek() const
 {
@@ -81,12 +89,14 @@ T Queue<T>::Peek() const
 }
 
 
+
 //***************************************************************************
 //		Method to return the size of the queue.      
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
+
 template<class T>
 int Queue<T>::Size() const
 {
@@ -110,6 +120,8 @@ int Queue<T>::Size() const
 }
 
 
+
+
 //***************************************************************************
 //		Method to search the queue for a given element and return a 
 //	pointer to the item if it is found.  Otherwise it will return NULL.    
@@ -117,6 +129,7 @@ int Queue<T>::Size() const
 //	Parameters:
 //		item: the element to be searched for.
 //***************************************************************************
+
 template<class T>
 QNode<T>* Queue<T>::Search(T item) const
 {
@@ -148,14 +161,17 @@ QNode<T>* Queue<T>::Search(T item) const
 }
 
 
+
+
 //***************************************************************************
 //		Method that will print the contents of the queue.  The front 
 //	element will be enclosed in square brackets to denote the start of the
 //	queue.     
 //
 //	Parameters:
-//		N/A
+//		N/A.
 //***************************************************************************
+
 template<class T>
 void Queue<T>::Print() const
 {
@@ -163,21 +179,25 @@ void Queue<T>::Print() const
 	{
 		return;
 	}
+		
 	else
 	{
 		QNode<T>* temp = head;
 		cout << "-------------" << endl;
-		cout << "[" << temp->data << "]";
+		cout << "[" << temp->data << "]," << endl;
 		temp = temp->next;
 		
 		while (temp != NULL)
 		{
-			cout << ", " << temp->data;	
+			cout << temp->data << "," << endl;	
         	temp= temp->next;
 		}
-		cout << endl << "-------------" << endl;
+		cout << "-------------" << endl;
 	}
 }
+
+
+
 
 
 //***************************************************************************
@@ -194,6 +214,7 @@ Queue<T>::~Queue()
     }
     head = NULL;   
 }
+
 
 
 

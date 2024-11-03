@@ -5,14 +5,17 @@
 //	will terminate.
 //
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 5/3/2022
+//	Last Compiled Date: 11/3/2024
 //***************************************************************************
 
 #include "Queue.h"
+#include "TestQueue.cpp"
 #include <limits>
 #include <sstream>
 
 
+
+void getManualOrAuto();
 
 void printMenu();
 
@@ -26,20 +29,71 @@ T validateInput(T &val);
 
 int main()
 {
-    Queue<int> myQueue;
-    printMenu();
-    choose(myQueue);
+    getManualOrAuto();
+    
 	return 0;
 }
 
 
 
 
+//****************************************************************************
+//		Function to prompt the user to select automatic test or manaul.
+//
+//	Parameters:
+//		N/A.
+//****************************************************************************
+void getManualOrAuto()
+{
+	char userEntry;
+	
+	std::cout << "Automatic testing? (Y/N)" << std::endl;
+	std::cout << ">> ";
+	
+    while (true)
+    {
+        if (std::cin >> userEntry)
+        {
+            // Convert the input to uppercase
+            userEntry = std::toupper(userEntry);
+
+            // Check if it's a valid input
+            if (userEntry == 'Y')
+            {
+            	TestQueue<int> theTest;
+                theTest.runTests();
+                return;
+            }
+            else if (userEntry == 'N')
+            {
+                Queue<int> myQueue;
+                printMenu();
+                choose(myQueue);
+                return;
+            }
+            else
+            {
+            	std::cout << std::endl;
+            	std::cout << "Invalid entry, please try again." << std::endl;
+            }
+        }
+        else
+        {
+            // Clear input buffer to handle invalid input
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            std::cout << std::endl;
+            std::cout << "Invalid entry, please try again." << std::endl;
+        }
+    }
+}
+
 //***************************************************************************
 //	Function to display the available options to the user.
 //
 //	Parameters:
-//		N/A.
+//		N/A
 //***************************************************************************
 void printMenu()
 {
@@ -53,6 +107,8 @@ void printMenu()
     cout << "Please choose an operation to perform on a queue." << endl;
     cout << "Enter Q to quit." << endl;
 }
+
+
 
 
 //***************************************************************************
@@ -119,6 +175,8 @@ void choose(Queue<T>& myQueue)
 }
 
 
+
+
 //***************************************************************************
 //		This function will validate the input from the user.  If the user
 //	enters an invalid option for the value, then a message will be displayed
@@ -126,7 +184,7 @@ void choose(Queue<T>& myQueue)
 //	return the value to the caller.
 //
 //	Parameters:
-//		val: the value entered by the user.
+//		val: the value entered by the user
 //***************************************************************************
 template <class T>
 T validateInput(T &val)
@@ -134,9 +192,7 @@ T validateInput(T &val)
 	while (true)
 	{
 		if (cin >> val)
-		{
 			break;
-		}
 		else
 		{
 			cin.clear();
