@@ -1,7 +1,7 @@
 //***************************************************************************
 //	Header File for Templated Queue
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 5/3/2022
+//	Last Compiled Date: 10/12/2024
 //***************************************************************************
 
 #ifndef _QUEUE_H
@@ -33,7 +33,6 @@ class QNode
 template<class T>
 class Queue
 {
-	QNode<T>* head;
 public:
 	Queue():head(NULL){}
 	
@@ -46,6 +45,9 @@ public:
 	QNode<T>* Search(T item) const;	
 	void Print() const;
 	
-	~Queue();                                     
+	~Queue();
+
+private:	                                  
+	QNode<T>* head;
 };
-#endif
+#endifs
