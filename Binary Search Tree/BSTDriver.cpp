@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Driver File for Templated Binary Search Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 7/17/2023
+//	Last Compiled Date: 10/2/2025
 //
 //	Copyright (c) 2022 Houston Brown
 //
@@ -30,8 +30,6 @@
 #include <limits>
 #include <sstream>
 
-
-
 void printMenu();
 
 template <class T> 
@@ -39,8 +37,6 @@ void choose(BST<T>& myTree);
 
 template <class T>
 T validateInput(T &value);
-
-
 
 int main()
 {
@@ -52,14 +48,11 @@ int main()
 }
 
 
-
-
 //****************************************************************************
-//	NAME: printMenu.
+//		Function to display the available options to the user.
 //
-//	DESCRIPTION: Function to display the available options to the user.
-//
-//	PARAMETERS: N/A.
+//	Parameters:
+//		N/A.
 //****************************************************************************
 void printMenu()
 {
@@ -78,18 +71,15 @@ void printMenu()
     cout << "Enter Q to quit." << endl;	
 }
 
-
 //****************************************************************************
-//	NAME: choose.
+//		This function will prompt and accept the user's choice.  If the
+//	choice is invalid, a message will be displayed.  Otherwise, the action
+//	will be executed and the updated tree will be displayed along with the
+//	menu.  The user will continue to be prompted until they enter the 
+//	stopping condition.
 //
-//	DESCRIPTION: This function will prompt and accept the user's choice.  
-//	             If the choice is invalid, a message will be displayed.  
-//	             Otherwise, the action will be executed and the updated 
-//	             tree will be displayed along with the menu.  The user will 
-//	             continue to be prompted until they enter the stopping 
-//			     condition.
-//
-//	PARAMETERS: myTree: templated Binary Search Tree.
+//	Parameters:
+//		myTree: templated Binary Search Tree.
 //****************************************************************************
 template <class T> 
 void choose(BST<T>& myTree)
@@ -101,7 +91,7 @@ void choose(BST<T>& myTree)
 	cout << "\nBST>> ";
 	cin >> choice;
 	
-	while (choice != 'q' || choice != 'Q')
+	while (choice != 'q' && choice != 'Q')
 	{
 		switch (choice)
 		{
@@ -239,17 +229,14 @@ void choose(BST<T>& myTree)
 }
 /* End of choose function */
 
-
 //****************************************************************************
-//	NAME: validateInput.
+//		This function will validate the input from the user.  If the user
+//	enters an invalid option for the value, then a message will be displayed
+//	and the user will be asked to try again.  Otherwise, the function will
+//	return the value to the caller.
 //
-//	DESCRIPTION: This function will validate the input from the user.  If 
-//	             the user enters an invalid option for the value, then a 
-//	             message will be displayed and the user will be asked to  
-//	             try again.  Otherwise, the function will return the value 
-//               to the caller.
-//
-//	PARAMETERS: value: the value entered by the user.
+//	Parameters:
+//		value: the value entered by the user.
 //****************************************************************************
 template <class T>
 T validateInput(T &value)
@@ -270,4 +257,3 @@ T validateInput(T &value)
 	}
 	return value;
 }
-

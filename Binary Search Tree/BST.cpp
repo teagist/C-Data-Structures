@@ -1,12 +1,10 @@
 //****************************************************************************
 //	Implementation File for Templated Binary Search Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 7/17/2023
+//	Last Compiled Date: 10/2/2025
 //****************************************************************************
 
 #include "BST.h"
-
-
 
 //****************************************************************************
 //		Method to insert key into the Binary Search Tree.  If the key is
@@ -25,15 +23,16 @@ void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 	if (subtree)
     {
         if (key < subtree->data)
-		{
+        {
 		    return InsertHelper(key, subtree->left);
 		}
+		    
         else if (key > subtree->data)
-		{
+        {
 		    return InsertHelper(key, subtree->right);
 		}
         else
-		{
+        {
 		    cerr << "No duplicates allowed, please try again." << endl;
 		}
     }
@@ -54,8 +53,6 @@ void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 	cursor = subtree;
 }
 
-
-
 //****************************************************************************
 //		Method to search for a given key within the Binary Search Tree.
 //	The method will traverse the tree based on the value of the key.  If it
@@ -65,7 +62,6 @@ void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 //	Parameters:
 //		key: the key to be searched for.
 //****************************************************************************
-
 template <class T>
 bool BST<T>::Search(const T key)
 {
@@ -76,9 +72,13 @@ bool BST<T>::Search(const T key)
 		if (key < temp->data)
 		{
 			if (temp->left == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->left;
+			}
 		}
 		
 		else if (key == temp->data)
@@ -90,14 +90,16 @@ bool BST<T>::Search(const T key)
 		else
 		{
 			if (temp->right == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->right;
+			}
 		}
 	}
 }
-
-
 
 //****************************************************************************
 //		Method to delete a given key into the Binary Search Tree.  If this
@@ -108,25 +110,30 @@ bool BST<T>::Search(const T key)
 //	Parameters:
 //		key: the key to be deleted.
 //****************************************************************************
-
 template <class T>
 void BST<T>::Delete(const T key)
 {
 	if (root == NULL)
+	{
 		return;
+	}
 	
 	bool isFound = Search(key);
 	
 	if (isFound == false)
+	{
 		cerr << "There is not a node with value: " << key << endl;
+	}
 	else 
+	{
 		DeleteHelper(key, root);
+	}
 	
 	if (root == NULL)
+	{
 		cursor = NULL;
+	}
 }
-
-
 
 //****************************************************************************
 //		Helper method to delete a node with a given key.  This method will
@@ -141,26 +148,31 @@ void BST<T>::Delete(const T key)
 //		key: the key to be deleted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 {
 	if (subtree == NULL)
+	{
 		return subtree;
+	}
 	
 	if (key < subtree->data)
+	{
 		subtree->left = DeleteHelper(key, subtree->left);
-	
+	}
 	else if (key > subtree->data)
+	{
 		subtree->right = DeleteHelper(key, subtree->right);
-	
+	}
 	else
 	{
 		if (subtree->left == NULL && subtree->right == NULL)
 		{
 			BNode<T>* parent = NULL;
 			if (parent = GetParent(subtree))
+			{
 				cursor = parent;
+			}
 
 			delete subtree;
 			subtree = NULL;
@@ -186,17 +198,19 @@ BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 			subtree->data = temp->data;
 			
 			if (subtree->left)
+			{
 				cursor = subtree->left;
+			}
 			else if (subtree->right)
+			{
 				cursor = subtree->right;
+			}
 				
 			subtree->right = DeleteHelper(temp->data, subtree->right);
 		}
 	}
 	return subtree;
 }
-
-
 
 //****************************************************************************
 //		Helper method to traverse the tree and check each node to see if it
@@ -207,7 +221,6 @@ BNode<T>* BST<T>::DeleteHelper(const T key, BNode<T>*& subtree)
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PruneHelper(BNode<T>* subtree)
 {
@@ -224,25 +237,21 @@ void BST<T>::PruneHelper(BNode<T>* subtree)
     }	
 }
 
-
-
 //****************************************************************************
 //		Method to return a pointer to the left most value in the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 BNode<T>* BST<T>::GetMin(BNode<T>* subtree) const
 {
-	while(subtree->left != NULL) {
+	while(subtree->left != NULL) 
+	{
 		subtree = subtree->left;
 	}
 	return subtree;
 }
-
-
 
 //****************************************************************************
 //		Method to traverse the tree and return the address of the parent
@@ -251,7 +260,6 @@ BNode<T>* BST<T>::GetMin(BNode<T>* subtree) const
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 {
@@ -261,16 +269,21 @@ BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 	while (top != NULL && top != subtree)
 	{
 		if (top != subtree)
+		{
 			parent = top;
+		}
+		
 		if (top->data > subtree->data)
+		{
 			top = top->left;
+		}
 		else
+		{
 			top = top->right;
+		}
 	}
 	return parent;
 }
-
-
 
 //****************************************************************************
 //		Method to print the tree in level order.
@@ -278,12 +291,13 @@ BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PrintTree() const
 {
 	if (!root)
+	{
         return;
+    }
 
     else
     {
@@ -297,33 +311,34 @@ void BST<T>::PrintTree() const
     }
 }
 
-
-
 //****************************************************************************
 //		Recursively calculates the height of the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 int BST<T>::TreeHeight(BNode<T>* subtree) const
 {
 	if (subtree == NULL)
+	{
 		return 0;
+	}
 	else
 	{
 		int leftHeight = TreeHeight(subtree->left);
 		int rightHeight = TreeHeight(subtree->right);
 		
 		if (leftHeight >= rightHeight)
+		{
 			return leftHeight + 1;
+		}
 		else
+		{
 			return rightHeight + 1;
+		}
 	}
 }
-
-
 
 //****************************************************************************
 //		Calculates width to space out nodes and calls DispLevel to print
@@ -332,7 +347,6 @@ int BST<T>::TreeHeight(BNode<T>* subtree) const
 //	Parameters:
 //		height: height of tree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PrintLevel(int height) const
 {
@@ -344,8 +358,6 @@ void BST<T>::PrintLevel(int height) const
 	DispLevel(temp, height, value);
 }
 
-
-
 //****************************************************************************
 //		Displays the nodes on given level and will display 'x' where the
 //	pointers are NULL.
@@ -355,7 +367,6 @@ void BST<T>::PrintLevel(int height) const
 //		level: current level.
 //		displace: displacement.
 //****************************************************************************
-
 template <class T>
 void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 {
@@ -372,9 +383,13 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 		{
 			int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
 			if (subtree == cursor)
+			{
 				cout << "[" << subtree->data << "]";
+			}
 			else
+			{
 				cout << subtree->data;
+			}
 
 			cout << setw(disp - result) << "";
 		}
@@ -395,8 +410,6 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 	}
 }
 
-
-
 //****************************************************************************
 //		Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
@@ -404,17 +417,18 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PrintCursor() const
 {
 	if (cursor != NULL)
+	{
 		cout << "[" << cursor->data << "]" << endl;
+	}
 	else
+	{
 		cout << "[]" << endl;
+	}
 }
-
-
 
 //****************************************************************************
 //		In order print method.
@@ -422,7 +436,6 @@ void BST<T>::PrintCursor() const
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::InOrder() const
 {
@@ -431,15 +444,12 @@ void BST<T>::InOrder() const
 	cout << "]";
 }
 
-
-
 //****************************************************************************
 //		Helper method to print the contents of the tree in order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::InOrderHelper(const BNode<T>* subtree) const
 {
@@ -448,15 +458,17 @@ void BST<T>::InOrderHelper(const BNode<T>* subtree) const
         InOrderHelper(subtree->left);
         
         if (subtree == cursor)
+        {
         	cout << "[" << subtree->data << "] ";
+        }
         else
+        {
 			cout << subtree->data << " ";
+		}
 			
         InOrderHelper(subtree->right);
     }
 }
-
-
 
 //****************************************************************************
 //		Pre-order print method.
@@ -464,7 +476,6 @@ void BST<T>::InOrderHelper(const BNode<T>* subtree) const
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PreOrder() const
 {
@@ -473,31 +484,30 @@ void BST<T>::PreOrder() const
 	cout << "]";
 }
 
-
-
 //****************************************************************************
 //		Helper method to print the contents of the tree in pre order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PreOrderHelper(const BNode<T>* subtree) const
 {
     if (subtree != NULL)
     {
     	if (subtree == cursor)
+    	{
         	cout << "[" << subtree->data << "] ";
+        }
         else
+        {
 			cout << subtree->data << " ";
+		}
 			
         PreOrderHelper(subtree->left);
         PreOrderHelper(subtree->right);
     }
 }
-
-
 
 //****************************************************************************
 //		Post-order print method.
@@ -505,7 +515,6 @@ void BST<T>::PreOrderHelper(const BNode<T>* subtree) const
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PostOrder() const
 {
@@ -514,15 +523,12 @@ void BST<T>::PostOrder() const
 	cout << "]";
 }
 
-
-
 //****************************************************************************
 //		Helper method to print the contents of the tree in post order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::PostOrderHelper(const BNode<T>* subtree) const
 {
@@ -532,18 +538,19 @@ void BST<T>::PostOrderHelper(const BNode<T>* subtree) const
         PostOrderHelper(subtree->right);
         
         if (subtree == cursor)
+        {
         	cout << "[" << subtree->data << "] ";
+        }
         else
+        {
 			cout << subtree->data << " ";
+		}
     }
 }
-
-
 
 //****************************************************************************
 //		Copy Constructor.
 //****************************************************************************
-
 template <class T>
 BST<T>::BST(const BST& myBST)
 {
@@ -555,12 +562,9 @@ BST<T>::BST(const BST& myBST)
     CopyHelper(root, myBST.root);
 }
 
-
-
 //****************************************************************************
 //		Helper method to recursively allocate memory for the new tree.
 //****************************************************************************
-
 template<class T>
 void BST<T>::CopyHelper(BNode<T>*& aRoot, BNode<T>* myRoot)
 {
@@ -576,12 +580,9 @@ void BST<T>::CopyHelper(BNode<T>*& aRoot, BNode<T>* myRoot)
     }
 }
 
-
-
 //****************************************************************************
 //		Destructor.
 //****************************************************************************
-
 template<class T>
 BST<T>::~BST()
 {
@@ -589,12 +590,9 @@ BST<T>::~BST()
     root = NULL;
 }
 
-
-
 //****************************************************************************
 //		Helper method to recursively deallocate the tree.
 //****************************************************************************
-
 template <class T>
 void BST<T>::DestroyHelper(BNode<T>*& Tree)
 {
@@ -607,23 +605,27 @@ void BST<T>::DestroyHelper(BNode<T>*& Tree)
    Tree = NULL;
 }
 
-
-
 //****************************************************************************
 //		Assignment Operator.
 //****************************************************************************
-
 template <class T>
 BST<T>& BST<T>::operator=(const BST<T>& rightTree)
 {
     if(this != &rightTree)
     {
         if(root != NULL)
+        {
 			DestroyHelper(root);
+		}
+		
 		if(rightTree.root == NULL)
+		{
 			root = NULL;
+		}
 		else
+		{
 			CopyHelper(root, rightTree.root);
+		}
     }
     return *this;
 }
