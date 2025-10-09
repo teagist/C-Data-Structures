@@ -30,8 +30,6 @@
 #include <limits>
 #include <sstream>
 
-
-
 void printMenu();
 
 template <class T>
@@ -39,8 +37,6 @@ void choose(BinaryHeap<T> &myHeap);
 
 template <class T>
 T validateInput(T &value);
-
-
 
 int main()
 {
@@ -50,8 +46,6 @@ int main()
 	
 	return 0;
 }
-
-
 
 //***************************************************************************
 //	NAME: printMenu.
@@ -72,7 +66,6 @@ void printMenu()
     cout << "Please choose an operation to perform on the heap." << endl;
     cout << "Enter Q to quit." << endl;	
 }
-
 
 //***************************************************************************
 //	NAME: choose.
@@ -189,7 +182,6 @@ void choose(BinaryHeap<T> &myHeap)
     }
 }
 /* End of choose function */
-
 
 //***************************************************************************
 //	NAME: validateInput.
