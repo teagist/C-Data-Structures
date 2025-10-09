@@ -6,8 +6,6 @@
 
 #include "BinaryHeap.h"
 
-
-
 //***************************************************************************
 //	NAME: Insert.
 //
@@ -43,7 +41,6 @@ void BinaryHeap<T>::Insert(T key)
 	heap[hole] = heap[0];*/
 }
 
-
 //***************************************************************************
 //	NAME: Search.
 //
@@ -63,7 +60,6 @@ bool BinaryHeap<T>::Search(T key) const
 	}
 	return false;
 }
-
 
 //***************************************************************************
 //	NAME: Delete.
@@ -89,7 +85,6 @@ void BinaryHeap<T>::Delete()
 	HeapifyDown(0);
 }
 	
-
 //***************************************************************************
 //	NAME: Print.
 //
@@ -107,7 +102,6 @@ void BinaryHeap<T>::Print() const
 	}
 	cout << endl;
 }
-
 
 //***************************************************************************
 //	NAME: HeapifyUp.
@@ -152,7 +146,6 @@ void BinaryHeap<T>::HeapifyUp(int in)
     	HeapifyUp(parent(in));
 	}
 }
-
 
 //***************************************************************************
 //	NAME: HeapifyDown.
@@ -199,8 +192,6 @@ void BinaryHeap<T>::HeapifyDown(int in)
 	}*/
 }
 
-
-
 /*
 template <class T>
 int BinaryHeap<T>::left(int par) //{	return ((2 * par) + 1); }
@@ -238,7 +229,5 @@ int BinaryHeap<T>::parent(int child)
 		return par;	
 }
 */
-
-
 
 template class BinaryHeap<int>;
