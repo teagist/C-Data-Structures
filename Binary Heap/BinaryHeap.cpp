@@ -29,16 +29,6 @@ void BinaryHeap<T>::Insert(T key)
 	heap[size - 1] = key;
 	
 	HeapifyUp(size - 1);
-	
-/*	int hole = size++;
-	T copy = key;
-	
-	heap[0] = copy;
-	for (; key < heap[hole / 2]; hole /= 2)
-	{
-		heap[hole] = heap[hole / 2];
-	}
-	heap[hole] = heap[0];*/
 }
 
 //***************************************************************************
@@ -56,7 +46,9 @@ bool BinaryHeap<T>::Search(T key) const
 	for (int i = 0; i < size; i++)
 	{
 		if (key == heap[i])
+		{
 			return true;
+		}
 	}
 	return false;
 }
@@ -112,31 +104,7 @@ void BinaryHeap<T>::Print() const
 //***************************************************************************
 template <class T>
 void BinaryHeap<T>::HeapifyUp(int in)
-{
-/*	if (in >= 0 && parent(in) >= 0 && heap[parent(in)] > heap[in])
-	{
-		T temp = heap[in];
-		heap[in] = heap[parent(in)];
-		heap[parent(in)] = temp;
-		HeapifyUp(parent(in));
-	}*/
-    /*T l = left(in);
-    T r = right(in);
-    T smallest = in;
-    if (l < GetSize() && heap[l] < heap[in])
-        smallest = l;
-    if (r < GetSize() && heap[r] < heap[smallest])
-        smallest = r;
-    if (smallest != in)
-    {
-        //swap(&heap[in], &heap[smallest]);
-        T temp = heap[in];
-        heap[in] = heap[smallest];
-        heap[smallest] = temp;
-        
-        HeapifyUp(smallest);
-    }	*/
-    
+{    
     if (in && heap[parent(in)] > heap[in])
     {
     	T temp = heap[in];
@@ -178,56 +146,6 @@ void BinaryHeap<T>::HeapifyDown(int in)
 		heap[smallest] = temp;
 		HeapifyDown(smallest);
 	}
-	
-	/*
-	if (child >= 0 && child1 >= 0 && heap[child] > heap[child1])
-		child = child1;
-		
-	if (child > 0 && heap[in] > heap[child])
-	{
-		T temp = heap[in];
-		heap[in] = heap[child];
-		heap[child] = temp;
-		HeapifyDown(child);
-	}*/
 }
-
-/*
-template <class T>
-int BinaryHeap<T>::left(int par) //{	return ((2 * par) + 1); }
-{
-	T left = 2 * par + 1;
-	if (left < GetSize())
-		return 1;
-	else
-		return -1;
-}
-
-
-
-
-template <class T>
-int BinaryHeap<T>::right(int par) //{ return ((2 * par) + 2); }
-{
-	T right = 2 * par + 2;
-	if (right < GetSize())
-		return right;
-	else
-		return -1;
-}
-
-
-
-
-template <class T>
-int BinaryHeap<T>::parent(int child)
-{
-	T par = (child - 1) / 2;
-	if (child == 0)
-		return -1;
-	else
-		return par;	
-}
-*/
 
 template class BinaryHeap<int>;
