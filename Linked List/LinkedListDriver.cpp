@@ -31,7 +31,6 @@
 #include <limits>
 #include <sstream>
 
-
 void getManualOrAuto();
 
 void printMenu();
@@ -42,16 +41,12 @@ void choose(LinkedList<T> &myList);
 template <class T>
 T validateInput(T &value);
 
-
-
 int main()
 {
 	getManualOrAuto();
 
 	return 0;
 }
-
-
 
 //****************************************************************************
 //	NAME: getManualOrAuto.
@@ -108,7 +103,6 @@ void getManualOrAuto()
     }
 }
 
-
 //****************************************************************************
 //	NAME: printMenu.
 //
@@ -142,7 +136,6 @@ void printMenu()
     
 
 }
-
 
 //****************************************************************************
 //	NAME: choose.
@@ -363,7 +356,6 @@ void choose(LinkedList<T> &myList)
 	}	
 }
 /* End of choose function */
-
 
 //****************************************************************************
 //	NAME: validateInput.
