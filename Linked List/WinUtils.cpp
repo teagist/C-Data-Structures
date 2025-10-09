@@ -6,7 +6,6 @@
 
 #include "WinUtils.h"
 
-
 //****************************************************************************
 //	NAME: delayBoot.
 //
@@ -53,7 +52,6 @@ void WinUtils::delayBoot(int bootSeconds)
 	std::cout << std::endl;
 }
 
-
 //****************************************************************************
 //	NAME: wait.
 //
@@ -78,7 +76,6 @@ void WinUtils::wait(int seconds)
 	std::cout << std::endl;
 }
 
-
 //****************************************************************************
 //	NAME: pauseScreen.
 //
@@ -94,7 +91,6 @@ void WinUtils::pauseScreen()
 	std::cout << "Please press <enter> to continue..." << std::endl;
 	std::getline(std::cin, entry);
 }
-
 
 //****************************************************************************
 //	NAME: printHardwareDetails.
@@ -119,7 +115,6 @@ void WinUtils::printHardwareDetails()
 #endif
 }
 
-
 //****************************************************************************
 //	NAME: printOSDetails.
 //
@@ -138,7 +133,6 @@ void WinUtils::printOSDetails()
 	std::cout << "Unix/Linux Distro";
 #endif
 }
-
 
 //****************************************************************************
 //	NAME: printUIBanner.
@@ -163,7 +157,6 @@ void WinUtils::printUIBanner()
 	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
 }
 
-
 //****************************************************************************
 //	NAME: printInvalidUIBanner.
 //
@@ -186,7 +179,6 @@ void WinUtils::printInvalidUIBanner()
 	std::cout << stars << stars << std::endl;
 	SetConsoleTextAttribute(hConsole, myBuffInfo.wAttributes);
 }
-
 
 //****************************************************************************
 //	NAME: getUserInput.
@@ -218,7 +210,6 @@ int WinUtils::getUserInput()
 	
 	return entryValue;
 }
-
 
 //****************************************************************************
 //	NAME: getYesOrNo.
