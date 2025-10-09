@@ -7,7 +7,6 @@
 #include "TestLinkedList.h"
 #include <string>
 
-
 //****************************************************************************
 //	CONSTRUCTOR.   
 //****************************************************************************
@@ -18,8 +17,6 @@ TestLinkedList<U>::TestLinkedList()
 	testLogger.setVersion("1.00.00.01");
 	testLogger.setTitlebar();
 }
-
-
 
 //****************************************************************************
 //	NAME: getMaxPossibleListNodes.
@@ -52,8 +49,6 @@ int TestLinkedList<U>::getMaxPossibleListNodes()
 	}
 	return 0;
 }
-
-
 
 //****************************************************************************
 //	NAME: printTestInfoHeader.
@@ -90,8 +85,6 @@ void TestLinkedList<U>::printTestInfoHeader()
 	}
 }
 
-
-
 //****************************************************************************
 //	NAME: bulkInsert.
 //
@@ -124,8 +117,6 @@ bool TestLinkedList<U>::bulkInsert()
 
 	return status;
 }
-
-
 
 //****************************************************************************
 //	NAME: runTests.
@@ -190,8 +181,6 @@ void TestLinkedList<U>::runTests()
 	testLogger.printResult();
 }
 //****************************************************************************
-
-
 
 //****************************************************************************
 //	NAME: testInOrderInsert.
@@ -276,8 +265,6 @@ bool TestLinkedList<U>::testInOrderInsert()
 	return subTestStatus;	
 }
 
-
-
 //****************************************************************************
 //	NAME: testInsertAtHead.
 //
@@ -347,8 +334,6 @@ bool TestLinkedList<U>::testInsertAtHead()
 	return subTestStatus;  
 }
 
-
-
 //****************************************************************************
 //	NAME: testInsertAtTail.
 //
@@ -416,8 +401,6 @@ bool TestLinkedList<U>::testInsertAtTail()
 	
 	return subTestStatus;	
 }
-
-
 
 //****************************************************************************
 //	NAME: testRemove.
@@ -511,8 +494,6 @@ bool TestLinkedList<U>::testRemove()
 		
 	return subTestStatus;		
 }
-
-
 
 //****************************************************************************
 //	NAME: testRemoveFromHead.
@@ -608,8 +589,6 @@ bool TestLinkedList<U>::testRemoveFromHead()
 	return subTestStatus;  	
 }
 
-
-
 //****************************************************************************
 //	NAME: testRemoveFromTail.
 //
@@ -704,8 +683,6 @@ bool TestLinkedList<U>::testRemoveFromTail()
 	return subTestStatus; 
 }
 
-
-
 //****************************************************************************
 //	NAME: testEmptyListSearch.
 //
@@ -758,8 +735,6 @@ bool TestLinkedList<U>::testEmptyListSearch()
 		
 	testLogger.logEvent("******* End Empty List Search Test *******", INFO);
 }
-
-
 
 //****************************************************************************
 //	NAME: testNotFoundSearch.
@@ -828,8 +803,6 @@ bool TestLinkedList<U>::testNotFoundSearch()
 	testLogger.logEvent("******* End Not Found in List Test *******", INFO);
 }
 
-
-
 //****************************************************************************
 //	NAME: testAtHeadSearch.
 //
@@ -895,8 +868,6 @@ bool TestLinkedList<U>::testAtHeadSearch()
 	testLogger.logEvent("******* At-Head-Search Test *******", INFO);
 }
 
-
-
 //****************************************************************************
 //	NAME: testAtTailSearch.
 //
@@ -961,8 +932,6 @@ bool TestLinkedList<U>::testAtTailSearch()
 		
 	testLogger.logEvent("******* At-Tail-Search Test *******", INFO);
 }
-
-
 
 //****************************************************************************
 //	NAME: testSearch.
