@@ -12,11 +12,8 @@
 #include <windows.h>
 using namespace std;
 
-
 template <class T>
 class LinkedList;
-
-
 
 template <class T>
 class Node
@@ -31,7 +28,6 @@ class Node
 
 	friend class LinkedList<T>;
 };
-
 
 template <class T>
 class LinkedList
@@ -74,5 +70,4 @@ private:
 	Node<T>* cursor;
 	int size;
 };
-
 #endif

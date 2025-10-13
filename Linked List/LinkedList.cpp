@@ -6,9 +6,6 @@
 
 #include "LinkedList.h"
 
-
-
-
 //****************************************************************************
 //	NAME: Insert.
 //
@@ -59,7 +56,6 @@ void LinkedList<T>::Insert(const T key)
 	}
 }
 
-
 //****************************************************************************
 //	NAME: InsertAtHead.
 //
@@ -85,7 +81,6 @@ void LinkedList<T>::InsertAtHead(const T key)
 		cerr << "Failed to insert " << key << " into the List." << endl;
 	}	
 }
-
 
 //****************************************************************************
 //	NAME: InsertAtTail.
@@ -126,7 +121,6 @@ void LinkedList<T>::InsertAtTail(const T key)
 		cerr << "Failed to insert " << key << " into the List." << endl;
 	}
 }
-
 
 //****************************************************************************
 //	NAME: Remove.
@@ -183,7 +177,6 @@ void LinkedList<T>::Remove(const T key)
     size = size - 1;
 }
 
-
 //****************************************************************************
 //	NAME: RemoveAtHead.
 //
@@ -218,7 +211,6 @@ void LinkedList<T>::RemoveAtHead()
 	cursor = head;
 	size = size - 1;
 }
-
 
 //****************************************************************************
 //	NAME: RemoveAtTail.
@@ -264,7 +256,6 @@ void LinkedList<T>::RemoveAtTail()
 	}
 	size = size - 1;
 }
-
 
 //****************************************************************************
 //	NAME: Search.
@@ -313,7 +304,6 @@ bool LinkedList<T>::Search(const T key)
     return true;
 }
 
-
 //****************************************************************************
 //	NAME: Sort.
 //
@@ -359,7 +349,6 @@ void LinkedList<T>::Sort()
 	}
 }
 
-
 //****************************************************************************
 //	NAME: Clear.
 //
@@ -381,7 +370,6 @@ void LinkedList<T>::Clear()
 	cursor = NULL;
 	head   = NULL;
 }
-
 
 //****************************************************************************
 //	NAME: Print.
@@ -452,7 +440,6 @@ void LinkedList<T>::Print() const
 	cout << "]";
 }
 
-
 //****************************************************************************
 //	NAME: PrintInLines.
 //
@@ -518,7 +505,6 @@ void LinkedList<T>::PrintInLines() const
 	}
 }
 
-
 //****************************************************************************
 //	NAME: PrintToFile.
 //
@@ -555,7 +541,6 @@ void LinkedList<T>::PrintToFile() const
 	outfile.close();
 }
 
-
 //****************************************************************************
 //	NAME: PrintCursor.
 //
@@ -587,7 +572,6 @@ void LinkedList<T>::PrintCursor() const
 	}
 }
 
-
 //****************************************************************************
 //	NAME: moveCursorUp.
 //
@@ -616,7 +600,6 @@ void LinkedList<T>::moveCursorUp()
 		current = current ->next;
 	}
 }
-
 
 //****************************************************************************
 //	NAME: moveCursorDown.
@@ -647,7 +630,6 @@ void LinkedList<T>::moveCursorDown()
 	}
 }
 
-
 //****************************************************************************
 //	NAME: getHeadValue.
 //
@@ -668,7 +650,6 @@ T LinkedList<T>::getHeadValue() const
 		return (T)NULL;
 	}
 }
-
 
 //****************************************************************************
 //	NAME: getTailValue.
@@ -692,7 +673,6 @@ T LinkedList<T>::getTailValue() const
 		temp = temp->next;
 	}
 }
-
 
 //****************************************************************************
 //		Copy Constructor.
@@ -718,7 +698,6 @@ LinkedList<T>::LinkedList(const LinkedList<T>& myList)
 		oldtemp=oldtemp->next;		
 	}
 }
-
 
 //****************************************************************************
 //		Assignment Operator.
@@ -753,7 +732,6 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& myList)
 	return *this;
 }
 
-
 //****************************************************************************
 //		Destructor.
 //****************************************************************************
@@ -768,9 +746,6 @@ LinkedList<T>::~LinkedList()
     }
     head = NULL;   
 }
-
-
-
 
 template class LinkedList<int>;
 template class LinkedList<float>;
