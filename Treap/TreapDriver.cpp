@@ -1,9 +1,9 @@
 //****************************************************************************
-//	Driver File for Templated Treap
-//	Programmed by: Houston Brown
-//	Last Compiled Date: 7/17/2023
+//	Driver File for Templated Treap.
+//	Programmed by: Houston Brown.
+//	Last Compiled Date: 10/12/2025
 //
-//	Copyright (c) 2022 Houston Brown
+//	Copyright (c) 2022 Houston Brown.
 //
 //	Permission is hereby granted to any person that obtains a copy of this
 //	software and associated documentation files (the "Software"), to deal
@@ -27,74 +27,156 @@
 //****************************************************************************
 
 #include "Treap.h"
-#include <limits>
-#include <sstream>
+#include "TestTreap.cpp"
 
-
-
+void getExecChoice();
+void printMainMenu();
 void printMenu();
 
 template <class T>
-void choose(Treap<T> &myTreap);
+void choose(Treap<T>& myTreap);
 
 template <class T>
-T validateInput(T &value);
-
-
+T validateInput(T& value);
 
 int main()
 {
 	srand(time(0));
-	
+
 	Treap<int> myTreap;
-	printMenu();
-	choose(myTreap);
-	
+	printMainMenu();
+	getExecChoice();
+
 	return 0;
 }
 
-
-
-
 //****************************************************************************
-//		Function to display the available options to the user.
+//	NAME: getExecChoice.
 //
-//	Parameters:
-//		N/A.
+//	DESCRIPTION: Retreive execution choice from the user.  
+//
+//	PARAMETERS: N/A.
 //****************************************************************************
+void getExecChoice()
+{
+	int userEntry = 0;
 
+	while (userEntry != 4)
+	{
+		if (std::cin >> userEntry)
+		{
+			// Check if it's a valid input
+			if (userEntry == 1)
+			{
+				WinUtils::clearScreen();
+				Treap<int> myTreap;
+				printMenu();
+				choose(myTreap);
+				return;
+			}
+			else if (userEntry == 2)
+			{
+				WinUtils::clearScreen();
+				TestTreap<int> myTestTreap;
+				myTestTreap.runTests();
+				return;
+			}
+			else if (userEntry == 3)
+			{
+				std::cout << "Real World Scenario" << std::endl;
+				WinUtils::pauseScreen();
+			}
+			else
+			{
+				std::cout << std::endl;
+				std::cout << "Invalid entry, please try again." << std::endl;
+			}
+		}
+		else
+		{
+			// Clear input buffer to handle invalid input.
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << std::endl;
+			std::cout << "Invalid entry, please try again." << std::endl;
+		}
+
+		WinUtils::clearScreen();
+		printMainMenu();
+		cout << endl;
+	}
+}
+
+//****************************************************************************
+//	NAME: printMainMenu.
+//
+//	DESCRIPTION: Print main menu of execution options to the user.
+//
+//	PARAMETERS: N/A.
+//****************************************************************************
+void printMainMenu()
+{
+	std::cout << " _______________________________________________________________________ ";
+	std::cout << std::endl;
+
+	HANDLE hConsole;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 47);
+
+	std::cout << "|                                                                       |" << std::endl;
+	std::cout << "|                         Treap Main Menu                               |" << std::endl;
+	std::cout << "|_______________________________________________________________________|" << std::endl;
+
+	SetConsoleTextAttribute(hConsole, 7);
+
+	std::cout << "|                                                                       |" << std::endl;
+	std::cout << "|      1.) Manual Exhibition.                                           |" << std::endl;
+	std::cout << "|      2.) Automated Testing.                                           |" << std::endl;
+	std::cout << "|      3.) Automated Integration.                                       |" << std::endl;
+	std::cout << "|      4.) Quit                                                         |" << std::endl;
+	std::cout << "|_______________________________________________________________________|" << std::endl;
+	std::cout << "Please choose an execution option of the Treap." << std::endl;
+}
+
+//****************************************************************************
+//  NAME: printMenu.
+// 
+//  DESCRIPTION: Function to display the available options of manual testing
+//               to the user.
+//
+//	PARAMETERS: N/A.
+//****************************************************************************
 void printMenu()
 {
 	cout << " ________________________________ " << endl;
-    cout << "| +Item | Insert Item            |" << endl;
+	cout << "| +Item | Insert Item            |" << endl;
 	cout << "| -Item | Delete Item            |" << endl;
-    cout << "| ?Item | Search Item            |" << endl;
-    cout << "|   R   | Prune Treap            |" << endl;
+	cout << "| ?Item | Search Item            |" << endl;
+	cout << "|   R   | Prune Treap            |" << endl;
 	cout << "|   I   | Print Items In Order   |" << endl;
 	cout << "|   P   | Print Items Pre Order  |" << endl;
 	cout << "|   T   | Print Items Post Order |" << endl;
 	cout << "|   D   | Destory the Treap      |" << endl;
-    cout << "|_______|________________________|" << endl << endl;
-    cout << "Please choose an operation to perform on the treap." << endl;
-    cout << "Enter Q to quit." << endl;
+	cout << "|_______|________________________|" << endl << endl;
+	cout << "Please choose an operation to perform on the treap." << endl;
+	cout << "Enter Q to quit." << endl;
 }
 
-
-
-
 //****************************************************************************
-//		This function will prompt and accept the user's choice.  If the
-//	choice is invalid, a message will be displayed.  Otherwise, the action
-//	will be executed and the updated treap will be displayed along with the
-//	menu.  The user will continue to be prompted until they enter the 
-//	stopping condition.
+//  NAME: choose
+// 
+//	DESCRIPTION: This function will prompt and accept the user's choice.  
+//               If the choice is invalid, a message will be displayed.  
+//               Otherwise, the action will be executed and the updated 
+//               treap will be displayed along with the menu.  The user 
+//               will continue to be prompted until they enter the 
+//	             stopping condition.
 //
-//	Parameters:
-//		myTreap: templated treap.
+//	PARAMETERS: myTreap: templated treap.
 //****************************************************************************
-
 template <class T>
-void choose(Treap<T> &myTreap)
+void choose(Treap<T>& myTreap)
 {
 	T    key;
 	char choice;
@@ -102,107 +184,107 @@ void choose(Treap<T> &myTreap)
 
 	cout << endl << ">> ";
 	cin >> choice;
-	
-	while (choice != 'q' || choice != 'Q')
+
+	while (choice != 'q' && choice != 'Q')
 	{
-		switch(choice)
+		switch (choice)
 		{
-			case '+':
-				validateInput(key);
-				myTreap.Insert(key);
-				hasInserted = true;
-				break;
+		case '+':
+			validateInput(key);
+			myTreap.Insert(key);
+			hasInserted = true;
+			break;
 
-			case '-':
-				cin >> key;
-				myTreap.Delete(key);
-				break;
+		case '-':
+			cin >> key;
+			myTreap.Delete(key);
+			break;
 
-			case '?':
-				validateInput(key);
-				if (myTreap.Search(key))
-				{
-					cout << key << " is in the tree!" << endl;
-				}
-				else
-				{
-					cerr << key << " is not in the tree." << endl;
-				}
+		case '?':
+			validateInput(key);
+			if (myTreap.Search(key))
+			{
+				cout << key << " is in the tree!" << endl;
+			}
+			else
+			{
+				cerr << key << " is not in the tree." << endl;
+			}
+			system("pause");
+			break;
+
+		case 'r': case 'R':
+			if (hasInserted)
+			{
+				myTreap.Prune();
+			}
+			else
+			{
+				cerr << "\nPlease insert data into the tree." << endl;
 				system("pause");
-				break;
+			}
+			break;
 
-			case 'r': case 'R':
-				if (hasInserted)
-				{
-					myTreap.Prune();
-				}
-				else
-				{
-					cerr << "\nPlease insert data into the tree." << endl;
-					system("pause");					
-				}
-				break;
+		case 'i': case 'I':
+			if (hasInserted)
+			{
+				cout << endl;
+				cout << "The contents of the tree in order are: " << endl;
+				myTreap.InOrder();
+				cout << endl << endl;
+			}
+			else
+			{
+				cerr << "The treap is empty." << endl;
+			}
+			system("pause");
+			break;
 
-			case 'i': case 'I':
-				if (hasInserted)
-				{
-					cout << endl;
-					cout << "The contents of the tree in order are: " << endl;
-					myTreap.InOrder();
-					cout << endl << endl;
-				}
-				else
-				{
-					cerr << "The treap is empty." << endl;
-				}
-				system("pause");
-				break;
+		case 'p': case 'P':
+			if (hasInserted)
+			{
+				cout << endl;
+				cout << "The contents of the tree in pre order are: ";
+				cout << endl;
+				myTreap.PreOrder();
+				cout << endl << endl;
+			}
+			else
+			{
+				cerr << "The treap is empty." << endl;
+			}
+			system("pause");
+			break;
 
-			case 'p': case 'P':
-				if (hasInserted)
-				{
-					cout << endl;
-					cout << "The contents of the tree in pre order are: ";
-					cout << endl;
-					myTreap.PreOrder();
-					cout << endl << endl;
-				}
-				else
-				{
-					cerr << "The treap is empty." << endl;
-				}
-				system("pause");
-				break;
+		case 't': case 'T':
+			if (hasInserted)
+			{
+				cout << endl;
+				cout << "The contents of the tree in post order are: ";
+				cout << endl;
+				myTreap.PostOrder();
+				cout << endl << endl;
+			}
+			else
+			{
+				cerr << "The treap is empty." << endl;
+			}
+			system("pause");
+			break;
 
-			case 't': case 'T':
-				if (hasInserted)
-				{
-					cout << endl;
-					cout << "The contents of the tree in post order are: ";
-					cout << endl;
-					myTreap.PostOrder();
-					cout << endl << endl;
-				}
-				else
-				{
-					cerr << "The treap is empty." << endl;
-				}
-				system("pause");
-				break;
+		case 'd': case 'D':
+			myTreap.Clear();
+			break;
 
-			case 'd': case 'D':
-				myTreap.Clear();
-				break;
+		case 'q': case 'Q':
+			return;
 
-			case 'q': case 'Q':
-				return;
-
-			default:
-				cerr << "Invalid option, please try again." << endl;
-				system("pause");
-				break;
+		default:
+			cerr << "Invalid option, please try again." << endl;
+			system("pause");
+			break;
 		}
-		
+
 		system("cls");
 		printMenu();
 		cout << endl;
@@ -210,24 +292,22 @@ void choose(Treap<T> &myTreap)
 		cout << ">> ";
 		cin >> choice;
 	}
-}	
+}
 /* End of choose function */
 
-
-
-
 //****************************************************************************
-//		This function will validate the input from the user.  If the user
-//	enters an invalid option for the value, then a message will be displayed
-//	and the user will be asked to try again.  Otherwise, the function will
-//	return the value to the caller.
+//  NAME: validateInput
+// 
+//	DESCRIPTION: This function will validate the input from the user.  
+//               If the user enters an invalid option for the value, then 
+//               a message will be displayed and the user will be asked to 
+//               try again.  Otherwise, the function will return the value to 
+//               the caller.
 //
-//	Parameters:
-//		value: the value entered by the user.
+//	PARAMETERS: value: the value entered by the user.
 //****************************************************************************
-
 template <class T>
-T validateInput(T &value)
+T validateInput(T& value)
 {
 	while (true)
 	{
@@ -242,7 +322,7 @@ T validateInput(T &value)
 			system("cls");
 			printMenu();
 			cerr << endl << "Please enter a valid item for the treap." << endl;
-        	cout << endl << ">> value: ";
+			cout << endl << ">> value: ";
 		}
 	}
 	return value;
