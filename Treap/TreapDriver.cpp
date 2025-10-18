@@ -65,7 +65,7 @@ void getExecChoice()
 	{
 		if (std::cin >> userEntry)
 		{
-			// Check if it's a valid input
+			// Check if it's a valid input.
 			if (userEntry == 1)
 			{
 				WinUtils::clearScreen();
@@ -125,7 +125,7 @@ void printMainMenu()
 	SetConsoleTextAttribute(hConsole, 47);
 
 	std::cout << "|                                                                       |" << std::endl;
-	std::cout << "|                         Treap Main Menu                               |" << std::endl;
+	std::cout << "|                            Treap Main Menu                            |" << std::endl;
 	std::cout << "|_______________________________________________________________________|" << std::endl;
 
 	SetConsoleTextAttribute(hConsole, 7);
@@ -204,11 +204,11 @@ void choose(Treap<T>& myTreap)
 			validateInput(key);
 			if (myTreap.Search(key))
 			{
-				cout << key << " is in the tree!" << endl;
+				cout << key << " is in the treap!" << endl;
 			}
 			else
 			{
-				cerr << key << " is not in the tree." << endl;
+				cerr << key << " is not in the treap." << endl;
 			}
 			system("pause");
 			break;
@@ -220,7 +220,7 @@ void choose(Treap<T>& myTreap)
 			}
 			else
 			{
-				cerr << "\nPlease insert data into the tree." << endl;
+				cerr << "\nPlease insert data into the treap." << endl;
 				system("pause");
 			}
 			break;
@@ -229,7 +229,7 @@ void choose(Treap<T>& myTreap)
 			if (hasInserted)
 			{
 				cout << endl;
-				cout << "The contents of the tree in order are: " << endl;
+				cout << "The contents of the treap in order are: " << endl;
 				myTreap.InOrder();
 				cout << endl << endl;
 			}
@@ -244,7 +244,7 @@ void choose(Treap<T>& myTreap)
 			if (hasInserted)
 			{
 				cout << endl;
-				cout << "The contents of the tree in pre order are: ";
+				cout << "The contents of the treap in pre order are: ";
 				cout << endl;
 				myTreap.PreOrder();
 				cout << endl << endl;
@@ -260,7 +260,7 @@ void choose(Treap<T>& myTreap)
 			if (hasInserted)
 			{
 				cout << endl;
-				cout << "The contents of the tree in post order are: ";
+				cout << "The contents of the treap in post order are: ";
 				cout << endl;
 				myTreap.PostOrder();
 				cout << endl << endl;
@@ -293,7 +293,7 @@ void choose(Treap<T>& myTreap)
 		cin >> choice;
 	}
 }
-/* End of choose function */
+// End of choose function
 
 //****************************************************************************
 //  NAME: validateInput

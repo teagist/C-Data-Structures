@@ -375,9 +375,13 @@ void Treap<T>::DispLevel(TreapNode<T>* subtree, int level, int dist) const
 		{
 			int result = 0;
 			if (subtree->priority <= 1)
+			{
 				result = 1;
+			}
 			else
+			{
 				result = (log10(subtree->priority) + 1);
+			}
 
 			cout << " " << subtree->data << " (" << subtree->priority << ") ";
 			cout << setw(disp - result - 5) << "";
