@@ -1,14 +1,13 @@
 //****************************************************************************
 //	Implementation File for Logger Class
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/12/2024
+//	Last Compiled Date: 10/24/2025
 //****************************************************************************
 
 #include "Logger.h"
 
-
 //****************************************************************************
-//	DEFAULT CONSTRUCTOR
+//	DEFAULT CONSTRUCTOR.
 //****************************************************************************
 Logger::Logger(std::string newTest, std::string newVersion)
 {
@@ -31,30 +30,24 @@ Logger::Logger(std::string newTest, std::string newVersion)
 	logFile.open(fileName);*/
 }
 
-
-
 //****************************************************************************
-//	SETTER FOR TEST NAME
+//	SETTER FOR TEST NAME.
 //****************************************************************************
 void Logger::setTest(std::string newTest)
 {
 	m_test = newTest;
 }
 
-
-
 //****************************************************************************
-//	SETTER FOR VERSION NAME
+//	SETTER FOR VERSION NAME.
 //****************************************************************************
 void Logger::setVersion(std::string newVersion)
 {
 	m_version = newVersion;
 }
 
-
-
 //****************************************************************************
-//	SETTER FOR PASSING/FAILING STATUS
+//	SETTER FOR PASSING/FAILING STATUS.
 //****************************************************************************
 void Logger::setPassingStatus(bool isSuccess)
 {
@@ -62,8 +55,6 @@ void Logger::setPassingStatus(bool isSuccess)
 	
 	setTitlebar();
 }
-
-
 
 //****************************************************************************
 //	NAME: readVersionInfo.
@@ -90,8 +81,6 @@ void Logger::readVersionInfo()
 	}
 }
 
-
-
 //****************************************************************************
 //	NAME: printStatusMessage.
 //
@@ -100,8 +89,7 @@ void Logger::readVersionInfo()
 //				 displayed.  If the status is 1, and "error" tag will be 
 //				 displayed.    
 //****************************************************************************
-void Logger::printStatusMessage(const std::string& message, 
-													const int& status) const
+void Logger::printStatusMessage(const std::string& message, const int& status) const
 {
 	if (status == OK)
 	{
@@ -137,8 +125,6 @@ void Logger::printStatusMessage(const std::string& message,
 	}
 }
 
-
-
 //****************************************************************************
 //	NAME: log.
 //
@@ -165,8 +151,6 @@ void Logger::logEvent(const std::string& message, const int type) const
 	std::cout << message << std::endl;
 }
 
-
-
 //****************************************************************************
 //	NAME: printLineHeader.
 //
@@ -181,8 +165,6 @@ void Logger::printLineHeader() const
 	std::cout << "]: ";
 }
 
-
-
 //****************************************************************************
 //	NAME: printTime.
 //
@@ -190,23 +172,21 @@ void Logger::printLineHeader() const
 //****************************************************************************
 void Logger::printTime() const
 {
-    // Get the current time using time_t
+    // Get the current time using time_t.
     std::time_t currentTime = std::time(NULL);
 
-    // Convert the time_t object to a tm struct
+    // Convert the time_t object to a tm struct.
     std::tm *localTime = std::localtime(&currentTime);
 
-    // Format the date and time
-    // Increase size to accommodate the formatted date/time
+    // Format the date and time.
+    // Increase size to accommodate the formatted date/time.
     char formattedTime[25]; 
     std::strftime(formattedTime, sizeof(formattedTime), 
 								"%m/%d/%Y %H:%M:%S", localTime);
 
-    // Output the formatted date and time
+    // Output the formatted date and time.
     std::cout << formattedTime;	
 }
-
-
 
 //****************************************************************************
 //	NAME: setTitlebar.
@@ -218,7 +198,7 @@ void Logger::printTime() const
 void Logger::setTitlebar() const
 {
 	std::stringstream title;
-	std::string       endTime;		// To be implemented at a later date
+	std::string       endTime;		// To be implemented at a later date.
 	
 	if (m_isPassing == OK)
 	{
@@ -231,8 +211,6 @@ void Logger::setTitlebar() const
 
 	SetConsoleTitle(title.str().c_str());	
 }
-
-
 
 //****************************************************************************
 //	NAME: printResult.

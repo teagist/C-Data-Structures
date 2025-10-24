@@ -1,12 +1,10 @@
 //****************************************************************************
 //	Implementation File for Queue Test
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 11/3/2024
+//	Last Compiled Date: 10/24/2025
 //****************************************************************************
 
 #include "TestStack.h"
-#include <string>
-
 
 //****************************************************************************
 //	CONSTRUCTOR.   
@@ -18,8 +16,6 @@ TestStack<U>::TestStack()
 	testLogger.setVersion("1.00.00.01");
 	testLogger.setTitlebar();
 }
-
-
 
 //****************************************************************************
 //	NAME: getMaxPossibleListNodes.
@@ -52,8 +48,6 @@ int TestStack<U>::getMaxPossibleNodes()
 	}
 	return 0;
 }
-
-
 
 //****************************************************************************
 //	NAME: printTestInfoHeader.
@@ -92,8 +86,6 @@ void TestStack<U>::printTestInfoHeader()
 		std::cerr << "Error retrieving test info." << std::endl;
 	}
 }
-
-
 
 //****************************************************************************
 //	NAME: runTests.
@@ -139,8 +131,6 @@ void TestStack<U>::runTests()
 	testLogger.printResult();
 }
 //****************************************************************************
-
-
 
 //****************************************************************************
 //	NAME: bulkPush.
@@ -199,8 +189,6 @@ bool TestStack<U>::bulkPush()
 	std::cout << std::endl;
 	return status;
 }
-
-
 
 //****************************************************************************
 //	NAME: testPop.
@@ -298,8 +286,6 @@ bool TestStack<U>::testPop()
 	return status;
 }
 
-
-
 //****************************************************************************
 //	NAME: bulkDequeue.
 //
@@ -391,8 +377,6 @@ bool TestStack<U>::bulkPop()
 	return status;	
 }
 
-
-
 //****************************************************************************
 //	NAME: testPeek.
 //
@@ -476,8 +460,6 @@ bool TestStack<U>::testPeek()
 	std::cout << std::endl;
 	return status;
 }
-
-
 
 //****************************************************************************
 //	NAME: testEmptyStackSearch.
@@ -565,8 +547,6 @@ bool TestStack<U>::testEmptyStackSearch()
 	return status;	
 }
 
-
-
 //****************************************************************************
 //	NAME: testNotFoundSearch.
 //
@@ -647,8 +627,6 @@ bool TestStack<U>::testNotFoundSearch()
 	std::cout << std::endl;
 	return status;		
 }
-
-
 
 //****************************************************************************
 //	NAME: testSearch.

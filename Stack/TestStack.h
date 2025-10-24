@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Header File for Test Stack
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 11/3/2024
+//	Last Compiled Date: 10/24/2025
 //****************************************************************************
 
 #ifndef _TESTSTACK_H
@@ -19,15 +19,11 @@ public:
 	void runTests();
 	int getMaxPossibleNodes();
 	void printTestInfoHeader();
-	
 	bool testPush();
 	bool bulkPush();
-	
 	bool testPop();
 	bool bulkPop();
-	
 	bool testPeek();
-	
 	bool testEmptyStackSearch();
 	bool testNotFoundSearch();
 	bool testSearch();
