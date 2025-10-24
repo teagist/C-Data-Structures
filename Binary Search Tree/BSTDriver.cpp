@@ -47,7 +47,6 @@ int main()
 	return 0;
 }
 
-
 //****************************************************************************
 //		Function to display the available options to the user.
 //
@@ -96,13 +95,15 @@ void choose(BST<T>& myTree)
 		switch (choice)
 		{
 			case '+':
+			{
 				validateInput(key);
 				myTree.Insert(key);
 				
 				hasInserted = true;
 				break;
-
+			}
 			case '-':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -114,8 +115,9 @@ void choose(BST<T>& myTree)
 					system("pause");
 				}
 				break;
-
+			}
 			case '?':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -131,8 +133,9 @@ void choose(BST<T>& myTree)
 					system("pause");					
 				}
 				break;
-				
+			}
 			case 'r': case 'R':
+			{
 				if (hasInserted)
 				{
 					myTree.Prune();
@@ -143,8 +146,9 @@ void choose(BST<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'i': case 'I':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in order are: ";
@@ -158,8 +162,9 @@ void choose(BST<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'p': case 'P':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in pre order are: ";
@@ -173,8 +178,9 @@ void choose(BST<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 't': case 'T':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in post order are: ";
@@ -188,13 +194,15 @@ void choose(BST<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'd': case 'D':
+			{
 				myTree.~BST();
 				hasInserted = false;
-				break;  
-				
+				break;
+			}
 			case'@':
+			{
 				if (hasInserted)
 				{
 					myTree.PrintCursor();
@@ -207,21 +215,26 @@ void choose(BST<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'q': case 'Q':
+			{
 				exit(1);
-
+			}
 			default:
+			{
 				cerr << "Invalid option, please try again." << endl;
 				system("pause");
 				break;
+			}
 		}
 		system("cls");
 		printMenu();
 		cout << endl;
 		
 		if (hasInserted)
+		{
 			myTree.PrintTree();
+		}
 			
 		cout << "BST>> ";
 		cin >> choice;
@@ -244,7 +257,9 @@ T validateInput(T &value)
 	while (true)
 	{
 		if (cin >> value)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();

@@ -26,7 +26,6 @@ void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
         {
 		    return InsertHelper(key, subtree->left);
 		}
-		    
         else if (key > subtree->data)
         {
 		    return InsertHelper(key, subtree->right);
@@ -36,7 +35,6 @@ void BST<T>::InsertHelper(const T key, BNode<T>*& subtree)
 		    cerr << "No duplicates allowed, please try again." << endl;
 		}
     }
-    
     else
     {
     	try
@@ -80,13 +78,11 @@ bool BST<T>::Search(const T key)
 				temp = temp->left;
 			}
 		}
-		
 		else if (key == temp->data)
 		{
 			cursor = temp;
 			return true;
 		}
-		
 		else
 		{
 			if (temp->right == NULL)
@@ -298,7 +294,6 @@ void BST<T>::PrintTree() const
 	{
         return;
     }
-
     else
     {
         int ctr = 0;
@@ -629,8 +624,6 @@ BST<T>& BST<T>::operator=(const BST<T>& rightTree)
     }
     return *this;
 }
-
-
 
 template class BST<int>;
 template class BST<float>;
