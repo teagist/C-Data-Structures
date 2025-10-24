@@ -1,36 +1,32 @@
 //*************************************************************************** 
 //	Implementation File for Templated Red-Black Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/26/2024
+//	Last Compiled Date: 10/24/2025
 //***************************************************************************
 
 #include "RedBlackTree.h"
 
-
-
-
 //***************************************************************************
-//  NAME: getSibling.
+//	NAME: getSibling.
 //
-//  DESCRIPTION: Method will return address of the sibling node of the 
-//	         caller.  If the caller is the root, NULL will be returned.
+//	DESCRIPTION: Method will return address of the sibling node of the 
+//	             caller.  If the caller is the root, NULL will be returned.
 //
-//  PARAMETERS:	N/A.
+//	PARAMETERS:	N/A.
 //***************************************************************************
 template <class K, class V>
 RBNode<K, V>* RBNode<K, V>::getSibling()
 {
-    if (parent == NULL)
-    {
-	    return NULL;
-    }
-    if (isOnLeft())
-    {
-	    return parent->right;
-    }
-    return parent->left;
+	if (parent == NULL)
+	{
+		return NULL;
+	}
+	if (isOnLeft())
+	{
+		return parent->right;
+	}
+	return parent->left;
 }
-
 
 //***************************************************************************
 //	NAME: insertKey.
@@ -82,7 +78,6 @@ void RBTree<K, V>::insertKey(K key, V value)
 	    	root = newNode;
 	    	root->color = BLACK;
 	    } 
-	    
 		else if (newNode->data < temp->data)
 		{
 	    	temp->left = newNode;
@@ -106,7 +101,6 @@ void RBTree<K, V>::insertKey(K key, V value)
 	    fixViolation(newNode);
 	}
 }
-
 
 //***************************************************************************
 //	NAME: rotateLeft.
@@ -145,7 +139,6 @@ void RBTree<K, V>::rotateLeft(RBNode<K, V>*& subtree)
     rightPtr->left = subtree;
     subtree->parent = rightPtr;
 }
-
 
 //***************************************************************************
 //	NAME: rotateRight.
@@ -187,7 +180,6 @@ void RBTree<K, V>::rotateRight(RBNode<K, V>*& subtree)
     subtree->parent = leftPtr;
 }
 
-
 //***************************************************************************
 //	NAME: fixViolation.
 //
@@ -210,17 +202,17 @@ void RBTree<K, V>::fixViolation(RBNode<K, V>* subtree)
         parentPtr = subtree->parent;
         grandParentPtr = subtree->parent->parent;
 
-        //  Case : A
+        //  Case: A
         //    Parent of subtree is left child
-        //    of Grand-parent of subtree 
+        //    of Grand-parent of subtree.
         if (parentPtr == grandParentPtr->left)
         {
 
             RBNode<K, V>* unclePtr = grandParentPtr->right;
 
-            // Case : 1
+            // Case: 1
             //   The uncle of subtree is also red
-            //   Only Recoloring required 
+            //   Only Recoloring required.
             if (unclePtr != NULL && unclePtr->color == RED)
             {
                 grandParentPtr->color = RED;
@@ -231,9 +223,9 @@ void RBTree<K, V>::fixViolation(RBNode<K, V>* subtree)
 
             else
             {
-                // Case : 2
+                // Case: 2
                 //   subtree is right child of its parent
-                //   Left-rotation required 
+                //   Left-rotation required.
                 if (subtree == parentPtr->right)
                 {
                     rotateLeft(parentPtr);
@@ -241,25 +233,25 @@ void RBTree<K, V>::fixViolation(RBNode<K, V>* subtree)
                     parentPtr = subtree->parent;
                 }
 
-                // Case : 3
+                // Case: 3
                 //   subtree is left child of its parent
-                //   Right-rotation required 
+                //   Right-rotation required.
                 rotateRight(grandParentPtr);
                 swap(parentPtr->color, grandParentPtr->color);
                 subtree = parentPtr;
             }
         }
 
-        // Case : B
+        // Case: B
         //   Parent of subtree is right child
-        //   of Grand-parent of subtree 
+        //   of Grand-parent of subtree.
         else
         {
             RBNode<K, V>* unclePtr = grandParentPtr->left;
 
-            //  Case : 1
+            //  Case: 1
             //    The uncle of subtree is also red
-            //    Only Recoloring required 
+            //    Only Recoloring required.
             if ((unclePtr != NULL) && (unclePtr->color == RED))
             {
                 grandParentPtr->color = RED;
@@ -269,9 +261,9 @@ void RBTree<K, V>::fixViolation(RBNode<K, V>* subtree)
             }
             else
             {
-                // Case : 2
+                // Case: 2
                 //   subtree is left child of its parent
-                //   Right-rotation required 
+                //   Right-rotation required.
                 if (subtree == parentPtr->left)
                 {
                     rotateRight(parentPtr);
@@ -279,9 +271,9 @@ void RBTree<K, V>::fixViolation(RBNode<K, V>* subtree)
                     parentPtr = subtree->parent;
                 }
 
-                // Case : 3
+                // Case: 3
                 //   subtree is right child of its parent
-                //   Left-rotation required 
+                //   Left-rotation required.
                 rotateLeft(grandParentPtr);
                 swap(parentPtr->color, grandParentPtr->color);
                 subtree = parentPtr;
@@ -292,7 +284,6 @@ void RBTree<K, V>::fixViolation(RBNode<K, V>* subtree)
     root->color = BLACK;
 }	
 /* End of fixViolation method */
-
 
 //***************************************************************************
 //	NAME: searchKey.
@@ -320,13 +311,11 @@ bool RBTree<K, V>::searchKey(const K key)
                 temp = temp->left;
             }
         }
-
         else if (key == temp->data)
         {
         	cursor = temp;
             return true;
         }
-
         else
         {
             if (temp->right == NULL)
@@ -340,7 +329,6 @@ bool RBTree<K, V>::searchKey(const K key)
         }
     }
 }
-
 
 //***************************************************************************
 //	NAME: getNode.
@@ -389,7 +377,6 @@ RBNode<K, V>* RBTree<K, V>::getNode(const K key)
     return temp;
 }
 
-
 //***************************************************************************
 //	NAME: deleteKey.
 //
@@ -428,7 +415,6 @@ void RBTree<K, V>::deleteKey(const K key)
 
 }
 
-
 //***************************************************************************
 //	NAME: deleteHelper.
 //
@@ -447,8 +433,8 @@ void RBTree<K, V>::deleteHelper(RBNode<K, V>*& delNode)
 
     if (replNode == NULL) 
 	{
-        // node to be deleted is a leaf
-        if (delNode == root)    // node to be deleted is root
+        // node to be deleted is a leaf.
+        if (delNode == root)    // node to be deleted is root.
         {
         	cursor = NULL;
             root = NULL;
@@ -457,7 +443,7 @@ void RBTree<K, V>::deleteHelper(RBNode<K, V>*& delNode)
 		{
             if (bothBlack) 
 			{
-                // node to be deleted is leaf, fix double black at delNode
+                // node to be deleted is leaf, fix double black at delNode.
                 fixDoubleBlack(delNode); 
             }
             else 
@@ -468,7 +454,7 @@ void RBTree<K, V>::deleteHelper(RBNode<K, V>*& delNode)
                 }
             }
 
-            // delete delNode from the tree
+            // delete delNode from the tree.
             if (delNode->isOnLeft())
             {
                 parent->left = NULL;
@@ -486,10 +472,10 @@ void RBTree<K, V>::deleteHelper(RBNode<K, V>*& delNode)
 
     if (delNode->left == NULL || delNode->right == NULL)
 	{
-        // node to be deleted has 1 child
+        // node to be deleted has 1 child.
         if (delNode == root) 
 		{
-            // node to be deleted is root, swap data replacement
+            // node to be deleted is root, swap data replacement.
             delNode->data = replNode->data;
             delNode->left = delNode->right = NULL;
             
@@ -506,7 +492,7 @@ void RBTree<K, V>::deleteHelper(RBNode<K, V>*& delNode)
         }
         else 
 		{
-            // Detach node to be deleted from tree and move replacement up
+            // Detach node to be deleted from tree and move replacement up.
             if (delNode->isOnLeft())
             {
                 parent->left = replNode;
@@ -532,12 +518,11 @@ void RBTree<K, V>::deleteHelper(RBNode<K, V>*& delNode)
         return;
     }
 
-    // node to be deleted has 2 children 
-    swapValues(replNode, delNode);   // swap values with successor and recurse
+    // node to be deleted has 2 children.
+    swapValues(replNode, delNode);   // swap values with successor and recurse.
     deleteHelper(replNode);
 }
 /* End of deleteHelper method */
-
 
 //***************************************************************************
 //	NAME: fixDoubleBlack.
@@ -551,16 +536,17 @@ template <class K, class V>
 void RBTree<K, V>::fixDoubleBlack(RBNode<K, V>* subtree)
 {
 	if (subtree == root)
+	{
         return;
+    }
 
     RBNode<K, V>* sibling = subtree->getSibling();
 	RBNode<K, V>* parent = subtree->parent;
 	
-    if (sibling == NULL)   			// No sibiling, double black pushed up
+    if (sibling == NULL)   			// No sibiling, double black pushed up.
     {
         fixDoubleBlack(parent);
     }
-        
     else 
 	{
         if (sibling->color == RED)
@@ -568,32 +554,32 @@ void RBTree<K, V>::fixDoubleBlack(RBNode<K, V>* subtree)
             parent->color = RED;
             sibling->color = BLACK;
             
-            if (sibling->isOnLeft())   // left case
+            if (sibling->isOnLeft())   // left case.
             {
                 rotateRight(parent);
             }
             else 
             {
-                rotateLeft(parent);   // right case
+                rotateLeft(parent);   // right case.
             }
                 
             fixDoubleBlack(subtree);
         }
         else 
 		{
-            // Sibling black
+            // Sibling black.
             if (sibling->hasRedChild()) 
 			{
-                // at least 1 red children
+                // at least 1 red children.
                 if (sibling->left != NULL && sibling->left->color == RED)
 				{
-                    if (sibling->isOnLeft()) 	// left left
+                    if (sibling->isOnLeft()) 	// left left.
 					{
                         sibling->left->color = sibling->color;
                         sibling->color = parent->color;
                         rotateRight(parent);
                     }
-                    else  	// right left
+                    else  	// right left.
 					{
                         sibling->left->color = parent->color;
                         rotateRight(sibling);
@@ -602,13 +588,13 @@ void RBTree<K, V>::fixDoubleBlack(RBNode<K, V>* subtree)
                 }
                 else 
 				{
-                    if (sibling->isOnLeft()) 	// left right
+                    if (sibling->isOnLeft()) 	// left right.
 					{
                         sibling->right->color = parent->color;
                         rotateLeft(sibling);
                         rotateRight(parent);
                     }
-                    else  	// right right
+                    else  	// right right.
 					{
                         sibling->right->color = sibling->color;
                         sibling->color = parent->color;
@@ -617,7 +603,7 @@ void RBTree<K, V>::fixDoubleBlack(RBNode<K, V>* subtree)
                 }
                 parent->color = BLACK;
             }
-            else   // 2 black children
+            else   // 2 black children.
 			{
                 sibling->color = RED;
                 if (parent->color == BLACK)
@@ -633,7 +619,6 @@ void RBTree<K, V>::fixDoubleBlack(RBNode<K, V>* subtree)
     }
 }
 /* End of fixDoubleBlack method */
-
 
 //***************************************************************************
 //	NAME: getSuccessor.
@@ -653,7 +638,6 @@ RBNode<K, V>* RBTree<K, V>::getSuccessor(RBNode<K, V>* subtree)
     }
     return temp;
 }
-
 
 //***************************************************************************
 //	NAME: replaceNode.
@@ -687,7 +671,6 @@ RBNode<K, V>* RBTree<K, V>::replaceNode(RBNode<K, V>* subtree)
     }
 }
 
-
 //***************************************************************************
 //	NAME: swapValues.
 //
@@ -712,7 +695,6 @@ void RBTree<K, V>::swapValues(RBNode<K, V>* firstNode, RBNode<K, V>* secNode)
     secNode->name = value;
 }
 
-
 //***************************************************************************
 //	NAME: clearTree.
 //
@@ -730,7 +712,6 @@ void RBTree<K, V>::clearTree()
 	cursor = NULL;
 }
 
-
 //***************************************************************************
 //	NAME: clearHelper.
 //
@@ -743,14 +724,13 @@ template <class K, class V>
 void RBTree<K, V>::clearHelper(RBNode<K, V>* tree)
 {
 	if (tree != NULL)
-   {
-      clearHelper(tree->left);
-      clearHelper(tree->right);
-      delete tree;
-   }
-   tree = NULL;
+	{
+    	clearHelper(tree->left);
+		clearHelper(tree->right);
+		delete tree;
+	}
+	tree = NULL;
 }
-
 
 //****************************************************************************
 //	NAME: pruneHelper.
@@ -775,7 +755,6 @@ void RBTree<K, V>::pruneHelper(RBNode<K, V>* subtree)
         pruneHelper(subtree->right);
     }	
 }
-
 
 //***************************************************************************
 //	NAME: printTree.
@@ -802,7 +781,6 @@ void RBTree<K, V>::printTree()
         }
     }
 }
-
 
 //***************************************************************************
 //	NAME: getTreeHeight.
@@ -834,7 +812,6 @@ int RBTree<K, V>::getTreeHeight(RBNode<K, V>* subtree)
 	}
 }
 
-
 //***************************************************************************
 //	NAME: printLevel.
 //
@@ -853,7 +830,6 @@ void RBTree<K, V>::printLevel(int height)
 	cout << setw(value - 4) << "";
 	dispLevel(temp, height, value);
 }
-
 
 //***************************************************************************
 //	NAME: dispLevel.
@@ -903,7 +879,6 @@ void RBTree<K, V>::dispLevel(RBNode<K, V>* subtree, int level, int displace)
 	}
 }
 
-
 //***************************************************************************
 //	NAME: inOrder.
 //
@@ -918,7 +893,6 @@ void RBTree<K, V>::inOrder()
 	inOrderHelper(root); 
 	cout << "}";
 }
-
 
 //***************************************************************************
 //	NAME: inOrderHelper.
@@ -939,7 +913,6 @@ void RBTree<K, V>::inOrderHelper(RBNode<K, V>* subtree)
     }
 }
 
-
 //***************************************************************************
 //	NAME: preOrder.
 //
@@ -954,7 +927,6 @@ void RBTree<K, V>::preOrder()
 	preOrderHelper(root);
 	cout << "}"; 
 }
-
 
 //***************************************************************************
 //	NAME: preOrderHelper.
@@ -976,7 +948,6 @@ void RBTree<K, V>::preOrderHelper(RBNode<K, V>* subtree)
     }
 }
 
-
 //***************************************************************************
 //	NAME: postOrder.
 //
@@ -991,7 +962,6 @@ void RBTree<K, V>::postOrder()
 	postOrderHelper(root);
 	cout << "}";
 }
-
 
 //***************************************************************************
 //	NAME: postOrderHelper.
@@ -1012,7 +982,6 @@ void RBTree<K, V>::postOrderHelper(RBNode<K, V>* subtree)
         std::cout << ", ";
     }
 }
-
 
 //***************************************************************************
 //	NAME: printCursor.
@@ -1035,7 +1004,6 @@ void RBTree<K, V>::printCursor()
 		cout << "[]" << endl;
 	}
 }
-
 
 //***************************************************************************
 //	NAME: printRedNode.
@@ -1095,8 +1063,5 @@ void RBTree<K, V>::printNodeAndColor(RBNode<K, V>* subtree) const
 		std::cout << ">";
 	}	
 }
-
-
-
 
 template class RBTree<int, string>;

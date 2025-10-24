@@ -1,7 +1,7 @@
 //***************************************************************************
 //	Driver File for Templated Red-Black Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/26/2024
+//	Last Compiled Date: 10/24/2025
 //
 //	Copyright (c) 2024 Houston Brown
 //
@@ -30,8 +30,6 @@
 #include <limits>
 #include <sstream>
 
-
-
 void printMenu();
 
 template <class K, class V> 
@@ -39,8 +37,6 @@ void choose(RBTree<K, V>& myTree);
 
 template <class T>
 T validateInput(T &value);
-
-
 
 int main()
 {
@@ -50,9 +46,6 @@ int main()
 	
 	return 0;
 }
-
-
-
 
 //***************************************************************************
 //	NAME: printMenu.
@@ -79,7 +72,6 @@ void printMenu()
     cout << "Enter Q to quit." << endl;	
 }
 
-
 //***************************************************************************
 //	NAME: choose.
 //
@@ -96,10 +88,10 @@ void printMenu()
 template <class K, class V> 
 void choose(RBTree<K, V>& myTree)
 {
-	char choice      = 'A';
-	bool hasInserted = false;
-	K    key;
-	V    value;
+	char   choice = 'A';
+	bool   hasInserted = false;
+	K      key;
+	V      value;
 	
 	cout << "\nRB Tree>> ";
 	cin >> choice;
@@ -109,6 +101,7 @@ void choose(RBTree<K, V>& myTree)
 		switch(choice)
 		{
 			case '+':
+			{
 				validateInput(key);
 				cout << "What value would you like to pair with your chosen";
 				cout << " key: " << key << "?\n";
@@ -117,8 +110,9 @@ void choose(RBTree<K, V>& myTree)
 				myTree.insertKey(key, value);
 				hasInserted = true;
 				break;
-
+			}
 			case '-':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -130,8 +124,9 @@ void choose(RBTree<K, V>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case '?':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -151,8 +146,9 @@ void choose(RBTree<K, V>& myTree)
 					system("pause");					
 				}
 				break;
-				
+			}
 			case 'r': case 'R':
+			{
 				if (hasInserted)
 				{
 					myTree.prune();
@@ -162,9 +158,10 @@ void choose(RBTree<K, V>& myTree)
 					cerr << "\nPlease insert data into the tree." << endl;
 					system("pause");					
 				}
-				break;				
-
+				break;
+			}
 			case 'i': case 'I':
+			{
 				if(hasInserted)
 				{
 					cout << "The contents of the tree in order are: ";
@@ -178,8 +175,9 @@ void choose(RBTree<K, V>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'p': case 'P':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in pre order are: ";
@@ -193,8 +191,9 @@ void choose(RBTree<K, V>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 't': case 'T':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in post order are: ";
@@ -208,12 +207,14 @@ void choose(RBTree<K, V>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'd': case 'D':
+			{
 				myTree.clearTree();
 				break;
-				
+			}
 			case'@':
+			{
 				if (hasInserted)
 				{
 					myTree.printCursor();
@@ -226,14 +227,17 @@ void choose(RBTree<K, V>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'q': case 'Q':
+			{
 				return;
-
+			}
 			default:
+			{
 				cerr << "Invalid option, please try again." << endl;
 				system("pause");
 				break;
+			}
 		}
 		system("cls");
 		printMenu();
@@ -244,7 +248,6 @@ void choose(RBTree<K, V>& myTree)
 	}
 }
 /* End of choose function */
-
 
 //***************************************************************************
 //	NAME: validateInput.
