@@ -30,8 +30,6 @@
 #include <limits>
 #include <sstream>
 
-
-
 void printMenu();
 
 template <class T> 
@@ -39,8 +37,6 @@ void choose(AvlTree<T>& myTree);
 
 template <class T>
 T validateInput(T &value);
-
-
 
 int main()
 {
@@ -51,17 +47,12 @@ int main()
 	return 0;
 }
 
-
-
-
-
 //****************************************************************************
 //		Function to display the available options to the user.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 void printMenu()
 {
 	cout << " ________________________________ " << endl;
@@ -79,8 +70,6 @@ void printMenu()
     cout << "Enter Q to quit." << endl;	
 }
 
-
-
 //****************************************************************************
 //		This function will prompt and accept the user's choice.  If the
 //	choice is invalid, a message will be displayed.  Otherwise, the action
@@ -91,7 +80,6 @@ void printMenu()
 //	Parameters:
 //		myTree: templated AVL Tree.
 //****************************************************************************
-
 template <class T> 
 void choose(AvlTree<T>& myTree)
 {
@@ -102,18 +90,20 @@ void choose(AvlTree<T>& myTree)
 	cout << "\nAVL>> ";
 	cin >> choice;
 	
-	while (choice != 'q' || choice != 'Q')
+	while (choice != 'q' && choice != 'Q')
 	{
 		switch(choice)
 		{
 			case '+':
+			{
 				validateInput(key);
 				myTree.Insert(key);
 				
 				hasInserted = true;
 				break;
-
+			}
 			case '-':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -125,15 +115,20 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case '?':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
 					if (myTree.Search(key))
+					{
 						cout << endl << key << " is in the tree!" << endl;
+					}
 					else
+					{
 						cerr << endl << key << " is not in the tree." << endl;
+					}
 					system("pause");
 				}
 				else
@@ -142,8 +137,9 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-				
+			}
 			case 'r': case 'R':
+			{
 				if (hasInserted)
 				{
 					myTree.Prune();
@@ -154,8 +150,9 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'i': case 'I':
+			{
 				if(hasInserted)
 				{
 					cout << "The contents of the tree in order are: ";
@@ -169,8 +166,9 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'p': case 'P':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in pre order are: ";
@@ -184,8 +182,9 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 't': case 'T':
+			{
 				if (hasInserted)
 				{
 					cout << "The contents of the tree in post order are: ";
@@ -199,13 +198,15 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'd': case 'D':
+			{
 				myTree.~AvlTree();
 				hasInserted = false;
-				break;  
-				
+				break;
+			}
 			case'@':
+			{
 				if (hasInserted)
 				{
 					myTree.PrintCursor();
@@ -218,29 +219,32 @@ void choose(AvlTree<T>& myTree)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'q': case 'Q':
+			{
 				exit(1);
-
+			}
 			default:
+			{
 				cerr << "Invalid option, please try again." << endl;
 				system("pause");
 				break;
+			}
 		}
 		system("cls");
 		printMenu();
 		cout << endl;
 		
 		if (hasInserted)
+		{
 			myTree.PrintTree();
+		}
 			
 		cout << "AVL>> ";
 		cin >> choice;
 	}		
 }
 /* End of choose function */
-
-
 
 //****************************************************************************
 //		This function will validate the input from the user.  If the user
@@ -251,14 +255,15 @@ void choose(AvlTree<T>& myTree)
 //	Parameters:
 //		value: the value entered by the user.
 //****************************************************************************
-
 template <class T>
 T validateInput(T &value)
 {
 	while (true)
 	{
 		if (cin >> value)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();

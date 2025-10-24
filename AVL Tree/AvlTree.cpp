@@ -6,8 +6,6 @@
 
 #include "AvlTree.h"
 
-
-
 //****************************************************************************
 //		Method to insert key into the AVL Tree.  If the key is
 //	already in the tree, a message will be displayed informing the user.
@@ -20,7 +18,6 @@
 //		key: the key to be inserted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::InsertHelper(const T key, AvlNode<T>*& subtree)
 {
@@ -57,8 +54,6 @@ void AvlTree<T>::InsertHelper(const T key, AvlNode<T>*& subtree)
 	BalanceTree(subtree);   
 }
 
-
-
 //****************************************************************************
 //		Method to balance the tree after an insertion or deletion.  If the 
 //	subtree passed is NULL, then this function will return.  Otherwise, if 
@@ -68,7 +63,6 @@ void AvlTree<T>::InsertHelper(const T key, AvlNode<T>*& subtree)
 //	Parameters:
 //		pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 {
@@ -79,8 +73,7 @@ void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 	
 	if (GetHeight(subtree->left) - GetHeight(subtree->right) > 1)
 	{
-		if (GetHeight(subtree->left->left) >= 
-										GetHeight(subtree->left->right))
+		if (GetHeight(subtree->left->left) >= GetHeight(subtree->left->right))
 		{
 			RotateLeft(subtree);
 		}
@@ -91,8 +84,7 @@ void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 	}
 	else if (GetHeight(subtree->right) - GetHeight(subtree->left) > 1)
 	{
-		if (GetHeight(subtree->right->right) >= 
-										GetHeight(subtree->right->left))
+		if (GetHeight(subtree->right->right) >= GetHeight(subtree->right->left))
 		{
 			RotateRight(subtree);
 		}
@@ -112,15 +104,12 @@ void AvlTree<T>::BalanceTree(AvlNode<T>*& subtree)
 	}
 }
 
-
-
 //****************************************************************************
 //		Single Left Rotation Method.
 //
 //	Parameters:
 //		pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::RotateLeft(AvlNode<T>*& subtree)
 {
@@ -128,13 +117,10 @@ void AvlTree<T>::RotateLeft(AvlNode<T>*& subtree)
 	subtree->left = temp->right;
 	temp->right = subtree;
 	
-	subtree->height = max(GetHeight(subtree->left), 
-											GetHeight(subtree->right)) + 1;
+	subtree->height = max(GetHeight(subtree->left), GetHeight(subtree->right)) + 1;
 	temp->height = max(GetHeight(temp->left), subtree->height) + 1;
 	subtree = temp;
 }
-
-
 
 //****************************************************************************
 //		Double Left Rotation Method.
@@ -142,7 +128,6 @@ void AvlTree<T>::RotateLeft(AvlNode<T>*& subtree)
 //	Parameters:
 //		pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::DoubleRotateLeft(AvlNode<T>*& subtree)
 {
@@ -150,15 +135,12 @@ void AvlTree<T>::DoubleRotateLeft(AvlNode<T>*& subtree)
 	RotateLeft(subtree);
 }
 
-
-
 //****************************************************************************
 //		Single Right Rotation Method.
 //
 //	Parameters:
 //		pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::RotateRight(AvlNode<T>*& subtree)
 {
@@ -166,13 +148,10 @@ void AvlTree<T>::RotateRight(AvlNode<T>*& subtree)
 	subtree->right = temp->left;
 	temp->left = subtree;
 	
-	subtree->height = max(GetHeight(subtree->right), 
-											GetHeight(subtree->left)) + 1;
+	subtree->height = max(GetHeight(subtree->right), GetHeight(subtree->left)) + 1;
 	temp->height = max(GetHeight(temp->right), subtree->height) + 1;
 	subtree = temp;	
 }
-
-
 
 //****************************************************************************
 //		Double Right Rotation Method.
@@ -188,8 +167,6 @@ void AvlTree<T>::DoubleRotateRight(AvlNode<T>*& subtree)
 	RotateRight(subtree);
 }
 
-
-
 //****************************************************************************
 //		Method to search for a given key within the AVL Tree.
 //	The method will traverse the tree based on the value of the key.  If it
@@ -199,7 +176,6 @@ void AvlTree<T>::DoubleRotateRight(AvlNode<T>*& subtree)
 //	Parameters:
 //		key: the key to be searched for.
 //****************************************************************************
-
 template <class T>
 bool AvlTree<T>::Search(const T key)
 {
@@ -210,9 +186,13 @@ bool AvlTree<T>::Search(const T key)
 		if (key < temp->data)
 		{
 			if (temp->left == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->left;
+			}
 		}
 		
 		else if (key == temp->data)
@@ -224,14 +204,16 @@ bool AvlTree<T>::Search(const T key)
 		else
 		{
 			if (temp->right == NULL)
+			{
 				return false;
+			}
 			else
+			{
 				temp = temp->right;
+			}
 		}
 	}	
 }
-
-
 
 //****************************************************************************
 //		Method to delete a given key from the AVL Tree.  If this
@@ -242,7 +224,6 @@ bool AvlTree<T>::Search(const T key)
 //	Parameters:
 //		key: the key to be deleted.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::Delete(const T key)
 {
@@ -268,8 +249,6 @@ void AvlTree<T>::Delete(const T key)
 	}
 }
 
-
-
 //****************************************************************************
 //		Helper method to delete a node with a given key.  After the 
 //	deletion the tree will be rebalanced.  
@@ -278,7 +257,6 @@ void AvlTree<T>::Delete(const T key)
 //		key: the key to be deleted.
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::DeleteHelper(const T key, AvlNode<T>*& subtree)
 {
@@ -319,15 +297,12 @@ void AvlTree<T>::DeleteHelper(const T key, AvlNode<T>*& subtree)
 	BalanceTree(subtree);
 }
 
-
-
 //****************************************************************************
 //		Method to return the minimum value in the tree.
 //
 //	Parameters:
 //		node: a root of a subtree
 //****************************************************************************
-
 template <class T>
 AvlNode<T>* AvlTree<T>::GetMin(AvlNode<T>* subtree) const
 {
@@ -337,8 +312,6 @@ AvlNode<T>* AvlTree<T>::GetMin(AvlNode<T>* subtree) const
 	}
 	return subtree;
 }
-
-
 
 //****************************************************************************
 //		Helper method to traverse the tree and check each node to see if it
@@ -364,20 +337,19 @@ void AvlTree<T>::PruneHelper(AvlNode<T>* subtree)
     }	
 }
 
-
-
 //****************************************************************************
 //		Method to print the tree in level order.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::PrintTree() const
 {
 	if (!root)
+	{
         return;
+    }
 
     else
     {
@@ -391,20 +363,19 @@ void AvlTree<T>::PrintTree() const
     }
 }
 
-
-
 //****************************************************************************
 //		Recursively calculates the height of the tree.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 int AvlTree<T>::GetHeight(AvlNode<T>* subtree) const
 {
 	if (subtree == NULL)
+	{
 		return 0;
+	}
 	else
 	{
 		int leftHeight = GetHeight(subtree->left);
@@ -420,9 +391,6 @@ int AvlTree<T>::GetHeight(AvlNode<T>* subtree) const
 		}
 	}
 }
-
-
-
 
 //****************************************************************************
 //		Calculates width to space out nodes and calls DispLevel to print
@@ -443,9 +411,6 @@ void AvlTree<T>::PrintLevel(int height) const
 	DispLevel(temp, height, value);
 }
 
-
-
-
 //****************************************************************************
 //		Displays the nodes on given level and will display 'x' where the
 //	pointers are NULL.
@@ -455,7 +420,6 @@ void AvlTree<T>::PrintLevel(int height) const
 //		level: current level.
 //		displace: displacement.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 {
@@ -472,9 +436,13 @@ void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 		{
 			int result = ((subtree->data <= 1) ? 1: log10(subtree->data) + 1);
 			if (subtree == cursor)
+			{
 				cout << "[" << subtree->data << "]";
+			}
 			else
+			{
 				cout << subtree->data;
+			}
 
 			cout << setw(disp - result) << "";
 		}
@@ -495,8 +463,6 @@ void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 	}
 }
 
-
-
 //****************************************************************************
 //		Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
@@ -504,7 +470,6 @@ void AvlTree<T>::DispLevel(AvlNode<T>* subtree, int level, int displace) const
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::PrintCursor() const
 {
@@ -518,16 +483,12 @@ void AvlTree<T>::PrintCursor() const
 	}
 }
 
-
-
-
 //****************************************************************************
 //		In order print method.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::InOrder() const
 {
@@ -535,9 +496,6 @@ void AvlTree<T>::InOrder() const
 	InOrderHelper(root); 
 	cout << "]";
 }
-
-
-
 
 //****************************************************************************
 //		Helper method to print the contents of the tree in order.
@@ -566,16 +524,12 @@ void AvlTree<T>::InOrderHelper(const AvlNode<T>* subtree) const
     }
 }
 
-
-
-
 //****************************************************************************
 //		Pre-order print method.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::PreOrder() const
 {
@@ -584,16 +538,12 @@ void AvlTree<T>::PreOrder() const
 	cout << "]";
 }
 
-
-
-
 //****************************************************************************
 //		Helper method to print the contents of the tree in pre order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::PreOrderHelper(const AvlNode<T>* subtree) const
 {
@@ -613,16 +563,12 @@ void AvlTree<T>::PreOrderHelper(const AvlNode<T>* subtree) const
     }
 }
 
-
-
-
 //****************************************************************************
 //		Post-order print method.
 //
 //	Parameters:
 //		N/A.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::PostOrder() const
 {
@@ -631,16 +577,12 @@ void AvlTree<T>::PostOrder() const
 	cout << "]";
 }
 
-
-
-
 //****************************************************************************
 //		Helper method to print the contents of the tree in post order.
 //
 //	Parameters:
 //		subtree: pointer to the root of subtree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::PostOrderHelper(const AvlNode<T>* subtree) const
 {
@@ -660,8 +602,6 @@ void AvlTree<T>::PostOrderHelper(const AvlNode<T>* subtree) const
     }
 }
 
-
-
 //****************************************************************************
 //		Copy Constructor.
 //****************************************************************************
@@ -677,12 +617,9 @@ AvlTree<T>::AvlTree(const AvlTree& myAvl)
     CopyHelper(root, myAvl.root);
 }
 
-
-
 //****************************************************************************
 //		Helper method to recursively allocate memory for the new tree.
 //****************************************************************************
-
 template<class T>
 void AvlTree<T>::CopyHelper(AvlNode<T>*& aRoot, AvlNode<T>* myRoot)
 {
@@ -698,9 +635,6 @@ void AvlTree<T>::CopyHelper(AvlNode<T>*& aRoot, AvlNode<T>* myRoot)
     }
 }
 
-
-
-
 //****************************************************************************
 //		Destructor.
 //****************************************************************************
@@ -712,12 +646,9 @@ AvlTree<T>::~AvlTree()
     root = NULL;
 }
 
-
-
 //****************************************************************************
 //		Helper method to recursively deallocate the tree.
 //****************************************************************************
-
 template <class T>
 void AvlTree<T>::DestroyHelper(AvlNode<T>*& Tree)
 {
@@ -730,13 +661,9 @@ void AvlTree<T>::DestroyHelper(AvlNode<T>*& Tree)
    Tree = NULL;
 }
 
-
-
-
 //****************************************************************************
 //		Assignment Operator.
 //****************************************************************************
-
 template <class T>
 AvlTree<T>& AvlTree<T>::operator=(const AvlTree<T>& rightTree)
 {
@@ -757,8 +684,6 @@ AvlTree<T>& AvlTree<T>::operator=(const AvlTree<T>& rightTree)
     }
     return *this;
 }
-
-
 
 template class AvlTree<int>;
 template class AvlTree<double>;

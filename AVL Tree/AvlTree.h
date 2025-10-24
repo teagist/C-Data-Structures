@@ -14,12 +14,8 @@
 #include <cmath>
 using namespace std;
 
-
-
 template<class T>
 class AvlTree;
-
-
 
 template <class T>
 class AvlNode
@@ -33,8 +29,6 @@ class AvlNode
 
     friend class AvlTree<T>;
 };
-
-
 
 template <class T>
 class AvlTree
@@ -79,12 +73,12 @@ private:
 	bool isLeaf(AvlNode<T>* subtree) const { return (subtree->left == NULL && 
 												   subtree->right == NULL); }	
 
-	// Printing in Level Order Helper Methods	
+	// Printing in Level Order Helper Methods.	
 	int GetHeight(AvlNode<T>* subtree) const;
 	void PrintLevel(int height) const;
 	void DispLevel(AvlNode<T>* subtree, int level, int displace) const;
 	
-	// Printing in Other Order Helper Methods	
+	// Printing in Other Order Helper Methods.	
     void PreOrderHelper(const AvlNode<T>* subtree) const; 
     void InOrderHelper(const AvlNode<T>* subtree) const;
     void PostOrderHelper(const AvlNode<T>* subtree) const;
