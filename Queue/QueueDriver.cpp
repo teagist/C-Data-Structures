@@ -5,15 +5,13 @@
 //	will terminate.
 //
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 11/3/2024
+//	Last Compiled Date: 10/25/2025
 //***************************************************************************
 
 #include "Queue.h"
 #include "TestQueue.cpp"
 #include <limits>
 #include <sstream>
-
-
 
 void getManualOrAuto();
 
@@ -25,17 +23,12 @@ void choose(Queue<T>& myQueue);
 template <class T>
 T validateInput(T &val);
 
-
-
 int main()
 {
     getManualOrAuto();
     
 	return 0;
 }
-
-
-
 
 //****************************************************************************
 //		Function to prompt the user to select automatic test or manaul.
@@ -108,9 +101,6 @@ void printMenu()
     cout << "Enter Q to quit." << endl;
 }
 
-
-
-
 //***************************************************************************
 //		This function will prompt and accept the user's choice.  If the
 //	choice is invalid, a message will be displayed.  Otherwise, the action
@@ -135,18 +125,25 @@ void choose(Queue<T>& myQueue)
         switch (choice)
         {
 			case '+':
+			{
 				cin >> value;
 				myQueue.Enqueue(value);
 				break;
+			}
 			case '-':
+			{
 			    myQueue.Dequeue();
 				break;
+			}
 			case '?':
+			{
                 cin >> value;
                 myQueue.Search(value);
                 system("pause");
 				break;
+			}
 			case '@' :
+			{
 				cout << endl;
 				if (myQueue.Peek())
 				{
@@ -155,15 +152,22 @@ void choose(Queue<T>& myQueue)
 				}
 				system("pause");
 				break;
+			}
 			case 'd': case 'D':
+			{
 				myQueue.~Queue();
 				break;
+			}
             case 'q': case 'Q':
+            {
                 exit(1);
+            }
 			default:
+			{
 				cout << "\nInvalid choice. Please try again." << endl;
 				cout << endl;
                 system("pause");
+            }
 		}
         system("cls");
         printMenu();
@@ -173,9 +177,6 @@ void choose(Queue<T>& myQueue)
         cin >> choice;
     }
 }
-
-
-
 
 //***************************************************************************
 //		This function will validate the input from the user.  If the user
@@ -192,7 +193,9 @@ T validateInput(T &val)
 	while (true)
 	{
 		if (cin >> val)
+		{
 			break;
+		}
 		else
 		{
 			cin.clear();

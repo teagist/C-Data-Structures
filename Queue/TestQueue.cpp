@@ -1,12 +1,10 @@
 //****************************************************************************
 //	Implementation File for Queue Test
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 11/3/2024
+//	Last Compiled Date: 10/25/2025
 //****************************************************************************
 
 #include "TestQueue.h"
-#include <string>
-
 
 //****************************************************************************
 //	CONSTRUCTOR.   
@@ -18,8 +16,6 @@ TestQueue<U>::TestQueue()
 	testLogger.setVersion("1.00.00.01");
 	testLogger.setTitlebar();
 }
-
-
 
 //****************************************************************************
 //	NAME: getMaxPossibleListNodes.
@@ -52,8 +48,6 @@ int TestQueue<U>::getMaxPossibleNodes()
 	}
 	return 0;
 }
-
-
 
 //****************************************************************************
 //	NAME: printTestInfoHeader.
@@ -92,8 +86,6 @@ void TestQueue<U>::printTestInfoHeader()
 		std::cerr << "Error retrieving test info." << std::endl;
 	}
 }
-
-
 
 //****************************************************************************
 //	NAME: runTests.
@@ -139,8 +131,6 @@ void TestQueue<U>::runTests()
 	testLogger.printResult();
 }
 //****************************************************************************
-
-
 
 //****************************************************************************
 //	NAME: bulkEnqueue.
@@ -200,8 +190,6 @@ bool TestQueue<U>::bulkEnqueue()
 	std::cout << std::endl;
 	return status;
 }
-
-
 
 //****************************************************************************
 //	NAME: testDequeue.
@@ -298,8 +286,6 @@ bool TestQueue<U>::testDequeue()
 	return status;
 }
 
-
-
 //****************************************************************************
 //	NAME: bulkDequeue.
 //
@@ -390,8 +376,6 @@ bool TestQueue<U>::bulkDequeue()
 	return status;	
 }
 
-
-
 //****************************************************************************
 //	NAME: testPeek.
 //
@@ -474,8 +458,6 @@ bool TestQueue<U>::testPeek()
 	std::cout << std::endl;
 	return status;
 }
-
-
 
 //****************************************************************************
 //	NAME: testEmptyQueueSearch.
@@ -562,8 +544,6 @@ bool TestQueue<U>::testEmptyQueueSearch()
 	return status;	
 }
 
-
-
 //****************************************************************************
 //	NAME: testNotFoundSearch.
 //
@@ -643,8 +623,6 @@ bool TestQueue<U>::testNotFoundSearch()
 	std::cout << std::endl;
 	return status;		
 }
-
-
 
 //****************************************************************************
 //	NAME: testSearch.

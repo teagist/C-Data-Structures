@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Header File for Logger Class
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 11/3/2024
+//	Last Compiled Date: 10/25/2025
 //****************************************************************************
 
 #ifndef _LOGGER_H

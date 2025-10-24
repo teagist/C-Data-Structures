@@ -1,7 +1,7 @@
 //***************************************************************************
 //	Header File for Templated Queue
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/12/2024
+//	Last Compiled Date: 10/25/2025
 //***************************************************************************
 
 #ifndef _QUEUE_H
@@ -12,8 +12,6 @@ using namespace std;
 
 template<class T>
 class Queue;
-
-
 
 template<class T>
 class QNode
@@ -27,8 +25,6 @@ class QNode
 
 	friend class Queue<T>;
 };
-
-
 
 template<class T>
 class Queue
@@ -50,4 +46,4 @@ public:
 private:	                                  
 	QNode<T>* head;
 };
-#endifs
+#endif
