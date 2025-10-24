@@ -1,18 +1,17 @@
 //***************************************************************************
 //	Implementation File for Templated Binary Heap
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 7/31/2022
+//	Last Compiled Date: 10/24/2025
 //***************************************************************************
 
 #include "BinaryHeap.h"
 
 //***************************************************************************
-//	NAME: Insert.
+//		Method to perform insertion.  Helper function will be called at the
+//	end to maintain the heap order property.
 //
-//	DESCRIPTION: Method to perform insertion.  Helper function will be 
-//	             called at the end to maintain the heap order property.
-//
-//	PARAMETERS: key: the element to be inserted.
+//	Parameters:
+//		key: the element to be inserted.
 //***************************************************************************
 template <class T>
 void BinaryHeap<T>::Insert(T key)
@@ -32,13 +31,11 @@ void BinaryHeap<T>::Insert(T key)
 }
 
 //***************************************************************************
-//	NAME: Search.
+//		Method to perform search for given key.  If the element is found,
+//	the method will return true, otherwise it will return false.
 //
-//	DESCRIPTION: Method to perform search for given key.  If the element
-//	             is found, the method will return true, otherwise it will 
-//               return false.
-//
-//	PARAMETERS: key: the element to be searched.
+//	Parameters:
+//		key: the element to be searched.
 //***************************************************************************
 template <class T>
 bool BinaryHeap<T>::Search(T key) const
@@ -54,12 +51,11 @@ bool BinaryHeap<T>::Search(T key) const
 }
 
 //***************************************************************************
-//	NAME: Delete.
+//		Method to delete the value at the front of the array.  Or in other
+//	words, the minimum value in the heap.
 //
-//	DESCRIPTION: Method to delete the value at the front of the array.  Or 
-//	             in other words, the minimum value in the heap.
-//
-//	PARAMETERS: N/A.
+//	Parameters:
+//		N/A.
 //***************************************************************************
 template <class T>
 void BinaryHeap<T>::Delete()
@@ -76,13 +72,12 @@ void BinaryHeap<T>::Delete()
 
 	HeapifyDown(0);
 }
-	
+
 //***************************************************************************
-//	NAME: Print.
+//		Method to print the contents of the heap in line.  
 //
-//	DESCRIPTION: Method to print the contents of the heap in line.  
-//
-//	PARAMETERS: N/A.
+//	Parameters:
+//		N/A.
 //***************************************************************************
 template <class T>
 void BinaryHeap<T>::Print() const
@@ -96,15 +91,14 @@ void BinaryHeap<T>::Print() const
 }
 
 //***************************************************************************
-//	NAME: HeapifyUp.
+//		Method to maintain the heap order property.  
 //
-//	DESCRIPTION: Method to maintain the heap order property.  
-//
-//	PARAMETERS: in: index of newly inserted value.
+//	Parameters:
+//		in: index of newly inserted value.
 //***************************************************************************
 template <class T>
 void BinaryHeap<T>::HeapifyUp(int in)
-{    
+{
     if (in && heap[parent(in)] > heap[in])
     {
     	T temp = heap[in];
@@ -116,11 +110,10 @@ void BinaryHeap<T>::HeapifyUp(int in)
 }
 
 //***************************************************************************
-//	NAME: HeapifyDown.
+//		Method to maintain the heap order property.  
 //
-//	DESCRIPTION: Method to maintain the heap order property.  
-//
-//	PARAMETERS: in: index of newly inserted value.
+//	Parameters:
+//		in: index of newly inserted value.
 //***************************************************************************
 template <class T>
 void BinaryHeap<T>::HeapifyDown(int in)
@@ -133,12 +126,10 @@ void BinaryHeap<T>::HeapifyDown(int in)
 	{
 		smallest = leftChild;
 	}
-	
 	if (rightChild < size && heap[rightChild] > heap[smallest])
 	{
 		smallest = rightChild;
 	}
-
 	if (smallest != in)
 	{
 		int temp = heap[in];

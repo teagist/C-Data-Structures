@@ -1,7 +1,7 @@
 //***************************************************************************
 //	Header File for Templated Binary Heap
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 7/31/2022
+//	Last Compiled Date: 10/24/2025
 //***************************************************************************
 
 #ifndef _BINARYHEAP_H
@@ -21,7 +21,7 @@ public:
 	void Insert(T key);
 	bool Search(T key) const;
 	void Delete();
-	void Clear() { delete[] heap; heap = NULL; size = 0; }
+	void Clear() { delete[] heap; heap = NULL; size = 0;}
 	void Print() const;
 
 	int GetSize() const { return size; }
