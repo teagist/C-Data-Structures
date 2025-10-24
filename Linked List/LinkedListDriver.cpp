@@ -31,7 +31,11 @@
 #include <limits>
 #include <sstream>
 
-void getManualOrAuto();
+
+
+void printMainMenu();
+
+void getExecChoice();
 
 void printMenu();
 
@@ -41,51 +45,95 @@ void choose(LinkedList<T> &myList);
 template <class T>
 T validateInput(T &value);
 
+
+
+
 int main()
 {
-	getManualOrAuto();
+	//getManualOrAuto();
+	printMainMenu();
+	getExecChoice();
 
 	return 0;
 }
 
+
+
+
 //****************************************************************************
-//	NAME: getManualOrAuto.
+//	NAME: printMainMenu.
 //
-//	DESCRIPTION: Function to prompt the user to select automatic test or 
-//				 manaul.
+//	DESCRIPTION: Print main menu of execution options to the user.
 //
 //	PARAMETERS:
 //		N/A.
 //****************************************************************************
-void getManualOrAuto()
+void printMainMenu()
 {
-	char userEntry;
+    std::cout << " _______________________________________________________________________ ";
+    std::cout << std::endl;
+    
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 47);    
+
+    std::cout << "|                                                                       |" << std::endl;
+    std::cout << "|                         Linked List Main Menu                         |" << std::endl;
+    std::cout << "|_______________________________________________________________________|" << std::endl;
+
+    SetConsoleTextAttribute(hConsole, 7);
+
+    std::cout << "|                                                                       |" << std::endl;
+    std::cout << "|      1.) Manual Exhibition.                                           |" << std::endl;
+    std::cout << "|      2.) Automated Testing.                                           |" << std::endl;
+    std::cout << "|      3.) Automated Integration.                                       |" << std::endl;
+    std::cout << "|      4.) Quit                                                         |" << std::endl;
+    std::cout << "|_______________________________________________________________________|" << std::endl;
+    std::cout << "Please choose an execution option of the Linked List." << std::endl;
+}
+
+
+//****************************************************************************
+//	NAME: getExecChoice.
+//
+//	DESCRIPTION: Retreive execution choice from the user.  
+//
+//	PARAMETERS:
+//		N/A.
+//****************************************************************************
+void getExecChoice()
+{
+	int userEntry;
 	
-	std::cout << "Automatic testing? (Y/N)" << std::endl;
-	std::cout << ">> ";
-	
-    while (true)
+    while (userEntry != 4)
     {
         if (std::cin >> userEntry)
         {
             // Convert the input to uppercase
-            userEntry = std::toupper(userEntry);
+            //userEntry = std::toupper(userEntry);
 
             // Check if it's a valid input
-            if (userEntry == 'Y')
+            if (userEntry == 1)
             {
-            	TestLinkedList<int> theTest;
-                theTest.runTests();
-                return;
-            }
-            else if (userEntry == 'N')
-            {
-                LinkedList<int> myList;
+            	WinUtils::clearScreen();
+            	LinkedList<int> myList;
                 printMenu();
                 choose(myList);
                 return;
             }
-            else
+            else if (userEntry == 2)
+            {
+            	WinUtils::clearScreen();
+				TestLinkedList<int> theTest;
+                theTest.runTests();
+                return;
+            }
+            else if (userEntry == 3)
+            {
+            	std::cout << "Real World Scenario" << std::endl;
+            	WinUtils::pauseScreen();
+			}
+			else 
             {
             	std::cout << std::endl;
             	std::cout << "Invalid entry, please try again." << std::endl;
@@ -100,8 +148,13 @@ void getManualOrAuto()
             std::cout << std::endl;
             std::cout << "Invalid entry, please try again." << std::endl;
         }
+        
+		WinUtils::clearScreen();
+		printMainMenu();
+		cout << endl;       
     }
 }
+
 
 //****************************************************************************
 //	NAME: printMenu.
@@ -133,9 +186,8 @@ void printMenu()
     std::cout << "|_________________|___________________|_______________|________________|" << std::endl;
     std::cout << "Please choose an operation to perform on the list." << std::endl;
     std::cout << "Enter E to exit." << std::endl;	
-    
-
 }
+
 
 //****************************************************************************
 //	NAME: choose.
@@ -165,27 +217,32 @@ void choose(LinkedList<T> &myList)
 		switch(choice)
 		{
 			case '+':
+			{
+				
 				validateInput(key);
 				myList.Insert(key);
 				
 				hasInserted = true;
 				break;
-				
+			}
 			case '*':
+			{
 				validateInput(key);
 				myList.InsertAtHead(key);
 				
 				hasInserted = true;
 				break;
-				
+			}
 			case '#':
+			{
 				validateInput(key);
 				myList.InsertAtTail(key);
 				
 				hasInserted = true;
 				break;
-
+			}
 			case '-':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -198,8 +255,9 @@ void choose(LinkedList<T> &myList)
 					system("pause");					
 				}
 				break;
-				
+			}
 			case '~':
+			{
 				if (hasInserted)
 					myList.RemoveAtHead();
 				else
@@ -219,8 +277,9 @@ void choose(LinkedList<T> &myList)
 					system("pause");					
 				}
 				break;
-
+			}
 			case '?':
+			{
 				if (hasInserted)
 				{
 					validateInput(key);
@@ -233,8 +292,9 @@ void choose(LinkedList<T> &myList)
 					system("pause");					
 				}
 				break;
-				
+			}
 			case 'b': case 'B':
+			{
 				if (hasInserted)
 				{
 					myList.Sort();
@@ -245,8 +305,9 @@ void choose(LinkedList<T> &myList)
 					system("pause");
 				}
 				break;
-
+			}
 			case '@':
+			{
 				if (hasInserted)
 				{
 					myList.PrintCursor();
@@ -259,13 +320,15 @@ void choose(LinkedList<T> &myList)
 					system("pause");					
 				}
 				break;
-
+			}
 			case 'c': case 'C':
+			{
 				myList.~LinkedList();
 				hasInserted = false;
 				break;  
-
+			}
 			case 'f': case 'F':
+			{
 				if (hasInserted)
 				{
 					myList.PrintToFile();
@@ -277,8 +340,9 @@ void choose(LinkedList<T> &myList)
 					WinUtils::pauseScreen();
 				}
 				break; 
-				
+			}
 			case 'l': case 'L':
+			{
 				if (hasInserted)
 				{
 					std::cout << std::endl;
@@ -292,8 +356,9 @@ void choose(LinkedList<T> &myList)
 				}
 				WinUtils::pauseScreen();
 				break; 
-				
+			}
 			case 'g': case 'G':
+			{
 				if (hasInserted)
 				{
 					std::cout << "Current list size: " << myList.getSize();
@@ -306,8 +371,9 @@ void choose(LinkedList<T> &myList)
 				}
 				WinUtils::pauseScreen();
 				break; 
-				
+			}
 			case 'w': case 'W':
+			{
 				if (hasInserted)
 				{
 					myList.moveCursorUp();
@@ -319,8 +385,9 @@ void choose(LinkedList<T> &myList)
 					WinUtils::pauseScreen();
 				}
 				break; 
-				
+			}
 			case 's': case 'S':
+			{
 				if (hasInserted)
 				{
 					myList.moveCursorDown();
@@ -331,15 +398,18 @@ void choose(LinkedList<T> &myList)
 					std::cerr << std::endl;
 					WinUtils::pauseScreen();
 				}
-				break; 															
-
+				break; 	
+			}
 			case 'e': case 'E':
+			{
 				exit(1);
-
+			}
 			default:
+			{
 				cerr << "Invalid option, please try again." << endl;
 				system("pause");
 				break;
+			}
 		}
 		system("cls");
 		printMenu();
@@ -356,6 +426,7 @@ void choose(LinkedList<T> &myList)
 	}	
 }
 /* End of choose function */
+
 
 //****************************************************************************
 //	NAME: validateInput.
