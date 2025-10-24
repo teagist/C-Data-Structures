@@ -3,7 +3,7 @@
 //	Programmed by: Houston Brown.
 //	Last Compiled Date: 10/12/2025
 //
-//	Copyright (c) 2022 Houston Brown.
+//	Copyright (c) 2025 Houston Brown.
 //
 //	Permission is hereby granted to any person that obtains a copy of this
 //	software and associated documentation files (the "Software"), to deal
@@ -189,100 +189,111 @@ void choose(Treap<T>& myTreap)
 	{
 		switch (choice)
 		{
-		case '+':
-			validateInput(key);
-			myTreap.Insert(key);
-			hasInserted = true;
-			break;
-
-		case '-':
-			cin >> key;
-			myTreap.Delete(key);
-			break;
-
-		case '?':
-			validateInput(key);
-			if (myTreap.Search(key))
+			case '+':
 			{
-				cout << key << " is in the treap!" << endl;
+				validateInput(key);
+				myTreap.Insert(key);
+				hasInserted = true;
+				break;
 			}
-			else
+			case '-':
 			{
-				cerr << key << " is not in the treap." << endl;
+				cin >> key;
+				myTreap.Delete(key);
+				break;
 			}
-			system("pause");
-			break;
-
-		case 'r': case 'R':
-			if (hasInserted)
+			case '?':
 			{
-				myTreap.Prune();
-			}
-			else
-			{
-				cerr << "\nPlease insert data into the treap." << endl;
+				validateInput(key);
+				if (myTreap.Search(key))
+				{
+					cout << key << " is in the treap!" << endl;
+				}
+				else
+				{
+					cerr << key << " is not in the treap." << endl;
+				}
 				system("pause");
+				break;
 			}
-			break;
-
-		case 'i': case 'I':
-			if (hasInserted)
+			case 'r': case 'R':
 			{
-				cout << endl;
-				cout << "The contents of the treap in order are: " << endl;
-				myTreap.InOrder();
-				cout << endl << endl;
+				if (hasInserted)
+				{
+					myTreap.Prune();
+				}
+				else
+				{
+					cerr << "\nPlease insert data into the treap." << endl;
+					system("pause");
+				}
+				break;
 			}
-			else
+			case 'i': case 'I':
 			{
-				cerr << "The treap is empty." << endl;
+				if (hasInserted)
+				{
+					cout << endl;
+					cout << "The contents of the treap in order are: " << endl;
+					myTreap.InOrder();
+					cout << endl << endl;
+				}
+				else
+				{
+					cerr << "The treap is empty." << endl;
+				}
+				system("pause");
+				break;
 			}
-			system("pause");
-			break;
-
-		case 'p': case 'P':
-			if (hasInserted)
+			case 'p': case 'P':
 			{
-				cout << endl;
-				cout << "The contents of the treap in pre order are: ";
-				cout << endl;
-				myTreap.PreOrder();
-				cout << endl << endl;
+				if (hasInserted)
+				{
+					cout << endl;
+					cout << "The contents of the treap in pre order are: ";
+					cout << endl;
+					myTreap.PreOrder();
+					cout << endl << endl;
+				}
+				else
+				{
+					cerr << "The treap is empty." << endl;
+				}
+				system("pause");
+				break;
 			}
-			else
+			case 't': case 'T':
 			{
-				cerr << "The treap is empty." << endl;
+				if (hasInserted)
+				{
+					cout << endl;
+					cout << "The contents of the treap in post order are: ";
+					cout << endl;
+					myTreap.PostOrder();
+					cout << endl << endl;
+				}
+				else
+				{
+					cerr << "The treap is empty." << endl;
+				}
+				system("pause");
+				break;
 			}
-			system("pause");
-			break;
-
-		case 't': case 'T':
-			if (hasInserted)
+			case 'd': case 'D':
 			{
-				cout << endl;
-				cout << "The contents of the treap in post order are: ";
-				cout << endl;
-				myTreap.PostOrder();
-				cout << endl << endl;
+				myTreap.Clear();
+				break;
 			}
-			else
+			case 'q': case 'Q':
 			{
-				cerr << "The treap is empty." << endl;
+				return;
 			}
-			system("pause");
-			break;
-
-		case 'd': case 'D':
-			myTreap.Clear();
-			break;
-
-		case 'q': case 'Q':
-			return;
-
-		default:
-			cerr << "Invalid option, please try again." << endl;
-			system("pause");
-			break;
+			default:
+			{
+				cerr << "Invalid option, please try again." << endl;
+				system("pause");
+				break;
+			}
 		}
 
 		system("cls");
