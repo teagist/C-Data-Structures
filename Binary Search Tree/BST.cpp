@@ -406,6 +406,46 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 }
 
 //****************************************************************************
+//		
+//
+//	Parameters:
+//		subtree: node to be displayed.
+//		indent: the given indention spacing.
+//		isLeft: boolean of if node is left child.
+//****************************************************************************
+template <class T>
+void PrintHierachial(BNode<T>* subtree, std::string indent = "", bool isLeft) const
+{
+	if (root == nullptr) 
+	{
+		return;
+	}
+
+    // Process right child first to print from top to bottom.
+    printTree(root->right, indent + (isLeft ? "│   " : "    "), false);
+
+    // Print current node.
+    std::cout << indent;
+    std::cout << (isLeft ? "└── " : "┌── ");
+    std::cout << root->data << std::endl;
+
+    // Process left child.
+    printTree(root->left, indent + (isLeft ? "    " : "│   "), true);
+}
+
+//****************************************************************************
+//		Similar to the PrintTree method, but with different ASCII characters
+//  to represent the node's connections.
+//
+//	Parameters:
+//		subtree: node to be displayed.
+//****************************************************************************
+template <class T>
+void BST<T>::PrintTopLevelDown(BNode<T>* subtree) const
+{
+}
+
+//****************************************************************************
 //		Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
 //
