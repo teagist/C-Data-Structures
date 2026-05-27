@@ -406,7 +406,19 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 }
 
 //****************************************************************************
-//		
+//		Print the tree in a hierarchial view, similar to a file tree.
+//
+//	Parameters:
+//		N/A.
+//****************************************************************************
+void PrintHierachial() const
+{
+	PrintHierarchial(root, "", false);
+}
+
+//****************************************************************************
+//		Helper method for printing contents of the tree to resemble a file 
+//  tree. 
 //
 //	Parameters:
 //		subtree: node to be displayed.
