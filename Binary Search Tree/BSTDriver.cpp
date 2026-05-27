@@ -55,17 +55,18 @@ int main()
 //****************************************************************************
 void printMenu()
 {
-	cout << " ________________________________ " << endl;
-	cout << "| +Key  | Insert Item            |" << endl;
-	cout << "| -Key  | Remove Item            |" << endl;
-	cout << "| ?Key  | Search Item            |" << endl;
-	cout << "| R     | Prune Tree             |" << endl;
-	cout << "| I     | Print Items In Order   |" << endl;
-	cout << "| P     | Print Items Pre Order  |" << endl;
-	cout << "| T     | Print Items Post Order |" << endl;
-	cout << "| @     | Print Cursor Value     |" << endl;
-	cout << "| D     | Delete the Tree        |" << endl;
-	cout << "|_______|________________________|" << endl << endl;
+	cout << " ________________________________________ " << endl;
+	cout << "| +Key  | Insert Item                    |" << endl;
+	cout << "| -Key  | Remove Item                    |" << endl;
+	cout << "| ?Key  | Search Item                    |" << endl;
+	cout << "| R     | Prune Tree                     |" << endl;
+	cout << "| I     | Print Items In Order           |" << endl;
+	cout << "| P     | Print Items Pre Order          |" << endl;
+	cout << "| T     | Print Items Post Order         |" << endl;
+	cout << "| H     | Print Items Hierarchical Order |" << endl;
+	cout << "| @     | Print Cursor Value             |" << endl;
+	cout << "| D     | Delete the Tree                |" << endl;
+	cout << "|_______|________________________________|" << endl << endl;
     cout << "Please choose an operation to perform on the tree." << endl;
     cout << "Enter Q to quit." << endl;	
 }
@@ -185,6 +186,22 @@ void choose(BST<T>& myTree)
 				{
 					cout << "The contents of the tree in post order are: ";
 					myTree.PostOrder();
+					cout << endl << endl;
+					system("pause");
+				}
+				else
+				{
+					cerr << "\nPlease insert data into the tree." << endl;
+					system("pause");					
+				}
+				break;
+			}
+			case 'h': case 'H':
+			{
+				if (hasInserted)
+				{
+					cout << "The contents of the tree printed in a hierarchical order are: ";
+					myTree.PrintHierarchical();
 					cout << endl << endl;
 					system("pause");
 				}
