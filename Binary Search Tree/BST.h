@@ -71,7 +71,6 @@ private:
 	void DispLevel(BNode<T>* subtree, int level, int displace) const;
 
 	void PrintHierarchicalHelper(BNode<T>* subtree, bool isLeft, const std::string& indent = "") const;
-	void PrintTopLevelDown(BNode<T>* subtree) const;
 	
 	// Printing in Other Order Helper Methods.	
     void PreOrderHelper(const BNode<T>* subtree) const; 

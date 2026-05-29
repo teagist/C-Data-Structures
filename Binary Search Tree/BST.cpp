@@ -438,18 +438,6 @@ void BST<T>::PrintHierarchicalHelper(BNode<T>* subtree, bool isLeft, const std::
 }
 
 //****************************************************************************
-//		Similar to the PrintTree method, but with different ASCII characters
-//  to represent the node's connections.
-//
-//	Parameters:
-//		subtree: node to be displayed.
-//****************************************************************************
-template <class T>
-void BST<T>::PrintTopLevelDown(BNode<T>* subtree) const
-{
-}
-
-//****************************************************************************
 //		Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
 //
