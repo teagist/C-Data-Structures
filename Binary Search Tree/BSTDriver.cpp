@@ -1,9 +1,9 @@
 //****************************************************************************
 //	Driver File for Templated Binary Search Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/2/2025
+//	Last Compiled Date: 5/29/2026
 //
-//	Copyright (c) 2022 Houston Brown
+//	Copyright (c) 2026 Houston Brown
 //
 //	Permission is hereby granted to any person that obtains a copy of this
 //	software and associated documentation files (the "Software"), to deal
@@ -50,8 +50,7 @@ int main()
 //****************************************************************************
 //		Function to display the available options to the user.
 //
-//	Parameters:
-//		N/A.
+//	Parameters: N/A.
 //****************************************************************************
 void printMenu()
 {
@@ -200,8 +199,8 @@ void choose(BST<T>& myTree)
 			{
 				if (hasInserted)
 				{
-					cout << "The contents of the tree printed in a hierarchical order are: ";
-					myTree.PrintHierarchical();
+					cout << "The contents of the tree printed in a hierarchical order are: \n";
+					myTree.PrintHierachial();
 					cout << endl << endl;
 					system("pause");
 				}

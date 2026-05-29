@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Implementation File for Templated Binary Search Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/2/2025
+//	Last Compiled Date: 5/29/2026
 //****************************************************************************
 
 #include "BST.h"
@@ -284,8 +284,7 @@ BNode<T>* BST<T>::GetParent(BNode<T>* subtree) const
 //****************************************************************************
 //		Method to print the tree in level order.
 //
-//	Parameters:
-//		N/A.
+//	Parameters: N/A.
 //****************************************************************************
 template <class T>
 void BST<T>::PrintTree() const
@@ -406,17 +405,6 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 }
 
 //****************************************************************************
-//		Print the tree in a hierarchial view, similar to a file tree.
-//
-//	Parameters:
-//		N/A.
-//****************************************************************************
-void PrintHierachial() const
-{
-	PrintHierarchial(root, "", false);
-}
-
-//****************************************************************************
 //		Helper method for printing contents of the tree to resemble a file 
 //  tree. 
 //
@@ -426,23 +414,38 @@ void PrintHierachial() const
 //		isLeft: boolean of if node is left child.
 //****************************************************************************
 template <class T>
-void PrintHierachial(BNode<T>* subtree, std::string indent = "", bool isLeft) const
+void BST<T>::PrintHierachialHelper(BNode<T>* subtree, bool isLeft, const std::string& indent) const
 {
-	if (root == nullptr) 
+	if (subtree == NULL) 
 	{
 		return;
 	}
+	else
+	{
+	    std::cout << indent;
 
-    // Process right child first to print from top to bottom.
-    printTree(root->right, indent + (isLeft ? "│   " : "    "), false);
+        // Use different branches for left vs right children.
+        std::cout << (isLeft ? "|-- " : "L-- ");
 
-    // Print current node.
-    std::cout << indent;
-    std::cout << (isLeft ? "└── " : "┌── ");
-    std::cout << root->data << std::endl;
+        // Print the node's value.
+        std::cout << subtree->data << std::endl;
 
-    // Process left child.
-    printTree(root->left, indent + (isLeft ? "    " : "│   "), true);
+        // Update the prefix for the next level: 
+        // If we are on a left branch, add a vertical bar for the right branch later.
+        PrintHierachialHelper(subtree->left, true, indent + (isLeft ? "|   " : "    "));
+        PrintHierachialHelper(subtree->right, false, indent + (isLeft ? "|   " : "    "));
+	}
+}
+
+//****************************************************************************
+//		Print the tree in a hierarchial view, similar to a file tree.
+//
+//	Parameters: N/A.
+//****************************************************************************
+template <class T>
+void BST<T>::PrintHierachial() const
+{
+	PrintHierachialHelper(root, false, "");
 }
 
 //****************************************************************************
@@ -461,8 +464,7 @@ void BST<T>::PrintTopLevelDown(BNode<T>* subtree) const
 //		Method to print the data of the node that the cursor pointer 
 //	references.  If cursor is NULL, then '[]' will be displayed.
 //
-//	Parameters:
-//		N/A.
+//	Parameters: N/A.
 //****************************************************************************
 template <class T>
 void BST<T>::PrintCursor() const
@@ -480,8 +482,7 @@ void BST<T>::PrintCursor() const
 //****************************************************************************
 //		In order print method.
 //
-//	Parameters:
-//		N/A.
+//	Parameters: N/A.
 //****************************************************************************
 template <class T>
 void BST<T>::InOrder() const
@@ -520,8 +521,7 @@ void BST<T>::InOrderHelper(const BNode<T>* subtree) const
 //****************************************************************************
 //		Pre-order print method.
 //
-//	Parameters:
-//		N/A.
+//	Parameters: N/A.
 //****************************************************************************
 template <class T>
 void BST<T>::PreOrder() const
@@ -559,8 +559,7 @@ void BST<T>::PreOrderHelper(const BNode<T>* subtree) const
 //****************************************************************************
 //		Post-order print method.
 //
-//	Parameters:
-//		N/A.
+//	Parameters: N/A.
 //****************************************************************************
 template <class T>
 void BST<T>::PostOrder() const

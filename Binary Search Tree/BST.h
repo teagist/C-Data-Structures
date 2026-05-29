@@ -1,7 +1,7 @@
 //****************************************************************************
 //	Header File for Templated Binary Search Tree
 //	Programmed by: Houston Brown
-//	Last Compiled Date: 10/2/2025
+//	Last Compiled Date: 5/29/2026
 //****************************************************************************
 
 #ifndef _BST_H
@@ -40,6 +40,7 @@ public:
 	void Delete(const T key);
 
 	void PrintTree() const;
+	void PrintHierachial() const;
     void InOrder() const;
     void PreOrder() const;
     void PostOrder() const;
@@ -64,16 +65,15 @@ private:
 	bool isLeaf(BNode<T>* subtree) const { return (subtree->left == NULL && 
 												   subtree->right == NULL); }
 
-	// Printing in Level Order Helper Methods
+	// Printing in Level Order Helper Methods.
 	int TreeHeight(BNode<T>* subtree) const;
 	void PrintLevel(int height) const;
 	void DispLevel(BNode<T>* subtree, int level, int displace) const;
 
-	void PrintHierachial() const;
-	void PrintHierachialHelper(BNode<T>* subtree, std::string indent = "", bool isLeft) const;
+	void PrintHierachialHelper(BNode<T>* subtree, bool isLeft, const std::string& indent = "") const;
 	void PrintTopLevelDown(BNode<T>* subtree) const;
 	
-	// Printing in Other Order Helper Methods	
+	// Printing in Other Order Helper Methods.	
     void PreOrderHelper(const BNode<T>* subtree) const; 
     void InOrderHelper(const BNode<T>* subtree) const;
     void PostOrderHelper(const BNode<T>* subtree) const;
