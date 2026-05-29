@@ -414,7 +414,7 @@ void BST<T>::DispLevel(BNode<T>* subtree, int level, int displace) const
 //		isLeft: boolean of if node is left child.
 //****************************************************************************
 template <class T>
-void BST<T>::PrintHierachialHelper(BNode<T>* subtree, bool isLeft, const std::string& indent) const
+void BST<T>::PrintHierarchicalHelper(BNode<T>* subtree, bool isLeft, const std::string& indent) const
 {
 	if (subtree == NULL) 
 	{
@@ -432,20 +432,9 @@ void BST<T>::PrintHierachialHelper(BNode<T>* subtree, bool isLeft, const std::st
 
         // Update the prefix for the next level: 
         // If we are on a left branch, add a vertical bar for the right branch later.
-        PrintHierachialHelper(subtree->left, true, indent + (isLeft ? "|   " : "    "));
-        PrintHierachialHelper(subtree->right, false, indent + (isLeft ? "|   " : "    "));
+        PrintHierarchicalHelper(subtree->left, true, indent + (isLeft ? "|   " : "    "));
+        PrintHierarchicalHelper(subtree->right, false, indent + (isLeft ? "|   " : "    "));
 	}
-}
-
-//****************************************************************************
-//		Print the tree in a hierarchial view, similar to a file tree.
-//
-//	Parameters: N/A.
-//****************************************************************************
-template <class T>
-void BST<T>::PrintHierachial() const
-{
-	PrintHierachialHelper(root, false, "");
 }
 
 //****************************************************************************

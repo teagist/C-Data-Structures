@@ -200,7 +200,7 @@ void choose(BST<T>& myTree)
 				if (hasInserted)
 				{
 					cout << "The contents of the tree printed in a hierarchical order are: \n";
-					myTree.PrintHierachial();
+					myTree.PrintHierarchical();
 					cout << endl << endl;
 					system("pause");
 				}

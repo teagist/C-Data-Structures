@@ -40,7 +40,7 @@ public:
 	void Delete(const T key);
 
 	void PrintTree() const;
-	void PrintHierachial() const;
+	void PrintHierarchical() const { PrintHierarchicalHelper(root, false, ""); }
     void InOrder() const;
     void PreOrder() const;
     void PostOrder() const;
@@ -70,7 +70,7 @@ private:
 	void PrintLevel(int height) const;
 	void DispLevel(BNode<T>* subtree, int level, int displace) const;
 
-	void PrintHierachialHelper(BNode<T>* subtree, bool isLeft, const std::string& indent = "") const;
+	void PrintHierarchicalHelper(BNode<T>* subtree, bool isLeft, const std::string& indent = "") const;
 	void PrintTopLevelDown(BNode<T>* subtree) const;
 	
 	// Printing in Other Order Helper Methods.	
