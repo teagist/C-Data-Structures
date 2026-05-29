@@ -10,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 #include "WinUtils.h"
 
 class Logger

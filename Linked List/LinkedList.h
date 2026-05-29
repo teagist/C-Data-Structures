@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include <windows.h>
+#include "ApiLogger.h"
 using namespace std;
 
 template <class T>
@@ -20,7 +21,6 @@ class Node
 {
 	T data; 
 	Node* next;
-	LinkedList<T> subList;
 	
 	Node():next(NULL){};
 	Node(const T key): data(key), next(NULL){};
@@ -33,7 +33,7 @@ template <class T>
 class LinkedList
 {
 public:
-    LinkedList(): head(NULL), cursor(NULL), size(0){}
+    LinkedList(): head(NULL), cursor(NULL), size(0){}//, apiLogger(){}
 	
     void Insert(const T key);
 	void InsertAtHead(const T key);
@@ -69,5 +69,7 @@ private:
 	Node<T>* head;
 	Node<T>* cursor;
 	int size;
+	//ApiLogger apiLogger;
 };
+
 #endif

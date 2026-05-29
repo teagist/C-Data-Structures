@@ -30,6 +30,7 @@ Logger::Logger(std::string newTest, std::string newVersion)
 	logFile.open(fileName);*/
 }
 
+
 //****************************************************************************
 //	SETTER FOR TEST NAME.
 //****************************************************************************
@@ -38,6 +39,7 @@ void Logger::setTest(std::string newTest)
 	m_test = newTest;
 }
 
+
 //****************************************************************************
 //	SETTER FOR VERSION NAME.
 //****************************************************************************
@@ -45,6 +47,7 @@ void Logger::setVersion(std::string newVersion)
 {
 	m_version = newVersion;
 }
+
 
 //****************************************************************************
 //	SETTER FOR PASSING/FAILING STATUS.
@@ -55,6 +58,7 @@ void Logger::setPassingStatus(bool isSuccess)
 	
 	setTitlebar();
 }
+
 
 //****************************************************************************
 //	NAME: readVersionInfo.
@@ -80,6 +84,7 @@ void Logger::readVersionInfo()
 		std::getline(infile, m_version);	
 	}
 }
+
 
 //****************************************************************************
 //	NAME: printStatusMessage.
@@ -126,6 +131,7 @@ void Logger::printStatusMessage(const std::string& message,
 	}
 }
 
+
 //****************************************************************************
 //	NAME: logEvent.
 //
@@ -152,6 +158,7 @@ void Logger::logEvent(const std::string& message, const int type) const
 	std::cout << message << std::endl;
 }
 
+
 //****************************************************************************
 //	NAME: printLineHeader.
 //
@@ -165,6 +172,7 @@ void Logger::printLineHeader() const
 	printTime();
 	std::cout << "]: ";
 }
+
 
 //****************************************************************************
 //	NAME: printTime.
@@ -189,6 +197,7 @@ void Logger::printTime() const
     std::cout << formattedTime;	
 }
 
+
 //****************************************************************************
 //	NAME: setTitlebar.
 //
@@ -212,6 +221,7 @@ void Logger::setTitlebar() const
 
 	SetConsoleTitle(title.str().c_str());	
 }
+
 
 //****************************************************************************
 //	NAME: printResult.

@@ -43,6 +43,7 @@ namespace WinUtils
 	void delayBoot(int bootSeconds);
 	void wait(int seconds);
 	void pauseScreen();
+	void clearScreen();
 	
 	void printHardwareDetails();
 	void printOSDetails();

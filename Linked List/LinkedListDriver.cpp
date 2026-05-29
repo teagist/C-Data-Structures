@@ -31,12 +31,8 @@
 #include <limits>
 #include <sstream>
 
-
-
 void printMainMenu();
-
 void getExecChoice();
-
 void printMenu();
 
 template <class T> 
@@ -45,9 +41,6 @@ void choose(LinkedList<T> &myList);
 template <class T>
 T validateInput(T &value);
 
-
-
-
 int main()
 {
 	printMainMenu();
@@ -55,9 +48,6 @@ int main()
 
 	return 0;
 }
-
-
-
 
 //****************************************************************************
 //	NAME: printMainMenu.
@@ -90,7 +80,6 @@ void printMainMenu()
     std::cout << "|_______________________________________________________________________|" << std::endl;
     std::cout << "Please choose an execution option of the Linked List." << std::endl;
 }
-
 
 //****************************************************************************
 //	NAME: getExecChoice.
@@ -151,7 +140,6 @@ void getExecChoice()
     }
 }
 
-
 //****************************************************************************
 //	NAME: printMenu.
 //
@@ -183,7 +171,6 @@ void printMenu()
     std::cout << "Please choose an operation to perform on the list." << std::endl;
     std::cout << "Enter E to exit." << std::endl;	
 }
-
 
 //****************************************************************************
 //	NAME: choose.
@@ -422,7 +409,6 @@ void choose(LinkedList<T> &myList)
 	}	
 }
 /* End of choose function */
-
 
 //****************************************************************************
 //	NAME: validateInput.

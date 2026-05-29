@@ -19,7 +19,11 @@
 //****************************************************************************
 template <class T>
 void LinkedList<T>::Insert(const T key)
-{	
+{
+	//apiLogger.oss << "Insert(" << key << ")";
+	//apiLogger.setApiName(apiLogger.oss.str());
+	//apiLogger.getApiName();
+	//apiLogger.writeAPI();
 	Node<T> *curr = head;
 	if(head == NULL || head->data >= key)
 	{
@@ -106,7 +110,9 @@ void LinkedList<T>::InsertAtTail(const T key)
 		{
 			Node<T>* temp = head;
 			while (temp->next != NULL)
+			{
 				temp = temp->next;
+			}
 
 			temp->next = tail;
 		}
@@ -246,7 +252,6 @@ void LinkedList<T>::RemoveAtTail()
     	head = NULL;
     	cursor = head;
     }
-    
     else
     {    
     	delete curr;
@@ -304,6 +309,7 @@ bool LinkedList<T>::Search(const T key)
     return true;
 }
 
+
 //****************************************************************************
 //	NAME: Sort.
 //
@@ -349,6 +355,7 @@ void LinkedList<T>::Sort()
 	}
 }
 
+
 //****************************************************************************
 //	NAME: Clear.
 //
@@ -370,6 +377,7 @@ void LinkedList<T>::Clear()
 	cursor = NULL;
 	head   = NULL;
 }
+
 
 //****************************************************************************
 //	NAME: Print.
@@ -440,6 +448,7 @@ void LinkedList<T>::Print() const
 	cout << "]";
 }
 
+
 //****************************************************************************
 //	NAME: PrintInLines.
 //
@@ -505,6 +514,7 @@ void LinkedList<T>::PrintInLines() const
 	}
 }
 
+
 //****************************************************************************
 //	NAME: PrintToFile.
 //
@@ -541,6 +551,7 @@ void LinkedList<T>::PrintToFile() const
 	outfile.close();
 }
 
+
 //****************************************************************************
 //	NAME: PrintCursor.
 //
@@ -572,6 +583,7 @@ void LinkedList<T>::PrintCursor() const
 	}
 }
 
+
 //****************************************************************************
 //	NAME: moveCursorUp.
 //
@@ -600,6 +612,7 @@ void LinkedList<T>::moveCursorUp()
 		current = current ->next;
 	}
 }
+
 
 //****************************************************************************
 //	NAME: moveCursorDown.
@@ -630,6 +643,7 @@ void LinkedList<T>::moveCursorDown()
 	}
 }
 
+
 //****************************************************************************
 //	NAME: getHeadValue.
 //
@@ -650,6 +664,7 @@ T LinkedList<T>::getHeadValue() const
 		return (T)NULL;
 	}
 }
+
 
 //****************************************************************************
 //	NAME: getTailValue.
@@ -673,6 +688,7 @@ T LinkedList<T>::getTailValue() const
 		temp = temp->next;
 	}
 }
+
 
 //****************************************************************************
 //		Copy Constructor.
@@ -698,6 +714,7 @@ LinkedList<T>::LinkedList(const LinkedList<T>& myList)
 		oldtemp=oldtemp->next;		
 	}
 }
+
 
 //****************************************************************************
 //		Assignment Operator.
@@ -732,6 +749,7 @@ LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& myList)
 	return *this;
 }
 
+
 //****************************************************************************
 //		Destructor.
 //****************************************************************************
@@ -746,6 +764,9 @@ LinkedList<T>::~LinkedList()
     }
     head = NULL;   
 }
+
+
+
 
 template class LinkedList<int>;
 template class LinkedList<float>;
