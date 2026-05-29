@@ -50,7 +50,6 @@ T validateInput(T &value);
 
 int main()
 {
-	//getManualOrAuto();
 	printMainMenu();
 	getExecChoice();
 
@@ -109,9 +108,6 @@ void getExecChoice()
     {
         if (std::cin >> userEntry)
         {
-            // Convert the input to uppercase
-            //userEntry = std::toupper(userEntry);
-
             // Check if it's a valid input
             if (userEntry == 1)
             {
