@@ -115,7 +115,7 @@ void getExecChoice()
             }
             else if (userEntry == 3)
             {
-            	std::cout << "Real World Scenario" << std::endl;
+            	std::cout << "Launch Music Playlist Scenario." << std::endl;
             	WinUtils::pauseScreen();
 			}
 			else 
