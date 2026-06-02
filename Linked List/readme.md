@@ -3,7 +3,11 @@
 This repository contains the implementation and a **comprehensive test suite** for a templated singly‑linked list. 
 ---
 
-## ✅ Test Checklist  
+## Features of the Linked List
+> Templated Singly Linked List.
+> Insertion, Deletion, Retrieval, Sorting, and Traversal of the List.
+
+## ✅ Automated Test Checklist  
 
 > **How to use:**  
 > - Open `tests/slist_test.cpp`.  
