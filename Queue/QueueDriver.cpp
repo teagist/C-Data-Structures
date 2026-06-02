@@ -14,7 +14,6 @@
 #include <sstream>
 
 void getManualOrAuto();
-
 void printMenu();
 
 template<class T>
