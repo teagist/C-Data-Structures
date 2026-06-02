@@ -4,8 +4,8 @@ This repository contains the implementation and a **comprehensive test suite** f
 ---
 
 ## Features of the Linked List
-> Templated Singly Linked List.
-> Insertion, Deletion, Retrieval, Sorting, and Traversal of the List.
+* Templated Singly Linked List.
+*  Insertion, Deletion, Retrieval, Sorting, and Traversal of the List.
 
 ## ✅ Automated Test Checklist  
 
